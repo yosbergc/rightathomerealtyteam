@@ -1,0 +1,86 @@
+---
+import '@fontsource-variable/dm-sans';
+import '../styles/global.css';
+import type { ImageMetadata } from 'astro';
+import Seo from '../components/Seo.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { localizedPath } from '../i18n';
+import type { Locale } from '../content.config';
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  path: string;
+  alternates?: { en: string; es: string };
+  image?: string | ImageMetadata;
+  jsonLd?: object[];
+  type?: 'website' | 'article';
+  headerVariant?: 'transparent' | 'solid';
+  noindex?: boolean;
+  publishedTime?: string;
+  modifiedTime?: string;
+}
+
+const {
+  title,
+  description,
+  locale,
+  path,
+  alternates,
+  image,
+  jsonLd = [],
+  type = 'website',
+  headerVariant = 'solid',
+  noindex = false,
+  publishedTime,
+  modifiedTime,
+} = Astro.props;
+
+const alternateEn = alternates?.en ?? localizedPath(path, 'en');
+const alternateEs = alternates?.es ?? localizedPath(path, 'es');
+const toRelative = (value: string) =>
+  value.startsWith('http') ? value.replace(/^https?:\/\/[^/]+/, '') : value;
+const enUrl = toRelative(alternateEn);
+const esUrl = toRelative(alternateEs);
+const otherPath = locale === 'en' ? esUrl : enUrl;
+const redirectConfig = locale === 'en' ? { other: otherPath } : { other: '' };
+---
+
+<!doctype html>
+<html lang={locale === 'es' ? 'es' : 'en'}>
+  <head>
+    <Seo
+      title={title}
+      description={description}
+      locale={locale}
+      path={path}
+      image={image}
+      alternates={{ en: alternateEn, es: alternateEs }}
+      type={type}
+      jsonLd={jsonLd}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
+      noindex={noindex}
+    />
+    <script type="application/json" id="locale-redirect" set:html={JSON.stringify(redirectConfig)} />
+  </head>
+  <body>
+    <Header
+      locale={locale}
+      variant={headerVariant}
+      currentPath={path}
+      enUrl={enUrl}
+      esUrl={esUrl}
+    />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer locale={locale} />
+    <script>
+      import '../scripts/main.ts';
+      import '../scripts/forms.ts';
+    </script>
+  </body>
+</html>

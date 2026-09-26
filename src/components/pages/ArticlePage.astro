@@ -1,0 +1,123 @@
+---
+import { getImage } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs, { type BreadcrumbItem } from '../Breadcrumbs.astro';
+import ArticleMeta from '../ArticleMeta.astro';
+import PostNavigator from '../PostNavigator.astro';
+import { siteConfig } from '../../config/site';
+import { getDictionary, localizedPath } from '../../i18n';
+import {
+  getAuthor,
+  getPostByTranslationKey,
+  getAdjacentPosts,
+  postUrl,
+  contentSlug,
+  absoluteUrl,
+  type Post,
+} from '../../utils/content';
+import {
+  buildOrganizationJsonLd,
+  buildArticleJsonLd,
+  buildBreadcrumbJsonLd,
+  buildAlternates,
+} from '../../utils/seo';
+import type { Locale } from '../../content.config';
+
+interface Props {
+  locale: Locale;
+  post: Post;
+}
+
+const { locale, post } = Astro.props;
+const t = getDictionary(locale);
+const path = locale === 'es' ? '/es/blog' : '/blog';
+const { data } = post;
+
+const [author, adjacent, translation] = await Promise.all([
+  getAuthor(data.author),
+  getAdjacentPosts(post),
+  getPostByTranslationKey(locale === 'en' ? 'es' : 'en', data.translationKey),
+]);
+
+const postSlugPath = `${path}/${contentSlug(post)}`;
+const title = data.seoTitle ?? `${data.title} | ${t.seoBlogTitle}`;
+const description = data.seoDescription ?? data.description;
+const ogImage = await getImage({ src: data.coverImage, width: 1200 });
+const imageUrl = absoluteUrl(ogImage.src);
+const rootPath = locale === 'es' ? '/es' : '/';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { label: t.home, href: rootPath },
+  { label: t.blog, href: localizedPath('/blog', locale) },
+  { label: data.title },
+];
+
+const breadcrumbJsonLd = buildBreadcrumbJsonLd(
+  breadcrumbs.map((item, index) => ({
+    name: item.label,
+    url: absoluteUrl(index < breadcrumbs.length - 1 ? (item.href as string) : postSlugPath),
+  })),
+);
+
+const jsonLd = [
+  buildOrganizationJsonLd(),
+  breadcrumbJsonLd,
+  buildArticleJsonLd(
+    {
+      title: data.title,
+      description: data.description,
+      publishedAt: data.publishedAt,
+      updatedAt: data.updatedAt,
+      category: data.category,
+    },
+    absoluteUrl(postSlugPath),
+    imageUrl,
+    author?.data.name ?? siteConfig.name,
+  ),
+];
+
+const enPost = locale === 'en' ? post : (translation ?? post);
+const esPost = locale === 'es' ? post : (translation ?? post);
+
+const { Content } = await post.render();
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  locale={locale}
+  path={postSlugPath}
+  image={imageUrl}
+  type="article"
+  publishedTime={data.publishedAt.toISOString()}
+  modifiedTime={(data.updatedAt ?? data.publishedAt).toISOString()}
+alternates={buildAlternates(postUrl(enPost, 'en'), postUrl(esPost, 'es'))}
+  jsonLd={jsonLd}
+>
+  <article class="section-pad pb-16 pt-32 md:pt-40">
+    <div class="container-site max-w-3xl">
+      <Breadcrumbs items={breadcrumbs} class="mb-10" />
+      <header>
+        <h1 class="heading-hero text-[36px] md:text-[44px]">{data.title}</h1>
+        <div class="mt-6">
+          <ArticleMeta post={post} author={author} locale={locale} />
+        </div>
+        <p class="text-body mt-6 text-muted">{data.description}</p>
+      </header>
+      <div class="mt-10 overflow-hidden rounded-[12px]">
+        <img
+          src={imageUrl}
+          alt={data.title}
+          width={1200}
+          height={896}
+          loading="eager"
+          class="aspect-[3/2] w-full object-cover"
+        />
+      </div>
+      <div class="prose-content mt-12">
+        <Content />
+      </div>
+      <PostNavigator previous={adjacent.previous} next={adjacent.next} locale={locale} />
+    </div>
+  </article>
+</BaseLayout>

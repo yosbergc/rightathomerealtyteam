@@ -1,0 +1,16 @@
+---
+import { getPosts, contentSlug } from '../../../utils/content';
+import ArticlePage from '../../../components/pages/ArticlePage.astro';
+
+export async function getStaticPaths() {
+  const posts = await getPosts('es');
+  return posts.map((post) => ({
+    params: { slug: contentSlug(post) },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<ArticlePage locale="es" post={post} />

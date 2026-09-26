@@ -1,0 +1,51 @@
+---
+import { getDictionary } from '../i18n';
+import type { Locale } from '../content.config';
+
+interface Props {
+  locale: Locale;
+  enUrl: string;
+  esUrl: string;
+  class?: string;
+  compact?: boolean;
+}
+
+const { locale, enUrl, esUrl, class: className = '', compact = false } = Astro.props;
+const t = getDictionary(locale);
+---
+
+<nav
+  class={`inline-flex items-center ${compact ? 'gap-1' : 'gap-2'} ${className}`}
+  aria-label={t.langSwitcherLabel}
+>
+  <a
+    href={enUrl}
+    data-lang="en"
+    class:list={[
+      'inline-flex items-center justify-center rounded px-2.5 py-1 text-sm font-semibold leading-none transition-colors',
+      locale === 'en' ? 'bg-brand text-white' : 'text-current hover:opacity-70',
+    ]}
+    aria-current={locale === 'en' ? 'page' : undefined}
+  >
+    EN
+  </a>
+  <a
+    href={esUrl}
+    data-lang="es"
+    class:list={[
+      'inline-flex items-center justify-center rounded px-2.5 py-1 text-sm font-semibold leading-none transition-colors',
+      locale === 'es' ? 'bg-brand text-white' : 'text-current hover:opacity-70',
+    ]}
+    aria-current={locale === 'es' ? 'page' : undefined}
+  >
+    ES
+  </a>
+</nav>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('[data-lang]').forEach((link) => {
+    link.addEventListener('click', () => {
+      document.cookie = `realtypro_lang=${link.dataset.lang}; path=/; max-age=31536000; samesite=lax`;
+    });
+  });
+</script>

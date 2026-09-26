@@ -1,0 +1,16 @@
+---
+import { getCategories, contentSlug } from '../../../utils/content';
+import CategoryPage from '../../../components/pages/CategoryPage.astro';
+
+export async function getStaticPaths() {
+  const categories = await getCategories('es');
+  return categories.map((category) => ({
+    params: { slug: contentSlug(category) },
+    props: { category },
+  }));
+}
+
+const { category } = Astro.props;
+---
+
+<CategoryPage locale="es" category={category} />

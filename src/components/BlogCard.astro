@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+import { postUrl, type Post } from '../utils/content';
+import { formatDate } from '../utils/format';
+import { getDictionary } from '../i18n';
+import type { Locale } from '../content.config';
+
+interface Props {
+  post: Post;
+  locale: Locale;
+}
+
+const { post, locale } = Astro.props;
+const t = getDictionary(locale);
+const { data } = post;
+---
+
+<a
+  href={postUrl(post, locale)}
+  class="card-surface group flex flex-col overflow-hidden transition-shadow duration-300 hover:shadow-lg"
+>
+  <div class="relative aspect-[4/3] overflow-hidden bg-surface">
+    <Image
+      src={data.coverImage}
+      alt={data.title}
+      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+      sizes="(max-width: 809px) 100vw, (max-width: 1199px) 50vw, 33vw"
+    />
+  </div>
+  <div class="flex flex-1 flex-col p-5">
+    <div class="flex items-center gap-2 text-[13px] font-medium text-muted">
+      <span>{data.category}</span>
+      <span class="h-1 w-1 rounded-full bg-[#b6b6b6]" aria-hidden="true"></span>
+      <span>{data.readingTime} {t.minRead}</span>
+    </div>
+    <h3 class="heading-card mt-3">{data.title}</h3>
+    <time class="mt-auto pt-4 text-sm text-muted" datetime={data.publishedAt.toISOString()}>
+      {formatDate(data.publishedAt, locale)}
+    </time>
+  </div>
+</a>

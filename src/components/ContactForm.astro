@@ -1,0 +1,106 @@
+---
+import { siteConfig } from '../config/site';
+import { getDictionary } from '../i18n';
+import type { Locale } from '../content.config';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+const honeypots = ['website', 'company', 'subject', 'title', 'description', 'feedback', 'notes', 'details', 'remarks', 'comments'];
+
+const inputClass =
+  'w-full rounded-[4px] border border-line bg-white px-4 py-3 text-[15px] text-ink placeholder:text-[#9a9a9a] focus:border-brand';
+const labelClass = 'mb-1.5 block text-sm font-semibold text-black';
+const errorClass = 'mt-1 block min-h-[16px] text-[13px] text-red-600';
+---
+
+<form
+  data-form
+  data-endpoint={siteConfig.formEndpoint}
+  data-sending={t.sending}
+  class="card-surface p-6 md:p-8"
+  novalidate
+>
+  <div class="grid gap-4">
+    <div>
+      <label class={labelClass} for="contact-name">{t.nameLabel}</label>
+      <input
+        id="contact-name"
+        type="text"
+        name="Name"
+        placeholder={t.namePlaceholder}
+        required
+        data-required
+        data-msg-required={t.validationRequired}
+        class={inputClass}
+      />
+      <span class={errorClass} data-error aria-live="polite"></span>
+    </div>
+    <div>
+      <label class={labelClass} for="contact-phone">{t.phoneNumberLabel}</label>
+      <input
+        id="contact-phone"
+        type="tel"
+        name="Phone number"
+        placeholder={t.phoneNumberPlaceholder}
+        class={inputClass}
+      />
+    </div>
+    <div>
+      <label class={labelClass} for="contact-email">{t.emailLabelForm}</label>
+      <input
+        id="contact-email"
+        type="email"
+        name="Email address"
+        placeholder={t.emailPlaceholder}
+        required
+        data-required
+        data-type="email"
+        data-msg-required={t.validationRequired}
+        data-msg-email={t.validationEmail}
+        class={inputClass}
+      />
+      <span class={errorClass} data-error aria-live="polite"></span>
+    </div>
+    <div>
+      <label class={labelClass} for="contact-message">{t.messageLabel}</label>
+      <textarea
+        id="contact-message"
+        name="Message"
+        placeholder={t.messagePlaceholder}
+        required
+        data-required
+        data-msg-required={t.validationMessage}
+        rows={5}
+        class={`${inputClass} resize-y`}
+      ></textarea>
+      <span class={errorClass} data-error aria-live="polite"></span>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary mt-6 w-full px-6 py-3" data-submit>
+    <span data-submit-label>{t.sendMessage}</span>
+  </button>
+  {
+    honeypots.map((name) => (
+      <input
+        type="text"
+        name={name}
+        tabindex="-1"
+        autocomplete="off"
+        class="absolute -left-[9999px] h-0 w-0 opacity-0"
+        aria-hidden="true"
+      />
+    ))
+  }
+</form>
+<div data-form-status aria-live="polite">
+  <p class="mt-4 hidden rounded-[4px] border border-green-300 bg-green-50 px-4 py-3 text-sm text-green-800" data-status-success>
+    <strong>{t.successTitle}.</strong> {t.successMessage}
+  </p>
+  <p class="mt-4 hidden rounded-[4px] border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-800" data-status-error>
+    <strong>{t.errorTitle}.</strong> {t.errorMessage}
+  </p>
+</div>

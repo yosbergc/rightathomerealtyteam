@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+import { propertyUrl, type Property } from '../utils/content';
+import { formatPrice } from '../utils/format';
+import { getDictionary } from '../i18n';
+import type { Locale } from '../content.config';
+
+interface Props {
+  property: Property;
+  locale: Locale;
+}
+
+const { property, locale } = Astro.props;
+const t = getDictionary(locale);
+const { data } = property;
+---
+
+<a
+  href={propertyUrl(property, locale)}
+  class="card-surface group flex flex-col overflow-hidden transition-shadow duration-300 hover:shadow-lg"
+>
+  <div class="relative aspect-[4/3] overflow-hidden bg-surface">
+    <Image
+      src={data.coverImage}
+      alt={data.title}
+      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+      sizes="(max-width: 809px) 100vw, (max-width: 1199px) 50vw, 33vw"
+    />
+    <span class="badge-pill absolute left-4 top-4">
+      {data.status}
+    </span>
+  </div>
+  <div class="flex flex-1 flex-col p-5">
+    <h3 class="heading-card">{data.title}</h3>
+    <p class="mt-1 text-sm leading-snug text-muted">{data.address}</p>
+    <div class="mt-4 flex items-center gap-3 text-sm text-muted">
+      <span>{data.beds} {t.beds}</span>
+      <span class="h-4 w-px bg-[#dbdbdb]" aria-hidden="true"></span>
+      <span>{data.baths} {t.baths}</span>
+      <span class="h-4 w-px bg-[#dbdbdb]" aria-hidden="true"></span>
+      <span>{formatPrice(data.sqft)} sqft</span>
+    </div>
+    <div class="price-chip mt-5 self-start">
+      <span class="text-[17px] font-semibold text-black">$</span>
+      <span class="text-[17px] font-semibold text-black">{formatPrice(data.price)}</span>
+    </div>
+  </div>
+</a>

@@ -1,0 +1,61 @@
+---
+import { siteConfig } from '../config/site';
+import { getDictionary } from '../i18n';
+import type { Locale } from '../content.config';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+const honeypots = ['website', 'company', 'message', 'subject', 'title', 'description', 'feedback', 'notes', 'details', 'remarks', 'comments'];
+---
+
+<form
+  data-form
+  data-endpoint={siteConfig.formEndpoint}
+  data-sending="..."
+  class="mt-4 flex w-full flex-col gap-2 sm:flex-row"
+  novalidate
+>
+  <div class="flex-1">
+    <label class="sr-only" for="subscribe-email">{t.newsletterTitle}</label>
+    <input
+      id="subscribe-email"
+      type="email"
+      name="Email address"
+      placeholder={t.subscribePlaceholder}
+      required
+      data-required
+      data-type="email"
+      data-msg-required={t.validationRequired}
+      data-msg-email={t.validationEmail}
+      class="w-full rounded-[4px] border border-transparent bg-white/10 px-4 py-3 text-[15px] text-white placeholder:text-[#d9d9d9] focus:border-white/40"
+    />
+    <span class="mt-1 block min-h-[18px] text-[13px] text-red-400" data-error aria-live="polite"></span>
+  </div>
+  <button type="submit" class="btn btn-primary shrink-0 px-6 py-3" data-submit>
+    <span data-submit-label>{t.subscribe}</span>
+  </button>
+  {
+    honeypots.map((name) => (
+      <input
+        type="text"
+        name={name}
+        tabindex="-1"
+        autocomplete="off"
+        class="absolute -left-[9999px] h-0 w-0 opacity-0"
+        aria-hidden="true"
+      />
+    ))
+  }
+</form>
+<div class="mt-2" data-form-status aria-live="polite">
+  <p class="hidden rounded-[4px] bg-white/10 px-4 py-3 text-sm text-white" data-status-success>
+    {t.successMessage}
+  </p>
+  <p class="hidden rounded-[4px] bg-red-500/20 px-4 py-3 text-sm text-white" data-status-error>
+    {t.errorMessage}
+  </p>
+</div>

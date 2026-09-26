@@ -1,0 +1,32 @@
+---
+import { getDictionary } from '../i18n';
+import type { Property } from '../utils/content';
+import type { Locale } from '../content.config';
+
+interface Props {
+  property: Property;
+  locale: Locale;
+}
+
+const { property, locale } = Astro.props;
+const t = getDictionary(locale);
+---
+
+<div class="grid gap-6 lg:grid-cols-2">
+  <div>
+    <h3 class="heading-sub mb-4">{t.facilities}</h3>
+    <div class="divide-y divide-line rounded-[12px] border border-line bg-white">
+      {property.data.facilities.map((item) => (
+        <p class="px-6 py-4 text-base text-ink/90">{item}</p>
+      ))}
+    </div>
+  </div>
+  <div>
+    <h3 class="heading-sub mb-4">{t.amenities}</h3>
+    <div class="divide-y divide-line rounded-[12px] border border-line bg-white">
+      {property.data.amenities.map((item) => (
+        <p class="px-6 py-4 text-base text-ink/90">{item}</p>
+      ))}
+    </div>
+  </div>
+</div>

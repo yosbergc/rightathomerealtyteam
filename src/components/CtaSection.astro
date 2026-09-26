@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Icon from './Icon.astro';
+import { getDictionary, localizedPath } from '../i18n';
+import type { Locale } from '../content.config';
+
+interface Props {
+  locale: Locale;
+  image: ImageMetadata;
+}
+
+const { locale, image } = Astro.props;
+const t = getDictionary(locale);
+const contactUrl = localizedPath('/contact#contact-form', locale);
+---
+
+<section class="section-pad bg-navy text-white">
+  <div class="container-site">
+    <div data-reveal class="relative overflow-hidden rounded-[12px]">
+      <Image
+        src={image}
+        alt=""
+        class="absolute inset-0 h-full w-full object-cover object-bottom"
+        width={2400}
+        height={1792}
+        aria-hidden="true"
+      />
+      <div class="absolute inset-0 bg-navy/85" aria-hidden="true"></div>
+      <div class="relative grid gap-10 px-6 py-16 md:px-14 md:py-20 lg:grid-cols-[1.2fr_1fr] lg:items-center lg:gap-16">
+        <div>
+          <h2 class="text-[32px] font-semibold leading-[1.15] tracking-[-0.04em] md:text-[44px]">
+            {t.ctaTitleLineOne}
+            <br />
+            {t.ctaTitleLineTwo}
+          </h2>
+          <a href={contactUrl} class="btn btn-primary mt-8 px-8 py-3.5 text-[17px]">
+            {t.ctaButton}
+          </a>
+        </div>
+        <ul class="grid gap-4">
+          {t.ctaMerits.map((merit) => (
+            <li class="flex items-start gap-3 text-[15px]">
+              <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand/20 text-brand-light">
+                <Icon name="check" class="h-4 w-4" />
+              </span>
+              {merit}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

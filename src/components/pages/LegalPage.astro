@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs, { type BreadcrumbItem } from '../Breadcrumbs.astro';
+import { getDictionary } from '../../i18n';
+import { getLegalDocs, legalUrl, contentSlug, type LegalDoc } from '../../utils/content';
+import {
+  buildOrganizationJsonLd,
+  buildWebPageJsonLd,
+  buildBreadcrumbJsonLd,
+} from '../../utils/seo';
+import { absoluteUrl } from '../../utils/content';
+import type { Locale } from '../../content.config';
+
+interface Props {
+  locale: Locale;
+  doc: LegalDoc;
+}
+
+const { locale, doc } = Astro.props;
+const t = getDictionary(locale);
+const path = locale === 'es' ? '/es/legal' : '/legal';
+const docs = await getLegalDocs(locale);
+const index = docs.findIndex((entry) => contentSlug(entry) === contentSlug(doc));
+const previous = index > 0 ? docs[index - 1] : undefined;
+const next = index >= 0 && index < docs.length - 1 ? docs[index + 1] : undefined;
+
+const docSlugPath = `${path}/${contentSlug(doc)}`;
+const title = doc.data.seoTitle ?? `${doc.data.title} | ${t.seoHomeTitle}`;
+const description = doc.data.seoDescription ?? t.ogSiteDescription;
+const rootPath = locale === 'es' ? '/es' : '/';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { label: t.home, href: rootPath },
+  { label: doc.data.title },
+];
+
+const jsonLd = [
+  buildOrganizationJsonLd(),
+  buildWebPageJsonLd(title, docSlugPath, description),
+  buildBreadcrumbJsonLd([
+    { name: 'Home', url: absoluteUrl(rootPath) },
+    { name: doc.data.title, url: absoluteUrl(docSlugPath) },
+  ]),
+];
+
+const { Content } = await doc.render();
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  locale={locale}
+  path={docSlugPath}
+  jsonLd={jsonLd}
+>
+  <article class="section-pad pb-16 pt-32 md:pt-40">
+    <div class="container-site max-w-3xl">
+      <Breadcrumbs items={breadcrumbs} class="mb-10" />
+      <p class="eyebrow">{t.legalLabel}</p>
+      <h1 class="heading-hero mt-3 text-[36px] md:text-[44px]">{doc.data.title}</h1>
+      <div class="prose-content mt-10">
+        <Content />
+      </div>
+      <nav aria-label="Pagination" class="mt-12 grid gap-4 border-t border-line pt-8 sm:grid-cols-2">
+        {
+          previous && (
+            <a
+              href={legalUrl(previous, locale)}
+              class="group flex items-center gap-3 rounded-[12px] border border-line p-5 transition-colors hover:border-brand"
+            >
+              <span class="text-[20px] leading-none text-muted" aria-hidden="true">‹</span>
+              <span class="font-semibold text-black">{previous.data.title}</span>
+            </a>
+          )
+        }
+        {
+          next && (
+            <a
+              href={legalUrl(next, locale)}
+              class="group flex items-center justify-end gap-3 rounded-[12px] border border-line p-5 text-right transition-colors hover:border-brand sm:col-start-2"
+            >
+              <span class="font-semibold text-black">{next.data.title}</span>
+              <span class="text-[20px] leading-none text-muted" aria-hidden="true">›</span>
+            </a>
+          )
+        }
+      </nav>
+    </div>
+  </article>
+</BaseLayout>

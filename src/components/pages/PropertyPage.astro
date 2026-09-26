@@ -1,0 +1,215 @@
+---
+import { getImage } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../Icon.astro';
+import Breadcrumbs, { type BreadcrumbItem } from '../Breadcrumbs.astro';
+import PropertyGallery from '../PropertyGallery.astro';
+import KeyFacts from '../KeyFacts.astro';
+import PropertyDetailsTable from '../PropertyDetailsTable.astro';
+import PropertyTags from '../PropertyTags.astro';
+import FacilityList from '../FacilityList.astro';
+import PropertyMap from '../PropertyMap.astro';
+import SimilarProperties from '../SimilarProperties.astro';
+import { getDictionary, localizedPath } from '../../i18n';
+import {
+  getPropertyByTranslationKey,
+  getRelatedProperties,
+  getCategoryBySlug,
+  propertyUrl,
+  contentSlug,
+  absoluteUrl,
+  type Property,
+} from '../../utils/content';
+import { formatPrice } from '../../utils/format';
+import {
+  buildOrganizationJsonLd,
+  buildPropertyJsonLd,
+  buildBreadcrumbJsonLd,
+  buildAlternates,
+} from '../../utils/seo';
+import type { Locale } from '../../content.config';
+
+interface Props {
+  locale: Locale;
+  property: Property;
+}
+
+const { locale, property } = Astro.props;
+const t = getDictionary(locale);
+const path = locale === 'es' ? '/es/propiedades' : '/properties';
+const { data } = property;
+
+const [category, related, translation] = await Promise.all([
+  getCategoryBySlug(locale, data.category),
+  getRelatedProperties(property, 3),
+  getPropertyByTranslationKey(locale === 'en' ? 'es' : 'en', data.translationKey),
+]);
+
+const propertySlugPath = `${path}/${contentSlug(property)}`;
+const title = data.seoTitle ?? `${data.title} | ${t.seoHomeTitle}`;
+const description =
+  data.seoDescription ??
+  `${data.beds} ${t.beds.toLowerCase()}, ${data.baths} ${t.baths.toLowerCase()} ${data.propertyType.toLowerCase()} in ${
+    data.city
+  }, ${data.state}. $${formatPrice(data.price)}. ${locale === 'es' ? 'Contacta a Realty Pro.' : 'Contact Realty Pro.'}`;
+
+const ogImage = await getImage({ src: data.coverImage, width: 1200 });
+const imageUrl = absoluteUrl(ogImage.src);
+const rootPath = locale === 'es' ? '/es' : '/';
+const breadcrumbs: BreadcrumbItem[] = [
+  { label: t.home, href: rootPath },
+  { label: t.properties, href: localizedPath('/properties', locale) },
+  { label: data.title },
+];
+
+const breadcrumbJsonLd = buildBreadcrumbJsonLd(
+  breadcrumbs.map((item, index) => ({
+    name: item.label,
+    url: absoluteUrl(index < breadcrumbs.length - 1 ? (item.href as string) : propertySlugPath),
+  })),
+);
+
+const jsonLd = [
+  buildOrganizationJsonLd(),
+  breadcrumbJsonLd,
+  buildPropertyJsonLd(
+    {
+      title: data.title,
+      price: data.price,
+      address: data.address,
+      beds: data.beds,
+      baths: data.baths,
+      sqft: data.sqft,
+      category: category?.data.name ?? data.category,
+      status: data.status,
+      latitude: data.latitude,
+      longitude: data.longitude,
+    },
+    absoluteUrl(propertySlugPath),
+    imageUrl,
+    description,
+    '2026-09-21',
+  ),
+];
+
+const enProperty = locale === 'en' ? property : (translation ?? property);
+const esProperty = locale === 'es' ? property : (translation ?? property);
+
+const { Content } = await property.render();
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  locale={locale}
+  path={propertySlugPath}
+  image={imageUrl}
+alternates={buildAlternates(propertyUrl(enProperty, 'en'), propertyUrl(esProperty, 'es'))}
+  jsonLd={jsonLd}
+>
+  <section class="pb-10 pt-28 md:pt-36">
+    <div class="container-site">
+      <PropertyGallery property={property} locale={locale} />
+    </div>
+  </section>
+
+  <section class="pb-16 md:pb-20">
+    <div class="container-site grid gap-12 lg:grid-cols-[1fr_320px] lg:gap-16">
+      <div>
+        <Breadcrumbs items={breadcrumbs} />
+        <p class="eyebrow mt-8">
+          <Icon name="house" class="h-[11px] w-3 text-quote" />
+          {category?.data.name ?? data.category}
+        </p>
+        <h1 class="heading-page mt-3">{data.title}</h1>
+        <p class="mt-2 text-body text-muted">{data.address}</p>
+
+        <div class="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-[15px] text-muted">
+          <span class="text-ink">
+            <strong class="font-semibold text-black">{data.beds}</strong> {t.beds}
+          </span>
+          <span class="h-4 w-px bg-line" aria-hidden="true"></span>
+          <span class="text-ink">
+            <strong class="font-semibold text-black">{data.baths}</strong> {t.baths}
+          </span>
+          <span class="h-4 w-px bg-line" aria-hidden="true"></span>
+          <span class="text-ink">
+            <strong class="font-semibold text-black">{formatPrice(data.sqft)}</strong> sqft
+          </span>
+        </div>
+
+<div class="mt-8">
+          <KeyFacts property={property} />
+        </div>
+
+        <div class="prose-content mt-10">
+          <Content />
+        </div>
+
+        <div class="mt-14">
+          <h2 class="heading-page">{t.whatMakesItSpecial}</h2>
+          <div class="mt-5">
+            <PropertyTags property={property} />
+          </div>
+        </div>
+
+        <div class="mt-14">
+          <h2 class="heading-page">{t.propertyDetails}</h2>
+          <div class="mt-5">
+            <PropertyDetailsTable property={property} locale={locale} />
+          </div>
+        </div>
+
+        <div class="mt-14">
+          <FacilityList property={property} locale={locale} />
+        </div>
+
+        <div class="mt-14">
+          <PropertyMap locale={locale} />
+        </div>
+      </div>
+
+      <aside class="lg:sticky lg:top-24 lg:self-start">
+        <div data-reveal class="card-surface p-6 md:p-8">
+          <p class="text-sm text-muted">{t.from}</p>
+          <p class="mt-1 text-[32px] font-semibold leading-tight tracking-[-0.04em] text-black">
+            <span>$ </span>
+            <span>{formatPrice(data.price)}</span>
+          </p>
+          <a href={localizedPath('/contact#contact-form', locale)} class="btn btn-primary mt-6 w-full py-3">
+            {t.contactAgent}
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="border-y border-line py-6">
+    <div class="container-site flex flex-col gap-2 text-sm text-muted md:flex-row md:justify-between">
+      <p>
+        {t.listedBy}: Marcus marcus@everhomerealty, EverHome Realty
+      </p>
+      <p>
+        {t.source}: RMLS (OR), MLS#: 505158869
+      </p>
+    </div>
+  </section>
+
+  <SimilarProperties properties={related} locale={locale} />
+
+  <div class="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white p-4 shadow-[0_-2px_8px_rgba(0,0,0,0.1)] lg:hidden">
+    <div class="container-site flex items-center justify-between gap-4">
+      <div>
+        <p class="text-[12px] text-muted">{t.from}</p>
+        <p class="text-[20px] font-semibold text-black">
+          <span>$ </span>
+          <span>{formatPrice(data.price)}</span>
+        </p>
+      </div>
+      <a href={localizedPath('/contact#contact-form', locale)} class="btn btn-primary shrink-0 px-6 py-2.5">
+        {t.contactAgent}
+      </a>
+    </div>
+  </div>
+</BaseLayout>
+

@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../SectionHeading.astro';
+import PropertyGrid from '../PropertyGrid.astro';
+import Breadcrumbs, { type BreadcrumbItem } from '../Breadcrumbs.astro';
+import { getDictionary, localizedPath } from '../../i18n';
+import { getPropertiesByCategory, getCategoryByTranslationKey, categoryUrl, contentSlug } from '../../utils/content';
+import {
+  buildOrganizationJsonLd,
+  buildWebPageJsonLd,
+  buildBreadcrumbJsonLd,
+  buildAlternates,
+} from '../../utils/seo';
+import { absoluteUrl } from '../../utils/content';
+import type { Locale } from '../../content.config';
+import type { Category } from '../../utils/content';
+
+interface Props {
+  locale: Locale;
+  category: Category;
+}
+
+const { locale, category } = Astro.props;
+const t = getDictionary(locale);
+const path = locale === 'es' ? '/es/categoria' : '/category';
+const properties = await getPropertiesByCategory(locale, contentSlug(category));
+const rootPath = locale === 'es' ? '/es' : '/';
+const enCategory = await getCategoryByTranslationKey('en', category.data.translationKey);
+const esCategory = await getCategoryByTranslationKey('es', category.data.translationKey);
+
+const categorySlugPath = `${path}/${contentSlug(category)}`;
+const title = category.data.seoTitle ?? `${category.data.title} | ${t.seoHomeTitle}`;
+const description =
+  category.data.seoDescription ??
+  `${category.data.description} ${locale === 'es' ? 'Explora' : 'Browse'} ${properties.length} ${
+    locale === 'es' ? 'propiedades en esta categoría' : 'properties in this category'
+  }.`;
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { label: t.home, href: rootPath },
+  { label: t.properties, href: localizedPath('/properties', locale) },
+  { label: category.data.title },
+];
+
+const breadcrumbJsonLd = buildBreadcrumbJsonLd(
+  breadcrumbs.map((item, index) => ({
+    name: item.label,
+    url: absoluteUrl(index < breadcrumbs.length - 1 ? (item.href as string) : categorySlugPath),
+  })),
+);
+
+const jsonLd = [
+  buildOrganizationJsonLd(),
+  buildWebPageJsonLd(title, categorySlugPath, description),
+  breadcrumbJsonLd,
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  locale={locale}
+  path={categorySlugPath}
+  alternates={buildAlternates(enCategory ? categoryUrl(enCategory, 'en') : '',
+    esCategory ? categoryUrl(esCategory, 'es') : '',
+  )}
+  image={category.data.heroImage}
+  jsonLd={jsonLd}
+>
+  <section class="section-pad pb-10 pt-32 md:pt-40">
+    <div class="container-site">
+      <div data-reveal>
+        <Breadcrumbs items={breadcrumbs} class="mb-8" />
+<SectionHeading
+          as="h1" eyebrow={t.categoryEyebrow}
+          title={category.data.title}
+          description={category.data.description}
+        />
+      </div>
+    </div>
+  </section>
+  <section class="pb-20 md:pb-28">
+    <div class="container-site">
+      <PropertyGrid properties={properties} locale={locale} />
+    </div>
+  </section>
+</BaseLayout>
+

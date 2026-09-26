@@ -1,0 +1,23 @@
+---
+import BlogCard from './BlogCard.astro';
+import type { Post } from '../utils/content';
+import type { Locale } from '../content.config';
+
+interface Props {
+  posts: Post[];
+  locale: Locale;
+  gridClass?: string;
+}
+
+const {
+  posts,
+  locale,
+  gridClass = 'grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3',
+} = Astro.props;
+---
+
+<div class={gridClass}>
+  {posts.map((post) => (
+    <BlogCard post={post} locale={locale} />
+  ))}
+</div>

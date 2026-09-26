@@ -1,0 +1,323 @@
+{
+  "results": [
+    {
+      "route": "/",
+      "status": 200,
+      "title": "Realty Pro for Realtors"
+    },
+    {
+      "route": "/properties",
+      "status": 200,
+      "title": "Properties | Realty Pro"
+    },
+    {
+      "route": "/properties/the-glass-pavilion",
+      "status": 200,
+      "title": "The Glass Pavilion | Realty Pro for Realtors"
+    },
+    {
+      "route": "/properties/the-ridgeline-house",
+      "status": 200,
+      "title": "The Ridgeline House | Realty Pro for Realtors"
+    },
+    {
+      "route": "/properties/stone-gate-villa",
+      "status": 200,
+      "title": "Stone Gate Villa | Realty Pro for Realtors"
+    },
+    {
+      "route": "/properties/the-maple-street-home",
+      "status": 200,
+      "title": "The Maple Street Home | Realty Pro for Realtors"
+    },
+    {
+      "route": "/properties/elmwood-corner-house",
+      "status": 200,
+      "title": "Elmwood Corner House | Realty Pro for Realtors"
+    },
+    {
+      "route": "/properties/the-birch-hill-house",
+      "status": 200,
+      "title": "The Birch Hill House | Realty Pro for Realtors"
+    },
+    {
+      "route": "/properties/harbor-view-unit",
+      "status": 200,
+      "title": "Harbor View Unit | Realty Pro for Realtors"
+    },
+    {
+      "route": "/properties/greenwich-terrace-12c",
+      "status": 200,
+      "title": "Greenwich Terrace 12C | Realty Pro for Realtors"
+    },
+    {
+      "route": "/properties/byram-hill-studio-plus",
+      "status": 200,
+      "title": "Byram Hill Studio Plus | Realty Pro for Realtors"
+    },
+    {
+      "route": "/properties/the-avenue-flagship",
+      "status": 200,
+      "title": "The Avenue Flagship | Realty Pro for Realtors"
+    },
+    {
+      "route": "/properties/cos-cob-office-suite",
+      "status": 200,
+      "title": "Cos Cob Office Suite | Realty Pro for Realtors"
+    },
+    {
+      "route": "/properties/riverside-mixed-use-building",
+      "status": 200,
+      "title": "Riverside Mixed-Use Building | Realty Pro for Realtors"
+    },
+    {
+      "route": "/category/residential-homes",
+      "status": 200,
+      "title": "Residential Homes | Realty Pro for Realtors"
+    },
+    {
+      "route": "/category/apartment-condos",
+      "status": 200,
+      "title": "Apartment & Condos | Realty Pro for Realtors"
+    },
+    {
+      "route": "/category/commercial-spaces",
+      "status": 200,
+      "title": "Commercial Spaces | Realty Pro for Realtors"
+    },
+    {
+      "route": "/category/luxury-villas",
+      "status": 200,
+      "title": "Luxury & Villas | Realty Pro for Realtors"
+    },
+    {
+      "route": "/blog",
+      "status": 200,
+      "title": "Blog | Realty Pro"
+    },
+    {
+      "route": "/blog/what-to-expect-in-your-first-30-days-of-home-buying",
+      "status": 200,
+      "title": "What to Expect in Your First 30 Days of Home Buying | Blog | Realty Pr"
+    },
+    {
+      "route": "/blog/5-things-that-actually-affect-your-home-s-sale-price",
+      "status": 200,
+      "title": "5 Things That Actually Affect Your Home's Sale Price | Blog | Realty P"
+    },
+    {
+      "route": "/blog/how-to-make-a-strong-offer-without-overpaying",
+      "status": 200,
+      "title": "How to Make a Strong Offer Without Overpaying | Blog | Realty Pro"
+    },
+    {
+      "route": "/blog/greenwich-real-estate-what-the-market-is-doing-right-now",
+      "status": 200,
+      "title": "Greenwich Real Estate: What the Market Is Doing Right Now | Blog | Rea"
+    },
+    {
+      "route": "/blog/the-home-selling-timeline-from-decision-to-closing",
+      "status": 200,
+      "title": "The Home Selling Timeline: From Decision to Closing | Blog | Realty Pr"
+    },
+    {
+      "route": "/blog/renting-vs-buying-how-to-know-when-you-re-ready",
+      "status": 200,
+      "title": "Renting vs Buying: How to Know When You're Ready | Blog | Realty Pro"
+    },
+    {
+      "route": "/blog/what-happens-during-a-home-inspection-and-what-to-do-about-it",
+      "status": 200,
+      "title": "What Happens During a Home Inspection, and What to Do About It | Blog "
+    },
+    {
+      "route": "/blog/how-to-increase-your-home-value-before-you-list",
+      "status": 200,
+      "title": "How to Increase Your Home's Value Before You List | Blog | Realty Pro"
+    },
+    {
+      "route": "/blog/understanding-mortgage-rates-what-they-mean-for-your-budget",
+      "status": 200,
+      "title": "Understanding Mortgage Rates: What They Mean for Your Budget | Blog | "
+    },
+    {
+      "route": "/about",
+      "status": 200,
+      "title": "About Us | Realty Pro"
+    },
+    {
+      "route": "/contact",
+      "status": 200,
+      "title": "Contact Us | Realty Pro"
+    },
+    {
+      "route": "/legal/terms-conditions",
+      "status": 200,
+      "title": "Terms & Conditions | Realty Pro for Realtors"
+    },
+    {
+      "route": "/legal/privacy-policy",
+      "status": 200,
+      "title": "Privacy Policy | Realty Pro for Realtors"
+    },
+    {
+      "route": "/es",
+      "status": 200,
+      "title": "Realty Pro para Agentes Inmobiliarios"
+    },
+    {
+      "route": "/es/propiedades",
+      "status": 200,
+      "title": "Propiedades | Realty Pro"
+    },
+    {
+      "route": "/es/propiedades/el-pabellon-de-cristal",
+      "status": 200,
+      "title": "The Glass Pavilion | Realty Pro para Agentes Inmobiliarios"
+    },
+    {
+      "route": "/es/propiedades/la-casa-ridgeline",
+      "status": 200,
+      "title": "The Ridgeline House | Realty Pro para Agentes Inmobiliarios"
+    },
+    {
+      "route": "/es/categoria/villas-de-lujo",
+      "status": 200,
+      "title": "Lujo y Villas | Realty Pro para Agentes Inmobiliarios"
+    },
+    {
+      "route": "/es/categoria/casas-residenciales",
+      "status": 200,
+      "title": "Casas Residenciales | Realty Pro para Agentes Inmobiliarios"
+    },
+    {
+      "route": "/es/blog",
+      "status": 200,
+      "title": "Blog | Realty Pro"
+    },
+    {
+      "route": "/es/blog/que-esperar-en-los-primeros-30-dias-comprando-una-casa",
+      "status": 200,
+      "title": "Qué esperar en tus primeros 30 días comprando una casa | Blog | Realty"
+    },
+    {
+      "route": "/es/blog/tasas-de-hipoteca-que-significan-para-tu-presupuesto",
+      "status": 200,
+      "title": "Tasas de hipoteca: qué significan para tu presupuesto | Blog | Realty "
+    },
+    {
+      "route": "/es/nosotros",
+      "status": 200,
+      "title": "Sobre nosotros | Realty Pro"
+    },
+    {
+      "route": "/es/contacto",
+      "status": 200,
+      "title": "Contacto | Realty Pro"
+    },
+    {
+      "route": "/es/legal/terminos-y-condiciones",
+      "status": 200,
+      "title": "Términos y Condiciones | Realty Pro para Agentes Inmobiliarios"
+    },
+    {
+      "route": "/es/legal/politica-de-privacidad",
+      "status": 200,
+      "title": "Política de Privacidad | Realty Pro para Agentes Inmobiliarios"
+    },
+    {
+      "route": "/404",
+      "status": 200,
+      "title": "Page Not Found | Realty Pro"
+    },
+    {
+      "route": "/sitemap.xml",
+      "status": 200,
+      "title": ""
+    },
+    {
+      "route": "/robots.txt",
+      "status": 200,
+      "title": ""
+    },
+    {
+      "route": "/favicon.svg",
+      "status": 200,
+      "title": ""
+    },
+    {
+      "route": "/og-image.png",
+      "status": 200,
+      "title": "og-image.png (1389×1564)"
+    }
+  ],
+  "internalLinks": [
+    "/",
+    "/contact",
+    "/properties",
+    "/blog",
+    "/about",
+    "/category/residential-homes",
+    "/category/apartment-condos",
+    "/category/commercial-spaces",
+    "/category/luxury-villas",
+    "/legal/terms-conditions",
+    "/legal/privacy-policy",
+    "/es",
+    "/properties/the-glass-pavilion",
+    "/properties/the-ridgeline-house",
+    "/properties/stone-gate-villa",
+    "/properties/the-maple-street-home",
+    "/properties/elmwood-corner-house",
+    "/properties/the-birch-hill-house",
+    "/blog/what-to-expect-in-your-first-30-days-of-home-buying",
+    "/blog/5-things-that-actually-affect-your-home-s-sale-price",
+    "/blog/how-to-make-a-strong-offer-without-overpaying",
+    "/404",
+    "/es/propiedades",
+    "/properties/the-avenue-flagship",
+    "/properties/cos-cob-office-suite",
+    "/properties/riverside-mixed-use-building",
+    "/properties/greenwich-terrace-12c",
+    "/properties/harbor-view-unit",
+    "/properties/byram-hill-studio-plus",
+    "/es/propiedades/el-pabellon-de-cristal",
+    "/es/propiedades/la-casa-ridgeline",
+    "/es/propiedades/la-villa-stone-gate",
+    "/es/propiedades/la-casa-de-maple-street",
+    "/es/propiedades/la-casa-de-la-esquina-elmwood",
+    "/es/propiedades/la-casa-de-birch-hill",
+    "/es/propiedades/la-unidad-con-vista-al-puerto",
+    "/es/propiedades/greenwich-terrace-12c",
+    "/es/propiedades/el-estudio-plus-de-byram-hill",
+    "/es/propiedades/la-flagship-de-la-avenida",
+    "/es/propiedades/la-suite-de-oficinas-de-cos-cob",
+    "/es/propiedades/el-edificio-mixto-de-riverside",
+    "/es/categoria/casas-residenciales",
+    "/es/categoria/apartamentos-condominios",
+    "/es/categoria/espacios-comerciales",
+    "/es/categoria/villas-de-lujo",
+    "/es/blog",
+    "/blog/greenwich-real-estate-what-the-market-is-doing-right-now",
+    "/blog/the-home-selling-timeline-from-decision-to-closing",
+    "/blog/renting-vs-buying-how-to-know-when-you-re-ready",
+    "/blog/understanding-mortgage-rates-what-they-mean-for-your-budget",
+    "/blog/how-to-increase-your-home-value-before-you-list",
+    "/blog/what-happens-during-a-home-inspection-and-what-to-do-about-it",
+    "/es/blog/que-esperar-en-los-primeros-30-dias-comprando-una-casa",
+    "/es/blog/5-cosas-que-afectan-el-precio-de-venta-de-tu-casa",
+    "/es/blog/como-hacer-una-oferta-fuerte-sin-pagar-de-mas",
+    "/es/blog/el-mercado-inmobiliario-de-greenwich-ahora-mismo",
+    "/es/blog/el-cronograma-de-venta-de-una-casa-de-la-decision-al-cierre",
+    "/es/blog/alquilar-vs-comprar-como-saber-cuando-estas-listo",
+    "/es/blog/que-pasa-durante-una-inspeccion-de-la-casa-y-que-hacer",
+    "/es/blog/como-aumentar-el-valor-de-tu-casa-antes-de-publicarla",
+    "/es/blog/tasas-de-hipoteca-que-significan-para-tu-presupuesto",
+    "/es/nosotros",
+    "/es/contacto",
+    "/es/legal/terminos-y-condiciones",
+    "/es/legal/politica-de-privacidad",
+    "/es/404"
+  ],
+  "broken": []
+}

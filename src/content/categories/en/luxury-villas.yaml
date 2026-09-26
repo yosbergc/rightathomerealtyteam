@@ -1,0 +1,8 @@
+name: Luxury & Villas
+slug: luxury-villas
+locale: en
+translationKey: luxury-villas
+title: Luxury & Villas
+description: Greenwich's finest homes, chosen for architecture, setting, and quality of build. Private showings available for all properties on this page.
+heroImage: ../../../assets/images/categories/luxury-villas.jpeg
+order: 4

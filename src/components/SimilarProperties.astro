@@ -1,0 +1,27 @@
+---
+import PropertyCard from './PropertyCard.astro';
+import { getDictionary } from '../i18n';
+import type { Property } from '../utils/content';
+import type { Locale } from '../content.config';
+
+interface Props {
+  properties: Property[];
+  locale: Locale;
+}
+
+const { properties, locale } = Astro.props;
+const t = getDictionary(locale);
+---
+
+<section class="section-pad">
+  <div class="container-site">
+    <div data-reveal>
+      <h2 class="heading-section text-center">{t.similarProperties}</h2>
+    </div>
+    <div class="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {properties.map((property) => (
+        <PropertyCard property={property} locale={locale} />
+      ))}
+    </div>
+  </div>
+</section>

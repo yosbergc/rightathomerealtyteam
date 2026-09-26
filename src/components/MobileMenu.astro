@@ -1,0 +1,110 @@
+---
+import Logo from './Logo.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { siteConfig } from '../config/site';
+import { getDictionary, localizedPath } from '../i18n';
+import { getCategories, categoryUrl } from '../utils/content';
+import type { Locale } from '../content.config';
+
+interface Props {
+  locale: Locale;
+  currentPath: string;
+  enUrl: string;
+  esUrl: string;
+}
+
+const { locale, currentPath, enUrl, esUrl } = Astro.props;
+const t = getDictionary(locale);
+const categories = await getCategories(locale);
+const contactUrl = localizedPath('/contact#contact-form', locale);
+
+const mainLinks = [
+  { label: t.home, href: localizedPath('/', locale) },
+  { label: t.properties, href: localizedPath('/properties', locale) },
+  { label: t.blog, href: localizedPath('/blog', locale) },
+  { label: t.about, href: localizedPath('/about', locale) },
+  { label: t.contact, href: localizedPath('/contact', locale) },
+];
+
+const companyLinks = [
+  { label: t.testimonials, href: localizedPath('/#testimonial', locale) },
+  { label: t.faqs, href: localizedPath('/#faq', locale) },
+  { label: t.termsOfService, href: localizedPath('/legal/terms-conditions', locale) },
+  { label: t.privacyPolicy, href: localizedPath('/legal/privacy-policy', locale) },
+];
+---
+
+<div data-menu class="menu-overlay" role="dialog" aria-modal="true" aria-label={t.menu}>
+  <div class="flex h-full flex-col">
+    <div class="container-site flex h-[72px] items-center justify-between">
+      <Logo class="text-black" />
+      <button
+        data-menu-toggle
+        class="inline-flex items-center gap-2 rounded-[4px] border border-black/20 px-4 py-2 text-sm font-semibold"
+        aria-expanded="false"
+      >
+        {t.menu}
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+    <div class="menu-scroll flex-1 overflow-y-auto">
+      <div class="container-site grid gap-12 py-12 md:grid-cols-2 md:gap-16">
+        <nav aria-label={t.menuHome}>
+          <ul class="grid gap-5">
+            {mainLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class:list={[
+                    'text-[32px] font-semibold leading-tight tracking-[-0.04em] text-black transition-colors hover:text-brand',
+                    currentPath === link.href && 'text-brand',
+                  ]}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a
+            href={contactUrl}
+            class="btn btn-primary mt-8"
+          >
+            {t.bookConsultation}
+          </a>
+        </nav>
+        <div class="grid gap-10 md:grid-cols-2">
+          <nav aria-label={t.menuBrowse}>
+            <p class="eyebrow mb-4">{t.menuBrowse}</p>
+            <ul class="grid gap-3">
+              {categories.map((category) => (
+                <li>
+                  <a href={categoryUrl(category, locale)} class="text-[17px] font-medium text-black/80 transition-colors hover:text-brand">
+                    {category.data.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <nav aria-label={t.menuCompany}>
+            <p class="eyebrow mb-4">{t.menuCompany}</p>
+            <ul class="grid gap-3">
+              {companyLinks.map((link) => (
+                <li>
+                  <a href={link.href} class="text-[17px] font-medium text-black/80 transition-colors hover:text-brand">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="container-site flex h-[72px] items-center justify-between border-t border-black/10">
+      <a href={siteConfig.emailHref} class="text-sm font-medium text-black/70">{siteConfig.email}</a>
+      <LanguageSwitcher locale={locale} enUrl={enUrl} esUrl={esUrl} class="text-black" />
+    </div>
+  </div>
+</div>

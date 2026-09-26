@@ -1,0 +1,17 @@
+---
+import type { Property } from '../utils/content';
+
+interface Props {
+  property: Property;
+}
+
+const { property } = Astro.props;
+const { data } = property;
+const pills = [data.propertyType, data.yearBuilt, data.lotSize, data.daysOnMarket, data.pricePerSqft, data.hoa];
+---
+
+<div class="flex flex-wrap gap-2.5">
+  {pills.map((pill) => (
+    <span class="chip">{pill}</span>
+  ))}
+</div>

@@ -1,0 +1,21 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<a
+  href="/"
+  class={`inline-flex items-center gap-2.5 ${className}`}
+  aria-label="Realty Pro home"
+>
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+    <path
+      d="M5 14 16 5l11 9v10.5A2.5 2.5 0 0 1 24.5 27h-5V19h-7v8h-5A2.5 2.5 0 0 1 5 24.5V14Z"
+      fill="currentColor"
+    />
+  </svg>
+  <span class="text-[24px] font-semibold leading-none tracking-tight">Realty Pro</span>
+</a>

@@ -1,0 +1,8 @@
+name: Apartments & Condos
+slug: apartment-condos
+locale: en
+translationKey: apartment-condos
+title: Apartment & Condos
+description: Low-maintenance living in the best-located buildings. From first-time entry points to full-service downtown residences.
+heroImage: ../../../assets/images/categories/apartments-condos.jpeg
+order: 2

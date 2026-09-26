@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getDictionary } from '../../i18n';
+import type { Locale } from '../../content.config';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+const prefix = locale === 'es' ? '/es' : '';
+const path = locale === 'es' ? '/es/404' : '/404';
+---
+
+<BaseLayout
+  title={t.seoNotFoundTitle}
+  description={t.seoNotFoundDescription}
+  locale={locale}
+  path={path}
+  noindex
+>
+  <section class="flex min-h-[100svh] items-center justify-center px-4 py-24">
+    <div class="max-w-xl text-center">
+      <p class="text-[120px] font-semibold leading-none tracking-[-0.05em] text-brand">404</p>
+      <h1 class="heading-section mt-6">{t.notFoundTitle}</h1>
+      <p class="text-body mt-4 text-muted">{t.notFoundMessage}</p>
+      <a href={prefix || '/'} class="btn btn-primary mt-10 px-8 py-3.5">
+        {t.backToHome}
+      </a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,33 @@
+---
+import { getDictionary } from '../i18n';
+import type { Property } from '../utils/content';
+import type { Locale } from '../content.config';
+
+interface Props {
+  property: Property;
+  locale: Locale;
+}
+
+const { property, locale } = Astro.props;
+const t = getDictionary(locale);
+const { data } = property;
+
+const rows: { label: string; value: string }[] = [
+  { label: t.detailsCategory, value: data.detailsCategory },
+  { label: t.detailsPropertyType, value: data.detailsPropertyType },
+  { label: t.completionYear, value: data.yearBuilt },
+  { label: t.totalSize, value: data.lotSize },
+  { label: t.lotSize, value: data.lotSize },
+  { label: t.pricePerSqft, value: data.pricePerSqft },
+  { label: t.hoaFee, value: data.hoa },
+];
+---
+
+<div class="overflow-hidden rounded-[12px] border border-line">
+  {rows.map((row, index) => (
+    <div class:list={['flex items-center justify-between gap-6 px-6 py-4', index % 2 === 0 ? 'bg-white' : 'bg-surface/50', index < rows.length - 1 && 'border-b border-line']}>
+      <span class="text-xs text-[#2d2d2d]">{row.label}</span>
+      <span class="text-right text-base font-normal text-ink/90">{row.value}</span>
+    </div>
+  ))}
+</div>

@@ -1,0 +1,41 @@
+---
+import PropertyCard from './PropertyCard.astro';
+import { getDictionary } from '../i18n';
+import type { Property } from '../utils/content';
+import type { Locale } from '../content.config';
+
+interface Props {
+  properties: Property[];
+  locale: Locale;
+  initialVisible?: number;
+  withLoadMore?: boolean;
+  gridClass?: string;
+}
+
+const {
+  properties,
+  locale,
+  initialVisible = properties.length,
+  withLoadMore = false,
+  gridClass = 'grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3',
+} = Astro.props;
+const t = getDictionary(locale);
+const hiddenCount = properties.length - initialVisible;
+---
+
+<div class={gridClass}>
+  {properties.map((property, index) => (
+    <div data-load-more-item={index >= initialVisible ? '' : undefined}>
+      <PropertyCard property={property} locale={locale} />
+    </div>
+  ))}
+</div>
+{
+  withLoadMore && hiddenCount > 0 && (
+    <div class="mt-12 flex justify-center">
+      <button type="button" data-load-more class="btn btn-primary px-10 py-3 load-more-button">
+        {t.loadMore}
+      </button>
+    </div>
+  )
+}

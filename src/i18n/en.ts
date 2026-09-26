@@ -1,0 +1,275 @@
+import type { Translation } from './types';
+
+export const en: Translation = {
+  localeName: 'English',
+  navPhone: '+1-212-345-0147',
+  menu: 'Menu',
+  bookConsultation: 'Book a consultation',
+  home: 'Home',
+  properties: 'Properties',
+  property: 'Property',
+  blog: 'Blog',
+  about: 'About Us',
+  contact: 'Contact Us',
+  faqs: 'FAQs',
+  testimonials: 'Testimonials',
+  browse: 'Browse',
+  company: 'Company',
+  categories: 'Categories',
+  viewAllProperties: 'View All Properties',
+  viewBlogs: 'View Blogs',
+  readMore: 'Read more',
+  viewProperty: 'View property',
+  contactUs: 'Contact Us',
+  from: 'From',
+  contactAgent: 'Contact Agent',
+  beds: 'Beds',
+  baths: 'Baths',
+  sellingPrice: 'Selling Price',
+  featuredProperty: 'Featured Property',
+  heroEyebrow: 'Realtor at Greenwich, CT',
+  heroTitle: 'The Glass Pavillion',
+  heroSubtitle:
+    "Whether you're buying your first home or your forever home, Realty Pro guides you every step of the way.",
+  aboutEyebrow: 'About Us',
+  aboutTitle:
+    "We're not the biggest brokerage in town. We're the team that picks up the phone, knows your street, and gets the deal done.",
+  aboutParagraph:
+    'Realty Pro is a Greenwich-based team of dedicated real estate professionals who believe buying or selling a home should feel empowering, not overwhelming. We combine deep local market knowledge with straightforward communication, so you always know where you stand and what things cost.',
+  stats: [
+    { label: 'Homes Sold', key: 'homesSold' },
+    { label: 'Happy Clients', key: 'happyClients' },
+    { label: 'Vetted listings', key: 'vettedListings' },
+    { label: 'Client Retention Rate', key: 'retentionRate' },
+  ] as { label: string; key: string }[],
+  categoriesEyebrow: 'Browse by Category',
+  categoriesTitle: 'Find the property type that fits your life.',
+  categoriesParagraph:
+    "From family homes to commercial spaces, browse by category and find exactly what you're looking for.",
+  listingsEyebrow: 'Featured Listings',
+  listingsTitle: 'Browse our latest listings',
+  listingsParagraph:
+    'Browse our latest residential, condo, luxury, and commercial listings across Greenwich and surrounding Connecticut communities.',
+  whyEyebrow: 'Why Choose Us',
+  whyTitle: 'Six reasons clients stay',
+  values: [
+    {
+      title: 'Highly responsive',
+      description:
+        "We actually pick up the phone. You'll have a dedicated agent reachable by call, text, or email, not a call center. Questions get answered the same day, every time.",
+    },
+    {
+      title: 'Transparency',
+      description:
+        "No surprises at closing. Our fee structure is straightforward and explained upfront, before you sign anything. You'll always know exactly what you're paying and why.",
+    },
+    {
+      title: 'Local market expertise',
+      description:
+        'We know this market street by street. From neighborhood pricing trends to off-market opportunities, our agents have deep roots in the Greenwich area.',
+    },
+    {
+      title: 'Process clarity',
+      description:
+        "Whether you're buying for the first time or the fifth, we walk you through every step, inspections, negotiations, paperwork, so nothing catches you off guard.",
+    },
+    {
+      title: 'Negotiation strength',
+      description:
+        "We negotiate like it's our own money. From offer strategy to final terms, we push for every advantage and we'll tell you honestly when to walk away.",
+    },
+    {
+      title: 'Track record',
+      description:
+        "A track record you can verify. Over 350 homes sold, a 94% client retention rate, and reviews that speak for themselves. We don't ask you to take our word for it.",
+    },
+  ],
+  testimonialsEyebrow: 'Client Stories',
+  testimonialsTitle: 'Our Clients Say It Best',
+  testimonialsList: [
+    {
+      quote:
+        "We'd lost two offers before our agent at Realty Pro sat us down and completely rethought our approach. She knew the seller's situation, structured our offer differently, and we got the house under asking. I don't think we get there without her.",
+      name: 'Daniel & Okafor',
+      tag: 'Buyer',
+      badge: 'Bought / Feb 2026',
+      image: 'daniel-okafor',
+    },
+    {
+      quote:
+        'We interviewed three agents before calling Realty Pro. The others gave us a number and left. Realty Pro came with a full plan and honest answers. We had multiple offers by Sunday.',
+      name: 'Makron & Julie Tran',
+      tag: 'Seller',
+      badge: 'Sold / Oct 2025',
+      image: 'makron-julie-tran',
+    },
+  ],
+  blogEyebrow: 'Blog',
+  blogTitle: 'Insights From Our Experts',
+  blogSubtitle:
+    'Practical advice, honest market takes, and guides written by the agents who work this market every day.',
+  ctaTitleLineOne: 'More money when you sell, less stress when you buy.',
+  ctaTitleLineTwo: "That's the difference we make.",
+  ctaButton: 'Book a Free Consultation',
+  ctaMerits: [
+    'Browse thousands of listings in prime locations at great prices',
+    '350+ homes sold and counting',
+    'Licensed & regulated',
+    'Free first consultation',
+    'No fees until your home is sold',
+    'We respond within 24 hours',
+  ],
+  faqEyebrow: 'FAQ',
+  faqTitle: 'Frequently Asked Questions',
+  faqHelper: 'Don\u2019t see yours? Email hello@realtypro.com we answer within an hour, on weekdays.',
+  faqsList: [
+    {
+      question: 'How much does it cost to work with a real estate agent?',
+      answer:
+        'In most transactions, the seller covers the agent commissions, so buyers typically pay nothing out of pocket to work with us. For sellers, our commission structure is straightforward and explained in full before you sign anything. No surprises, no fine print.',
+    },
+    {
+      question: "What's the first step if I want to buy a home?",
+      answer:
+        "Start with a free consultation. We'll talk through your budget, timeline, and what you're looking for, then walk you through the pre-approval process if you haven't started that yet. Most people are further along than they think. There's no commitment required to have that first conversation.",
+    },
+    {
+      question: 'How long does it take to sell a home?',
+      answer:
+        'It depends on pricing, condition, and current market demand, but well-priced homes in good condition are typically under contract within 2 to 4 weeks. We\u2019ll give you a realistic timeline based on comparable sales in your specific neighborhood before you list, not after.',
+    },
+    {
+      question: 'How do I find out what my home is worth?',
+      answer:
+        "We offer a free, no-obligation home valuation for any property in our market area. It's based on recent comparable sales, current inventory, and condition, not an algorithm. Reach out and we'll have a number to you within 24 hours.",
+    },
+    {
+      question: 'Why work with a boutique agency instead of a large franchise?',
+      answer:
+        'With a large brokerage, you\u2019re often passed to a junior agent after the first meeting. At Realty Pro, the agent you meet is the agent who handles your transaction, start to finish. You get direct access, faster responses, and someone who actually knows your street.',
+    },
+    {
+      question: 'Is now a good time to buy or should I wait?',
+      answer:
+        "That depends entirely on your personal situation, and anyone who gives you a universal answer isn't being straight with you. What we can do is show you what the current market actually looks like, what comparable homes are selling for, and help you make a decision that's right for your timeline and finances. That's what the free consultation is for.",
+    },
+    {
+      question: 'Do you handle commercial properties and investment real estate?',
+      answer:
+        'Yes. We work with investors, business owners, and developers on commercial leases, mixed-use properties, and income-generating residential investments. If you\u2019re evaluating a purchase from an investment standpoint, we can walk through the numbers with you the same way we would any residential transaction, clearly and without the jargon.',
+    },
+  ],
+  newsletterTitle: 'Stay informed on the Greenwich market.',
+  subscribePlaceholder: 'Enter your email to subscribe',
+  subscribe: 'Subscribe',
+  footerAddress: '123 Greenwich Avenue, Greenwich, CT 06830',
+  footerContact: 'Contact',
+  contactEmail: 'hello@realtypro.com',
+  contactPhone: '+1-212-345-0147',
+  legalLabel: 'Legal',
+  termsOfService: 'Terms Of Service',
+  privacyPolicy: 'Privacy Policy',
+  notFoundLabel: '404 page',
+  copyright: 'Realty Pro',
+  designedBy: 'Design & Developed by',
+  previous: 'Previous',
+  next: 'Next',
+  minRead: 'min read',
+  lastUpdated: 'Last updated',
+  showAll: 'Show All',
+  propertiesEyebrow: 'Featured Listings',
+  propertiesTitle: 'Browse our latest listings',
+  propertiesSubtitle:
+    'Browse our latest residential, condo, luxury, and commercial listings across Greenwich and surrounding communities.',
+  loadMore: 'Load More',
+  showing: 'Showing',
+  ofProperties: 'of',
+  categoryEyebrow: 'Featured Listings',
+  whatMakesItSpecial: "What's special",
+  propertyDetails: 'Property Details',
+  facilities: 'Facilities',
+  amenities: 'Amenities',
+  location: 'Location',
+  similarProperties: 'Similar Properties',
+  listedBy: 'Listed by',
+  source: 'Source',
+  detailsCategory: 'Category',
+  detailsPropertyType: 'Property type',
+  completionYear: 'Completion year',
+  totalSize: 'Total size',
+  lotSize: 'Lot size',
+  pricePerSqft: 'Price per sqft',
+  hoaFee: 'HOA fee',
+  searchPlaceholder: 'Search properties',
+  filterCategory: 'Category',
+  filterAll: 'All',
+  aboutHeroEyebrow: 'Our Story',
+  aboutHeroTitle: 'We left bigger firms, to do this properly',
+  founded: 'Founded',
+  office: 'Office',
+  activeCaseload: 'Active caseload',
+  foundersLabel: 'Founders',
+  noteEyebrow: 'A Note From Us',
+  noteTitle: 'The Founding letter.',
+  noteIntro:
+    "Written on a Sunday morning in Greenwich. We've kept it here unedited, it still describes what we're trying to do better than anything written since.",
+  letter: [
+    'There is a kind of real estate firm we kept looking for every time a client called us frustrated. The agent who went quiet after the offer. The closing that moved three times. The commission nobody explained until the table. Eventually, we stopped waiting for someone else to fix it.',
+    'Between the two of us, we spent over a decade at larger brokerages. We learned how to price a home, read a market, and negotiate when it counts. What we couldn\u2019t learn there was how to slow down. The volume model doesn\u2019t allow for it, and in a transaction this size, attention matters.',
+    'So we drew a line. Twelve active clients at a time. Both founders on every deal. Fees explained in writing before anything is signed. These aren\u2019t perks, they\u2019re the standard we believe this work should meet. We built Realty Pro around them because no one else we worked for was willing to.',
+    'We\u2019re based in Greenwich because we know it, the neighborhoods, the schools, and the blocks where values move differently than the comps suggest. We didn\u2019t choose this market for the price points. We chose it because it\u2019s where we live and where we intend to stay.',
+    "If you're considering working with us, ask the hard questions. We'll tell you what your home is worth, what the market is doing, and whether now is the right time to move, even if the honest answer isn't what you hoped to hear. That's the only way we know how to do this.",
+  ],
+  contactHeroEyebrow: 'Contact Us',
+  contactHeroTitle: "Let's Find Your Dream Home",
+  contactHeroSubtitle: 'Our agents are ready to help, reach out today.',
+  hoursLabel: 'Hours',
+  phoneLabel: 'Phone',
+  emailLabel: 'Email',
+  addressLabel: 'Address',
+  contactFormTitle: "Let's find out what's possible together.",
+  contactFormParagraph:
+    "Tell us where you are in the process and what you're looking for. We'll give you a straight answer on what's realistic, what the market is doing, and how we can help.",
+  nameLabel: 'Name*',
+  namePlaceholder: 'Your name',
+  phoneNumberLabel: 'Phone number',
+  phoneNumberPlaceholder: 'Your Phone Number',
+  emailLabelForm: 'Email address*',
+  emailPlaceholder: 'Your email, example: jane@gmail.com',
+  messageLabel: 'Message*',
+  messagePlaceholder: 'Write your message here',
+  sendMessage: 'Send message',
+  sending: 'Sending...',
+  successTitle: 'Message sent',
+  successMessage: 'Thanks for reaching out. We\u2019ll get back to you within 24 hours.',
+  errorTitle: 'Something went wrong',
+  errorMessage: 'Please try again, or email us directly at hello@realtypro.com.',
+  validationRequired: 'This field is required',
+  validationEmail: 'Please enter a valid email address',
+  validationMessage: 'Please write a message before sending',
+  backToHome: 'Back to Home',
+  notFoundTitle: 'Oops! Something went wrong.',
+  notFoundMessage:
+    "The page you're looking for doesn't exist. Try searching or return to the homepage.",
+  seoHomeTitle: 'Realty Pro for Realtors',
+  seoHomeDescription: 'Realty Pro for Realtors, Brokers',
+  seoPropertiesTitle: 'Properties | Realty Pro',
+  seoPropertiesDescription:
+    'Browse our latest residential, condo, luxury, and commercial listings across Greenwich and surrounding Connecticut communities.',
+  seoBlogTitle: 'Blog | Realty Pro',
+  seoBlogDescription:
+    'Practical advice, honest market takes, and guides written by the agents who work the Greenwich market every day.',
+  seoAboutTitle: 'About Us | Realty Pro',
+  seoAboutDescription:
+    'Realty Pro is a Greenwich-based team of dedicated real estate professionals who believe buying or selling a home should feel empowering, not overwhelming.',
+  seoContactTitle: 'Contact Us | Realty Pro',
+  seoContactDescription:
+    'Our agents are ready to help. Reach out today for a free consultation and a straight answer on the Greenwich market.',
+  seoNotFoundTitle: 'Page Not Found | Realty Pro',
+  seoNotFoundDescription: 'The page you are looking for does not exist.',
+  ogSiteDescription: 'Realty Pro for Realtors, Brokers',
+  langSwitcherLabel: 'Language',
+  menuHome: 'Home',
+  menuBrowse: 'Browse',
+  menuCompany: 'Company',
+};

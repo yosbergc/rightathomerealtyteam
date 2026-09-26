@@ -1,0 +1,16 @@
+---
+import { getLegalDocs, contentSlug } from '../../utils/content';
+import LegalPage from '../../components/pages/LegalPage.astro';
+
+export async function getStaticPaths() {
+  const docs = await getLegalDocs('en');
+  return docs.map((doc) => ({
+    params: { slug: contentSlug(doc) },
+    props: { doc },
+  }));
+}
+
+const { doc } = Astro.props;
+---
+
+<LegalPage locale="en" doc={doc} />

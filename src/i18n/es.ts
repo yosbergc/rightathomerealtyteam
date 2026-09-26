@@ -1,0 +1,275 @@
+import type { Translation } from './types';
+
+export const es: Translation = {
+  localeName: 'Español',
+  navPhone: '+1-212-345-0147',
+  menu: 'Menú',
+  bookConsultation: 'Reserva una consulta',
+  home: 'Inicio',
+  properties: 'Propiedades',
+  property: 'Propiedad',
+  blog: 'Blog',
+  about: 'Nosotros',
+  contact: 'Contacto',
+  faqs: 'Preguntas frecuentes',
+  testimonials: 'Testimonios',
+  browse: 'Explorar',
+  company: 'Compañía',
+  categories: 'Categorías',
+  viewAllProperties: 'Ver todas las propiedades',
+  viewBlogs: 'Ver blog',
+  readMore: 'Leer más',
+  viewProperty: 'Ver propiedad',
+  contactUs: 'Contáctanos',
+  from: 'Desde',
+  contactAgent: 'Contactar agente',
+  beds: 'Dormitorios',
+  baths: 'Baños',
+  sellingPrice: 'Precio de venta',
+  featuredProperty: 'Propiedad destacada',
+  heroEyebrow: 'Agente inmobiliario en Greenwich, CT',
+  heroTitle: 'The Glass Pavillion',
+  heroSubtitle:
+    'Ya sea que compres tu primera casa o la casa de tus sueños, Realty Pro te guía en cada paso del camino.',
+  aboutEyebrow: 'Sobre nosotros',
+  aboutTitle:
+    'No somos la correduría más grande del pueblo. Somos el equipo que contesta el teléfono, conoce tu calle y cierra el trato.',
+  aboutParagraph:
+    'Realty Pro es un equipo con base en Greenwich de profesionales inmobiliarios dedicados que creen que comprar o vender una casa debe sentirse empoderante, no abrumador. Combinamos un profundo conocimiento del mercado local con una comunicación directa, para que siempre sepas dónde estás y qué costos implica.',
+  stats: [
+    { label: 'Casas vendidas', key: 'homesSold' },
+    { label: 'Clientes satisfechos', key: 'happyClients' },
+    { label: 'Listados verificados', key: 'vettedListings' },
+    { label: 'Tasa de retención de clientes', key: 'retentionRate' },
+  ] as { label: string; key: string }[],
+  categoriesEyebrow: 'Explorar por categoría',
+  categoriesTitle: 'Encuentra el tipo de propiedad que se adapta a tu vida.',
+  categoriesParagraph:
+    'Desde casas familiares hasta espacios comerciales, explora por categoría y encuentra exactamente lo que buscas.',
+  listingsEyebrow: 'Listados destacados',
+  listingsTitle: 'Explora nuestros últimos listados',
+  listingsParagraph:
+    'Explora nuestros últimos listados residenciales, de condominios, de lujo y comerciales en Greenwich y las comunidades cercanas de Connecticut.',
+  whyEyebrow: 'Por qué elegirnos',
+  whyTitle: 'Seis razones por las que los clientes se quedan',
+  values: [
+    {
+      title: 'Alta capacidad de respuesta',
+      description:
+        'Sí contestamos el teléfono. Tendrás un agente dedicado al que puedes llamar, enviar mensajes o correos, no un centro de llamadas. Las preguntas se responden el mismo día, siempre.',
+    },
+    {
+      title: 'Transparencia',
+      description:
+        'Sin sorpresas al cierre. Nuestra estructura de honorarios es clara y se explica por adelantado, antes de que firmes cualquier cosa. Siempre sabrás exactamente qué pagas y por qué.',
+    },
+    {
+      title: 'Experiencia local',
+      description:
+        'Conocemos este mercado calle por calle. Desde las tendencias de precios del vecindario hasta oportunidades fuera del mercado, nuestros agentes tienen raíces profundas en el área de Greenwich.',
+    },
+    {
+      title: 'Claridad en el proceso',
+      description:
+        'Ya sea que compres por primera vez o por quinta vez, te guiamos en cada paso: inspecciones, negociaciones, trámites, para que nada te tome por sorpresa.',
+    },
+    {
+      title: 'Fuerza de negociación',
+      description:
+        'Negociamos como si fuera nuestro propio dinero. Desde la estrategia de oferta hasta los términos finales, buscamos cada ventaja y te diremos con honestidad cuándo retirarte.',
+    },
+    {
+      title: 'Historial comprobado',
+      description:
+        'Un historial que puedes verificar. Más de 350 casas vendidas, una tasa de retención del 94% y reseñas que hablan por sí solas. No te pedimos que nos tomes la palabra.',
+    },
+  ],
+  testimonialsEyebrow: 'Historias de clientes',
+  testimonialsTitle: 'Nuestros clientes lo dicen mejor',
+  testimonialsList: [
+    {
+      quote:
+        'Habíamos perdido dos ofertas antes de que nuestro agente de Realty Pro nos sentara y repensara por completo nuestro enfoque. Conocía la situación del vendedor, estructuró nuestra oferta de otra manera y conseguimos la casa por debajo del precio. No creo que lo logremos sin ella.',
+      name: 'Daniel & Okafor',
+      tag: 'Comprador',
+      badge: 'Comprado / Feb 2026',
+      image: 'daniel-okafor',
+    },
+    {
+      quote:
+        'Entrevistamos a tres agentes antes de llamar a Realty Pro. Los otros nos dieron un número y se fueron. Realty Pro llegó con un plan completo y respuestas honestas. Para el domingo teníamos múltiples ofertas.',
+      name: 'Makron & Julie Tran',
+      tag: 'Vendedor',
+      badge: 'Vendido / Oct 2025',
+      image: 'makron-julie-tran',
+    },
+  ],
+  blogEyebrow: 'Blog',
+  blogTitle: 'Ideas de nuestros expertos',
+  blogSubtitle:
+    'Consejos prácticos, análisis honestos del mercado y guías escritas por los agentes que trabajan este mercado todos los días.',
+  ctaTitleLineOne: 'Más dinero al vender, menos estrés al comprar.',
+  ctaTitleLineTwo: 'Esa es la diferencia que hacemos.',
+  ctaButton: 'Reserva una consulta gratuita',
+  ctaMerits: [
+    'Explora miles de listados en ubicaciones privilegiadas a excelentes precios',
+    'Más de 350 casas vendidas y contando',
+    'Licenciados y regulados',
+    'Primera consulta gratuita',
+    'Sin honorarios hasta que tu casa se venda',
+    'Respondemos en menos de 24 horas',
+  ],
+  faqEyebrow: 'Preguntas frecuentes',
+  faqTitle: 'Preguntas frecuentes',
+  faqHelper: '¿No ves la tuya? Escríbenos a hello@realtypro.com, respondemos en menos de una hora, entre semana.',
+  faqsList: [
+    {
+      question: '¿Cuánto cuesta trabajar con un agente inmobiliario?',
+      answer:
+        'En la mayoría de las transacciones, el vendedor cubre las comisiones de los agentes, por lo que los compradores normalmente no pagan nada de su bolsillo para trabajar con nosotros. Para los vendedores, nuestra estructura de comisiones es clara y se explica por completo antes de firmar cualquier cosa. Sin sorpresas, sin letra pequeña.',
+    },
+    {
+      question: '¿Cuál es el primer paso si quiero comprar una casa?',
+      answer:
+        'Empieza con una consulta gratuita. Hablaremos de tu presupuesto, tus plazos y lo que buscas, y luego te guiamos por el proceso de preaprobación si aún no lo has iniciado. La mayoría de las personas están más avanzadas de lo que creen. No hay ningún compromiso para tener esa primera conversación.',
+    },
+    {
+      question: '¿Cuánto tiempo toma vender una casa?',
+      answer:
+        'Depende del precio, el estado y la demanda actual del mercado, pero las casas bien preciadas y en buen estado normalmente se firman en 2 a 4 semanas. Te daremos un plazo realista basado en ventas comparables en tu vecindario específico antes de listar, no después.',
+    },
+    {
+      question: '¿Cómo sé cuánto vale mi casa?',
+      answer:
+        'Ofrecemos una valuación gratuita y sin compromiso de cualquier propiedad en nuestra área de mercado. Se basa en ventas comparables recientes, inventario actual y condición, no en un algoritmo. Contáctanos y tendremos un número para ti en menos de 24 horas.',
+    },
+    {
+      question: '¿Por qué trabajar con una agencia boutique en lugar de una gran franquicia?',
+      answer:
+        'Con una gran correduría, a menudo te transfieren a un agente junior después de la primera reunión. En Realty Pro, el agente que conoces es el agente que maneja tu transacción, de principio a fin. Tienes acceso directo, respuestas más rápidas y alguien que realmente conoce tu calle.',
+    },
+    {
+      question: '¿Es buen momento para comprar o debería esperar?',
+      answer:
+        'Depende completamente de tu situación personal, y cualquiera que te dé una respuesta universal no está siendo honesto contigo. Lo que podemos hacer es mostrarte cómo se ve realmente el mercado actual, a cuánto se venden las propiedades comparables y ayudarte a tomar una decisión adecuada para tus plazos y finanzas. Para eso sirve la consulta gratuita.',
+    },
+    {
+      question: '¿Manejan propiedades comerciales y bienes raíces de inversión?',
+      answer:
+        'Sí. Trabajamos con inversionistas, dueños de negocios y desarrolladores en arrendamientos comerciales, propiedades de uso mixto e inversiones residenciales que generan ingresos. Si evalúas una compra desde el punto de vista de inversión, podemos revisar los números contigo igual que en cualquier transacción residencial, con claridad y sin tecnicismos.',
+    },
+  ],
+  newsletterTitle: 'Mantente informado sobre el mercado de Greenwich.',
+  subscribePlaceholder: 'Ingresa tu correo para suscribirte',
+  subscribe: 'Suscribirme',
+  footerAddress: '123 Greenwich Avenue, Greenwich, CT 06830',
+  footerContact: 'Contacto',
+  contactEmail: 'hello@realtypro.com',
+  contactPhone: '+1-212-345-0147',
+  legalLabel: 'Legal',
+  termsOfService: 'Términos del servicio',
+  privacyPolicy: 'Política de privacidad',
+  notFoundLabel: 'Página 404',
+  copyright: 'Realty Pro',
+  designedBy: 'Diseñado y desarrollado por',
+  previous: 'Anterior',
+  next: 'Siguiente',
+  minRead: 'min de lectura',
+  lastUpdated: 'Última actualización',
+  showAll: 'Ver todas',
+  propertiesEyebrow: 'Listados destacados',
+  propertiesTitle: 'Explora nuestros últimos listados',
+  propertiesSubtitle:
+    'Explora nuestros últimos listados residenciales, de condominios, de lujo y comerciales en Greenwich y las comunidades cercanas de Connecticut.',
+  loadMore: 'Cargar más',
+  showing: 'Mostrando',
+  ofProperties: 'de',
+  categoryEyebrow: 'Listados destacados',
+  whatMakesItSpecial: 'Qué lo hace especial',
+  propertyDetails: 'Detalles de la propiedad',
+  facilities: 'Instalaciones',
+  amenities: 'Servicios',
+  location: 'Ubicación',
+  similarProperties: 'Propiedades similares',
+  listedBy: 'Listado por',
+  source: 'Fuente',
+  detailsCategory: 'Categoría',
+  detailsPropertyType: 'Tipo de propiedad',
+  completionYear: 'Año de construcción',
+  totalSize: 'Superficie total',
+  lotSize: 'Tamaño del terreno',
+  pricePerSqft: 'Precio por pie cuadrado',
+  hoaFee: 'Cuota HOA',
+  searchPlaceholder: 'Buscar propiedades',
+  filterCategory: 'Categoría',
+  filterAll: 'Todas',
+  aboutHeroEyebrow: 'Nuestra historia',
+  aboutHeroTitle: 'Dejamos las grandes firmas para hacer esto como debe ser',
+  founded: 'Fundada',
+  office: 'Oficina',
+  activeCaseload: 'Carga de casos activa',
+  foundersLabel: 'Fundadores',
+  noteEyebrow: 'Una nota de nosotros',
+  noteTitle: 'La carta fundacional.',
+  noteIntro:
+    'Escrita un domingo por la mañana en Greenwich. La hemos conservado aquí sin editar, aún describe lo que intentamos hacer mejor que cualquier otra cosa escrita desde entonces.',
+  letter: [
+    'Existe un tipo de firma inmobiliaria que seguíamos buscando cada vez que un cliente nos llamaba frustrado. El agente que desaparecía después de la oferta. El cierre que se pospuso tres veces. La comisión que nadie explicó hasta la mesa. Eventualmente, dejamos de esperar a que alguien más lo arreglara.',
+    'Entre los dos, pasamos más de una década en corredurías más grandes. Aprendimos a tasar una casa, leer un mercado y negociar cuando importa. Lo que no pudimos aprender allí fue a ir despacio. El modelo de volumen no lo permite, y en una transacción de este tamaño, la atención importa.',
+    'Así que trazamos una línea. Doce clientes activos a la vez. Ambos fundadores en cada trato. Honorarios explicados por escrito antes de firmar cualquier cosa. Estos no son privilegios, son el estándar que creemos que este trabajo debe cumplir. Construimos Realty Pro alrededor de ellos porque nadie más para quien trabajamos estuvo dispuesto a hacerlo.',
+    'Estamos en Greenwich porque lo conocemos: los vecindarios, las escuelas y las calles donde los valores se mueven distinto a lo que sugieren los comparables. No elegimos este mercado por los precios. Lo elegimos porque es donde vivimos y donde pensamos quedarnos.',
+    'Si estás considerando trabajar con nosotros, haz las preguntas difíciles. Te diremos cuánto vale tu casa, qué está haciendo el mercado y si ahora es el momento adecuado para mudarte, incluso si la respuesta honesta no es lo que esperabas escuchar. Esa es la única manera en que sabemos hacer esto.',
+  ],
+  contactHeroEyebrow: 'Contacto',
+  contactHeroTitle: 'Encontremos la casa de tus sueños',
+  contactHeroSubtitle: 'Nuestros agentes están listos para ayudarte, contáctanos hoy.',
+  hoursLabel: 'Horario',
+  phoneLabel: 'Teléfono',
+  emailLabel: 'Correo',
+  addressLabel: 'Dirección',
+  contactFormTitle: 'Descubramos qué es posible juntos.',
+  contactFormParagraph:
+    'Cuéntanos en qué punto del proceso estás y qué buscas. Te daremos una respuesta directa sobre lo que es realista, qué está haciendo el mercado y cómo podemos ayudarte.',
+  nameLabel: 'Nombre*',
+  namePlaceholder: 'Tu nombre',
+  phoneNumberLabel: 'Número de teléfono',
+  phoneNumberPlaceholder: 'Tu número de teléfono',
+  emailLabelForm: 'Correo electrónico*',
+  emailPlaceholder: 'Tu correo, ejemplo: jane@gmail.com',
+  messageLabel: 'Mensaje*',
+  messagePlaceholder: 'Escribe tu mensaje aquí',
+  sendMessage: 'Enviar mensaje',
+  sending: 'Enviando...',
+  successTitle: 'Mensaje enviado',
+  successMessage: 'Gracias por contactarnos. Te responderemos en menos de 24 horas.',
+  errorTitle: 'Algo salió mal',
+  errorMessage: 'Por favor inténtalo de nuevo, o escríbenos directamente a hello@realtypro.com.',
+  validationRequired: 'Este campo es obligatorio',
+  validationEmail: 'Por favor ingresa un correo válido',
+  validationMessage: 'Escribe un mensaje antes de enviar',
+  backToHome: 'Volver al inicio',
+  notFoundTitle: '¡Ups! Algo salió mal.',
+  notFoundMessage:
+    'La página que buscas no existe. Intenta buscar o vuelve a la página de inicio.',
+  seoHomeTitle: 'Realty Pro para Agentes Inmobiliarios',
+  seoHomeDescription: 'Realty Pro para agentes inmobiliarios, corredores',
+  seoPropertiesTitle: 'Propiedades | Realty Pro',
+  seoPropertiesDescription:
+    'Explora nuestros últimos listados residenciales, de condominios, de lujo y comerciales en Greenwich y las comunidades cercanas de Connecticut.',
+  seoBlogTitle: 'Blog | Realty Pro',
+  seoBlogDescription:
+    'Consejos prácticos, análisis honestos del mercado y guías escritas por los agentes que trabajan el mercado de Greenwich todos los días.',
+  seoAboutTitle: 'Sobre nosotros | Realty Pro',
+  seoAboutDescription:
+    'Realty Pro es un equipo con base en Greenwich de profesionales inmobiliarios dedicados que creen que comprar o vender una casa debe sentirse empoderante.',
+  seoContactTitle: 'Contacto | Realty Pro',
+  seoContactDescription:
+    'Nuestros agentes están listos para ayudarte. Contáctanos hoy para una consulta gratuita y una respuesta directa sobre el mercado de Greenwich.',
+  seoNotFoundTitle: 'Página no encontrada | Realty Pro',
+  seoNotFoundDescription: 'La página que buscas no existe.',
+  ogSiteDescription: 'Realty Pro para agentes inmobiliarios, corredores',
+  langSwitcherLabel: 'Idioma',
+  menuHome: 'Inicio',
+  menuBrowse: 'Explorar',
+  menuCompany: 'Compañía',
+};

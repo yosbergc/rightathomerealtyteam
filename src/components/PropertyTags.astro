@@ -1,0 +1,15 @@
+---
+import type { Property } from '../utils/content';
+
+interface Props {
+  property: Property;
+}
+
+const { property } = Astro.props;
+---
+
+<div class="flex flex-wrap gap-2">
+  {property.data.tags.map((tag) => (
+    <span class="rounded-[4px] bg-surface px-2 py-2 text-[14px] font-semibold text-black">{tag}</span>
+  ))}
+</div>

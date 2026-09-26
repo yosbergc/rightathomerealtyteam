@@ -1,0 +1,296 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../Icon.astro';
+import SectionHeading from '../SectionHeading.astro';
+import PropertyGrid from '../PropertyGrid.astro';
+import CategoryCard from '../CategoryCard.astro';
+import StatsCounter from '../StatsCounter.astro';
+import TestimonialCarousel from '../TestimonialCarousel.astro';
+import BlogGrid from '../BlogGrid.astro';
+import CtaSection from '../CtaSection.astro';
+import FaqAccordion from '../FaqAccordion.astro';
+import { siteConfig } from '../../config/site';
+import { getDictionary, localizedPath } from '../../i18n';
+import {
+  getFeaturedProperties,
+  getProperties,
+  getCategories,
+  getPosts,
+  propertyUrl,
+} from '../../utils/content';
+import { formatPrice } from '../../utils/format';
+import { imageMap } from '../../utils/images';
+import {
+  buildOrganizationJsonLd,
+  buildWebsiteJsonLd,
+  buildWebPageJsonLd,
+  buildBreadcrumbJsonLd,
+} from '../../utils/seo';
+import type { Locale } from '../../content.config';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+const path = locale === 'es' ? '/es' : '/';
+const [featured, allProperties, categories, posts] = await Promise.all([
+  getFeaturedProperties(locale, 6),
+  getProperties(locale),
+  getCategories(locale),
+  getPosts(locale),
+]);
+
+const heroProperty = allProperties.find((property) => property.data.translationKey === 'glass-pavilion');
+const blogPosts = posts.slice(0, 3);
+
+const jsonLd = [
+  buildOrganizationJsonLd(),
+  buildWebsiteJsonLd(),
+  buildWebPageJsonLd(t.seoHomeTitle, siteConfig.domain, t.seoHomeDescription),
+  buildBreadcrumbJsonLd([{ name: 'Home', url: siteConfig.domain }]),
+];
+---
+
+<BaseLayout
+  title={t.seoHomeTitle}
+  description={t.seoHomeDescription}
+  locale={locale}
+  path={path}
+  headerVariant="transparent"
+  jsonLd={jsonLd}
+>
+  <section class="relative flex min-h-[100svh] items-end overflow-hidden text-white">
+    <Image
+      src={imageMap.heroGlassPavilion}
+      alt=""
+      class="absolute inset-0 h-full w-full object-cover"
+      width={2752}
+      height={1536}
+      aria-hidden="true"
+    />
+    <div
+      class="absolute inset-0 mix-blend-multiply"
+      style="background: radial-gradient(50% 50% at 71.8% 50%, transparent 18%, rgba(0,0,0,0.32) 100%)"
+      aria-hidden="true"
+    ></div>
+    <div class="container-site relative z-10 pb-14 pt-36 md:pb-16">
+      <div class="grid items-end gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
+        <div data-reveal>
+          <p class="flex items-center gap-2 text-[15px] font-medium text-white/90">
+            <Icon name="location" class="h-5 w-5 text-white" />
+            {t.heroEyebrow}
+          </p>
+          <span class="badge-pill mt-5">{t.featuredProperty}</span>
+          <h1 class="heading-hero mt-4 text-white">{t.heroTitle}</h1>
+          <p class="mt-6 max-w-md text-[17px] leading-[1.5] text-white/85">{t.heroSubtitle}</p>
+          <div class="mt-9 flex flex-wrap gap-3">
+            <a href={localizedPath('/contact#contact-form', locale)} class="btn btn-primary">
+              {t.contactUs}
+            </a>
+            {
+              heroProperty && (
+                <a href={propertyUrl(heroProperty, locale)} class="btn btn-outline">
+                  {t.viewProperty}
+                </a>
+              )
+            }
+          </div>
+        </div>
+        {
+          heroProperty && (
+            <div data-reveal class="max-w-[540px] justify-self-end rounded-[12px] border border-white/10 bg-black/55 p-6 backdrop-blur-sm md:p-8">
+              <div class="grid grid-cols-2 items-center gap-6">
+                <div>
+                  <span class="badge-pill">{t.featuredProperty}</span>
+                  <p class="mt-3 text-[20px] font-semibold leading-tight md:text-[24px]">
+                    {heroProperty.data.title}
+                  </p>
+                </div>
+                <div class="overflow-hidden rounded-[8px]">
+                  <Image
+                    src={heroProperty.data.coverImage}
+                    alt={heroProperty.data.title}
+                    class="aspect-[4/3] w-full object-cover"
+                    width={1200}
+                    height={896}
+                  />
+                </div>
+              </div>
+              <div class="mt-6 grid grid-cols-4 gap-2 border-t border-white/10 pt-5">
+                <div>
+                  <p class="text-[17px] font-semibold">{heroProperty.data.beds}</p>
+                  <p class="text-[12px] text-white/60">{t.beds}</p>
+                </div>
+                <div>
+                  <p class="text-[17px] font-semibold">{heroProperty.data.baths}</p>
+                  <p class="text-[12px] text-white/60">{t.baths}</p>
+                </div>
+                <div>
+                  <p class="text-[17px] font-semibold">{formatPrice(heroProperty.data.sqft)}</p>
+                  <p class="text-[12px] text-white/60">sqft</p>
+                </div>
+                <div class="text-right">
+                  <p class="text-[12px] text-white/60">{t.sellingPrice}</p>
+                  <p class="text-[17px] font-semibold">$ {formatPrice(heroProperty.data.price)}</p>
+                </div>
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="container-site">
+      <div class="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+        <div data-reveal>
+          <h2 class="heading-section" data-split>{t.aboutTitle}</h2>
+        </div>
+        <div>
+          <div data-reveal>
+            <Image
+              src={imageMap.about}
+              alt="Realty Pro team"
+              class="w-full rounded-[12px] object-cover"
+              width={1376}
+              height={768}
+            />
+          </div>
+          <div data-reveal>
+            <p class="text-body mt-8">{t.aboutParagraph}</p>
+            <div class="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4">
+              {siteConfig.stats.map((stat, index) => (
+                <StatsCounter
+                  value={stat.value}
+                  suffix={stat.suffix}
+                  label={t.stats[index].label}
+                  color={index === 1 || index === 2 ? 'brand' : 'black'}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad bg-surface/40">
+    <div class="container-site">
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <div data-reveal>
+          <SectionHeading
+            eyebrow={t.categoriesEyebrow}
+            title={t.categoriesTitle}
+            description={t.categoriesParagraph}
+          />
+        </div>
+        <a href={localizedPath('/properties', locale)} class="btn btn-outline-dark mb-1 hidden md:inline-flex">
+          {t.viewAllProperties}
+        </a>
+      </div>
+      <div class="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {categories.map((category, index) => (
+          <div data-reveal>
+            <CategoryCard category={category} locale={locale} index={index + 1} />
+          </div>
+        ))}
+      </div>
+      <div class="mt-10 text-center md:hidden">
+        <a href={localizedPath('/properties', locale)} class="btn btn-outline-dark">
+          {t.viewAllProperties}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="container-site">
+      <div data-reveal class="flex flex-wrap items-end justify-between gap-6">
+        <SectionHeading
+          eyebrow={t.listingsEyebrow}
+          title={t.listingsTitle}
+          description={t.listingsParagraph}
+        />
+        <a href={localizedPath('/properties', locale)} class="btn btn-outline-dark mb-1 hidden md:inline-flex">
+          {t.viewAllProperties}
+        </a>
+      </div>
+      <div class="mt-12">
+        <PropertyGrid properties={featured} locale={locale} />
+      </div>
+      <div class="mt-12 text-center md:hidden">
+        <a href={localizedPath('/properties', locale)} class="btn btn-outline-dark">
+          {t.viewAllProperties}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="container-site">
+      <div data-reveal>
+        <SectionHeading eyebrow={t.whyEyebrow} title={t.whyTitle} />
+      </div>
+      <div class="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {t.values.map((value) => (
+          <div data-reveal class="rounded-[12px] bg-surface p-7">
+            <span class="icon-chip flex h-12 w-12 items-center justify-center rounded-full bg-white">
+              <Icon name="check" class="h-5 w-5 text-brand" />
+            </span>
+            <h3 class="heading-card mt-5">{value.title}</h3>
+            <p class="text-body mt-3 text-muted">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonial" class="section-pad bg-navy text-white">
+    <div class="container-site">
+      <div data-reveal>
+        <SectionHeading eyebrow={t.testimonialsEyebrow} title={t.testimonialsTitle} />
+      </div>
+      <div class="mt-12">
+        <TestimonialCarousel testimonials={t.testimonialsList} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="container-site">
+      <div data-reveal class="flex flex-wrap items-end justify-between gap-6">
+        <SectionHeading eyebrow={t.blogEyebrow} title={t.blogTitle} />
+        <a href={localizedPath('/blog', locale)} class="btn btn-outline-dark mb-1 hidden md:inline-flex">
+          {t.viewBlogs}
+        </a>
+      </div>
+      <div class="mt-12">
+        <BlogGrid posts={blogPosts} locale={locale} />
+      </div>
+      <div class="mt-12 text-center md:hidden">
+        <a href={localizedPath('/blog', locale)} class="btn btn-outline-dark">
+          {t.viewBlogs}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CtaSection locale={locale} image={imageMap.ctaBuilding} />
+
+  <section id="faq" class="section-pad">
+    <div class="container-site max-w-3xl">
+      <div data-reveal>
+        <SectionHeading eyebrow={t.faqEyebrow} title={t.faqTitle} />
+        <p class="text-body mt-4 text-muted">
+          {t.faqHelper}
+        </p>
+      </div>
+      <FaqAccordion faqs={t.faqsList} />
+    </div>
+  </section>
+</BaseLayout>
+

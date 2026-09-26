@@ -1,0 +1,16 @@
+---
+import { getProperties, contentSlug } from '../../../utils/content';
+import PropertyPage from '../../../components/pages/PropertyPage.astro';
+
+export async function getStaticPaths() {
+  const properties = await getProperties('es');
+  return properties.map((property) => ({
+    params: { slug: contentSlug(property) },
+    props: { property },
+  }));
+}
+
+const { property } = Astro.props;
+---
+
+<PropertyPage locale="es" property={property} />

@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import { formatDate } from '../utils/format';
+import { getDictionary } from '../i18n';
+import type { Post, Author } from '../utils/content';
+import type { Locale } from '../content.config';
+
+interface Props {
+  post: Post;
+  author?: Author;
+  locale: Locale;
+}
+
+const { post, author, locale } = Astro.props;
+const t = getDictionary(locale);
+---
+
+<div class="flex flex-wrap items-center gap-x-4 gap-y-3 text-sm text-muted">
+  {
+    author && (
+      <span class="inline-flex items-center gap-2.5">
+        {author.data.avatar && (
+          <Image
+            src={author.data.avatar}
+            alt={author.data.name}
+            class="h-9 w-9 rounded-full object-cover"
+            width={72}
+            height={72}
+          />
+        )}
+        <span class="font-medium text-black">{author.data.name}</span>
+      </span>
+    )
+  }
+  <time datetime={post.data.publishedAt.toISOString()}>{formatDate(post.data.publishedAt, locale)}</time>
+  <span class="h-1 w-1 rounded-full bg-[#b6b6b6]" aria-hidden="true"></span>
+  <span>{post.data.category}</span>
+  <span class="h-1 w-1 rounded-full bg-[#b6b6b6]" aria-hidden="true"></span>
+  <span>{post.data.readingTime} {t.minRead}</span>
+</div>

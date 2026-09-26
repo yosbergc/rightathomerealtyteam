@@ -1,0 +1,60 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import MobileMenu from './MobileMenu.astro';
+import { siteConfig } from '../config/site';
+import { getDictionary, localizedPath } from '../i18n';
+import type { Locale } from '../content.config';
+
+interface Props {
+  locale: Locale;
+  variant: 'transparent' | 'solid';
+  currentPath: string;
+  enUrl: string;
+  esUrl: string;
+}
+
+const { locale, variant, currentPath, enUrl, esUrl } = Astro.props;
+const t = getDictionary(locale);
+const contactUrl = localizedPath('/contact#contact-form', locale);
+---
+
+<header
+  data-header
+  data-variant={variant}
+  class:list={[
+    'header fixed inset-x-0 top-0 z-40 transition-colors duration-300',
+    variant === 'transparent' ? 'header-transparent' : 'header-solid',
+  ]}
+>
+  <div class="container-site flex h-[72px] items-center justify-between">
+    <Logo />
+    <div class="hidden items-center gap-6 lg:flex">
+      <a href={siteConfig.phoneHref} class="text-sm font-medium opacity-90 transition-opacity hover:opacity-60">
+        {t.navPhone}
+      </a>
+      <button
+        data-menu-toggle
+        class="inline-flex items-center gap-2 rounded-[4px] border border-current/40 px-4 py-2 text-sm font-semibold transition-colors hover:bg-black/5"
+        aria-expanded="false"
+      >
+        <Icon name="menu" class="h-5 w-5" />
+        {t.menu}
+      </button>
+      <a href={contactUrl} class="btn btn-dark px-5 py-2.5 text-sm">
+        {t.bookConsultation}
+      </a>
+    </div>
+    <div class="flex items-center gap-4 lg:hidden">
+      <button
+        data-menu-toggle
+        class="inline-flex items-center gap-2 rounded-[4px] border border-current/40 px-3.5 py-2 text-sm font-semibold"
+        aria-expanded="false"
+      >
+        <Icon name="menu" class="h-5 w-5" />
+        {t.menu}
+      </button>
+    </div>
+  </div>
+  <MobileMenu locale={locale} currentPath={currentPath} enUrl={enUrl} esUrl={esUrl} />
+</header>

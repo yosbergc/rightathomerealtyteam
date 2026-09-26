@@ -1,0 +1,124 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../Icon.astro';
+import ContactForm from '../ContactForm.astro';
+import PropertyMap from '../PropertyMap.astro';
+import { siteConfig } from '../../config/site';
+import { getDictionary } from '../../i18n';
+import { imageMap } from '../../utils/images';
+import {
+  buildOrganizationJsonLd,
+  buildWebPageJsonLd,
+  buildBreadcrumbJsonLd,
+} from '../../utils/seo';
+import { absoluteUrl } from '../../utils/content';
+import type { Locale } from '../../content.config';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+const path = locale === 'es' ? '/es/contacto' : '/contact';
+const rootPath = locale === 'es' ? '/es' : '/';
+
+const infoCards = [
+  { label: t.hoursLabel, value: siteConfig.hours, icon: 'clock' as const },
+  { label: t.phoneLabel, value: siteConfig.phone, icon: 'phone' as const, href: siteConfig.phoneHref },
+  { label: t.emailLabel, value: siteConfig.email, icon: 'mail' as const, href: siteConfig.emailHref },
+  { label: t.addressLabel, value: siteConfig.address, icon: 'location' as const },
+];
+
+const jsonLd = [
+  buildOrganizationJsonLd(),
+  buildWebPageJsonLd(t.seoContactTitle, path, t.seoContactDescription),
+  buildBreadcrumbJsonLd([
+    { name: 'Home', url: absoluteUrl(rootPath) },
+    { name: t.contact, url: absoluteUrl(path) },
+  ]),
+];
+---
+
+<BaseLayout
+  title={t.seoContactTitle}
+  description={t.seoContactDescription}
+  locale={locale}
+  path={path}
+  image={imageMap.contactHero}
+  jsonLd={jsonLd}
+>
+  <section class="section-pad pb-10 pt-32 md:pt-40">
+    <div class="container-site grid items-center gap-12 lg:grid-cols-2">
+      <div data-reveal>
+        <p class="eyebrow">
+          <Icon name="house" class="h-[11px] w-3 text-quote" />
+          {t.contactHeroEyebrow}
+        </p>
+        <h1 class="heading-hero mt-4 text-[40px] md:text-[52px]">{t.contactHeroTitle}</h1>
+        <p class="text-body mt-5 text-muted">{t.contactHeroSubtitle}</p>
+        <div class="mt-10 overflow-hidden rounded-[12px]">
+          <Image
+            src={imageMap.contactHero}
+            alt=""
+            class="aspect-[4/3] w-full object-cover"
+            width={1200}
+            height={896}
+            aria-hidden="true"
+          />
+        </div>
+      </div>
+      <div data-reveal class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {infoCards.map((card) => (
+          <div class="card-surface flex items-start gap-4 p-6">
+            <span class="icon-chip flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-surface">
+              <Icon name={card.icon} class="h-5 w-5 text-brand" />
+            </span>
+            <div>
+              <p class="text-sm text-muted">{card.label}</p>
+              {card.href ? (
+                <a href={card.href} class="mt-1 block font-semibold text-black transition-colors hover:text-brand">
+                  {card.value}
+                </a>
+              ) : (
+                <p class="mt-1 font-semibold text-black">{card.value}</p>
+              )}
+            </div>
+          </div>
+        ))}
+        <div class="overflow-hidden rounded-[12px] border border-line sm:col-span-2">
+          <PropertyMap locale={locale} embedUrl={siteConfig.contactMapEmbed} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact-form" class="section-pad pt-10">
+    <div class="container-site">
+      <div class="grid gap-12 lg:grid-cols-2 lg:items-start">
+        <div data-reveal>
+          <p class="eyebrow">
+            <Icon name="house" class="h-[11px] w-3 text-quote" />
+            {t.contactHeroEyebrow}
+          </p>
+          <h2 class="heading-section mt-3">{t.contactFormTitle}</h2>
+          <p class="text-body mt-4 text-muted">{t.contactFormParagraph}</p>
+          <div class="mt-8 hidden overflow-hidden rounded-[12px] lg:block">
+            <Image
+              src={imageMap.contactSide}
+              alt=""
+              class="aspect-[4/3] w-full object-cover"
+              width={1200}
+              height={896}
+              aria-hidden="true"
+            />
+          </div>
+        </div>
+        <div data-reveal>
+          <ContactForm locale={locale} />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
