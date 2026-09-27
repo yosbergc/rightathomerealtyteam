@@ -15,14 +15,12 @@ export type Translation = {
   localeName: string;
   navPhone: string;
   menu: string;
-  bookAppointment: string;
   home: string;
   properties: string;
   property: string;
   blog: string;
   about: string;
   contact: string;
-  appointments: string;
   faqs: string;
   testimonials: string;
   browse: string;
@@ -84,7 +82,6 @@ export type Translation = {
   legalLabel: string;
   termsOfService: string;
   privacyPolicy: string;
-  notFoundLabel: string;
   copyright: string;
   designedBy: string;
   previous: string;
@@ -154,9 +151,6 @@ export type Translation = {
   backToHome: string;
   notFoundTitle: string;
   notFoundMessage: string;
-  appointmentsEyebrow: string;
-  appointmentsTitle: string;
-  appointmentsIntro: string;
   seoHomeTitle: string;
   seoHomeDescription: string;
   seoPropertiesTitle: string;
@@ -167,8 +161,6 @@ export type Translation = {
   seoAboutDescription: string;
   seoContactTitle: string;
   seoContactDescription: string;
-  seoAppointmentsTitle: string;
-  seoAppointmentsDescription: string;
   seoNotFoundTitle: string;
   seoNotFoundDescription: string;
   ogSiteDescription: string;

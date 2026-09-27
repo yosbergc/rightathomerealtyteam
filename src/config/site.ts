@@ -1,6 +1,6 @@
 export const siteConfig = {
-  name: 'Right At Home Realty',
-  legalName: 'Right At Home Realty',
+  name: 'Right At Home Realty Team',
+  legalName: 'Right At Home Realty Team',
   domain: 'https://rightathomerealtyteam.com',
   phone: '+1-980-500-9231',
   phoneHref: 'tel:+19805009231',
@@ -26,10 +26,4 @@ export const siteConfig = {
   idxFeaturedSrc:
     'https://idxaddons.com/addon/featured/MnJtNXlEU1NNM3E%3DcDm-qgLoemE/?agent=15903955&listingagent=72068411&per=6',
   idxFeaturedAgentId: '15903955',
-  acuity: {
-    url: 'https://blueprintcatalogen.as.me/',
-    calendarId: '10397995',
-    userId: '32756714',
-    appointmentTypeId: '56407645',
-  },
 } as const;

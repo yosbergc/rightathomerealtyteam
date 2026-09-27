@@ -8,28 +8,31 @@ interface Props {
   align?: 'left' | 'center';
   icon?: 'house' | 'star' | 'quill';
   as?: 'h1' | 'h2' | 'h3';
+  tone?: 'dark' | 'light';
 }
 
-const { eyebrow, title, description, align = 'left', icon = 'house', as = 'h2' } = Astro.props;
-const headingClass =
-  as === 'h1' ? 'heading-section mt-3' : 'heading-section mt-3';
+const { eyebrow, title, description, align = 'left', icon = 'house', as = 'h2', tone = 'dark' } = Astro.props;
+const headingClass = 'heading-section mt-3';
+const eyebrowClass = tone === 'light' ? 'eyebrow text-white/80' : 'eyebrow';
+const titleClass = tone === 'light' ? `${headingClass} text-white` : headingClass;
+const descriptionClass = tone === 'light' ? 'text-body mt-4 text-white/70' : 'text-body mt-4 text-muted';
 ---
 
 <div class:list={['max-w-2xl', align === 'center' && 'mx-auto text-center']}>
-  <p class="eyebrow">
+  <p class={eyebrowClass}>
     <Icon name={icon} class={icon === 'house' ? 'h-[11px] w-3 text-quote' : 'h-4 w-4 text-quote'} />
     {eyebrow}
   </p>
   {as === 'h1' ? (
-    <h1 class={headingClass}>{title}</h1>
+    <h1 class={titleClass}>{title}</h1>
   ) : as === 'h3' ? (
-    <h3 class={headingClass}>{title}</h3>
+    <h3 class={titleClass}>{title}</h3>
   ) : (
-    <h2 class={headingClass}>{title}</h2>
+    <h2 class={titleClass}>{title}</h2>
   )}
   {
     description && (
-      <p class:list={['text-body mt-4 text-muted', align === 'center' && 'mx-auto']}>
+      <p class:list={[descriptionClass, align === 'center' && 'mx-auto']}>
         {description}
       </p>
     )

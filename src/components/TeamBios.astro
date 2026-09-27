@@ -25,20 +25,17 @@ const t = getDictionary(locale);
       />
     </div>
     <div class="mt-14 grid gap-10">
-      {t.teamMembers.map((member, index) => (
+      {t.teamMembers.map((member) => (
         <article
           data-reveal
-          class:list={[
-            'card-surface grid gap-8 overflow-hidden p-6 md:p-8 lg:grid-cols-[280px_1fr] lg:gap-12',
-            index % 2 === 1 && 'lg:[&>div:first-child]:order-2',
-          ]}
+          class="card-surface grid gap-8 overflow-hidden p-6 md:p-8 lg:grid-cols-[280px_1fr] lg:gap-12"
         >
           <div>
-            <div class="overflow-hidden rounded-[12px]">
+            <div class="aspect-[3/4] overflow-hidden rounded-[12px]">
               <Image
                 src={teamPhotos[member.photo as keyof typeof teamPhotos]}
                 alt={member.name}
-                class="aspect-[3/4] w-full object-cover object-top"
+                class="h-full w-full object-cover object-top"
                 sizes="(max-width: 809px) 100vw, 280px"
               />
             </div>

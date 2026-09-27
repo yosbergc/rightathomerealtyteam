@@ -1,17 +1,15 @@
-import type { Translation } from './types';
+﻿import type { Translation } from './types';
 
 export const en: Translation = {
   localeName: 'English',
   navPhone: '+1-980-500-9231',
   menu: 'Menu',
-  bookAppointment: 'Book an Appointment',
   home: 'Home',
   properties: 'Property Listings',
   property: 'Property',
   blog: 'Blog',
   about: 'About Us',
   contact: 'Contact',
-  appointments: 'Appointments',
   faqs: 'FAQs',
   testimonials: 'Testimonials',
   browse: 'Browse',
@@ -28,7 +26,7 @@ export const en: Translation = {
   baths: 'Baths',
   sellingPrice: 'Selling Price',
   featuredProperty: 'Featured Property',
-  heroEyebrow: 'Right At Home Realty',
+  heroEyebrow: 'Right At Home Realty Team',
   heroTitle: 'A real estate team built on service, protection, and trust.',
   heroSubtitle:
     'Alvaro and Sally Jaimes founded Right At Home Realty after two decades of serving the community - Alvaro in law enforcement, Sally in contracts and transactions. Today our team guides families home across North Carolina and South Carolina.',
@@ -62,10 +60,9 @@ export const en: Translation = {
         "We wanted our clients to experience that same sense of comfort and belonging. We also believe strongly in teamwork - our agents work together as one team with one common goal: helping families find the home that is right for them.",
         "As a licensed REALTOR® in North Carolina and South Carolina, I would be honored to help you buy, sell, or invest and to Protect, Serve, and Guide You Home.",
       ],
-      photo: 'alvaro-jaimes',
-
       phone: '+1-704-779-1180',
       email: 'Realtoralvarojaimes@gmail.com',
+      photo: 'alvaro-jaimes',
     },
     {
       name: 'Sally Jaimes',
@@ -76,10 +73,9 @@ export const en: Translation = {
         "Family is at the heart of everything I do. I understand that a home is more than a property - it's where memories are made, families grow, and life happens.",
         "Whether you're buying, selling, relocating, or investing, I would be honored to help make your experience as smooth and stress-free as possible.",
       ],
-      photo: 'sally-jaimes',
-
       phone: '+1-718-300-0404',
       email: 'Sallyjaimestherealtor@gmail.com',
+      photo: 'sally-jaimes',
     },
     {
       name: 'Nancy Brogdon',
@@ -90,10 +86,9 @@ export const en: Translation = {
         "Outside of work, I'm a wife to an amazing husband, a mom to four incredible kids, and we have four Huskies who keep us very busy!",
         "For me, it's always been about people, relationships, and serving others. I'm excited for the opportunity to help my clients navigate one of life's biggest decisions and find a place they're proud to call home.",
       ],
-      photo: 'nancy-brogdon',
-
       phone: '+1-704-915-6911',
       email: 'rubyrealtorllc@gmail.com',
+      photo: 'nancy-brogdon',
     },
   ],
   valuesEyebrow: 'Why Choose Us',
@@ -143,7 +138,7 @@ export const en: Translation = {
     'Practical advice, honest market takes, and guides written by the agents who work this market every day.',
   ctaTitleLineOne: 'Looking to find your dream home or sell your current one?',
   ctaTitleLineTwo: "We're here to guide you every step of the way.",
-  ctaButton: 'Book an Appointment',
+  ctaButton: 'Contact Us',
   ctaMerits: [
     'Two of our three agents actively serve in law enforcement',
     'Licensed in North Carolina and South Carolina',
@@ -199,8 +194,7 @@ export const en: Translation = {
   legalLabel: 'Legal',
   termsOfService: 'Terms Of Service',
   privacyPolicy: 'Privacy Policy',
-  notFoundLabel: '404 page',
-  copyright: 'Right At Home Realty',
+  copyright: 'Right At Home Realty Team',
   designedBy: 'Design & Developed by',
   previous: 'Previous',
   next: 'Next',
@@ -213,7 +207,7 @@ export const en: Translation = {
     'Browse the latest homes for sale across North Carolina and South Carolina.',
   loadMore: 'Load More',
   showing: 'Showing',
-ofProperties: 'of',
+  ofProperties: 'of',
   categoryEyebrow: 'Featured Listings',
   whatMakesItSpecial: "What's special",
   propertyDetails: 'Property Details',
@@ -300,31 +294,24 @@ ofProperties: 'of',
   notFoundTitle: 'Oops! Something went wrong.',
   notFoundMessage:
     "The page you're looking for doesn't exist. Try searching or return to the homepage.",
-  appointmentsEyebrow: 'Appointments',
-  appointmentsTitle: 'Snag your spot',
-  appointmentsIntro:
-    "Looking to find your dream home or sell your current one? We're here to guide you every step of the way. Let's schedule a time that works for you and start turning your real estate goals into reality.",
-  seoHomeTitle: 'Right At Home Realty | Real Estate Team in the Carolinas',
+  seoHomeTitle: 'Right At Home Realty Team | Real Estate in the Carolinas',
   seoHomeDescription:
-    'Right At Home Realty - Alvaro, Sally, and Nancy guide families home across North Carolina and South Carolina with service, protection, and trust. Hablamos Español.',
-  seoPropertiesTitle: 'Property Listings | Right At Home Realty',
+    'Right At Home Realty Team - Alvaro, Sally, and Nancy guide families home across North Carolina and South Carolina with service, protection, and trust. Hablamos Español.',
+  seoPropertiesTitle: 'Property Listings | Right At Home Realty Team',
   seoPropertiesDescription:
     'Browse the latest homes for sale across North Carolina and South Carolina, updated directly from the MLS.',
-  seoBlogTitle: 'Blog | Right At Home Realty',
+  seoBlogTitle: 'Blog | Right At Home Realty Team',
   seoBlogDescription:
     'Practical advice, honest market takes, and guides written by the agents who work the Carolinas market every day.',
-  seoAboutTitle: 'About Us | Right At Home Realty',
+  seoAboutTitle: 'About Us | Right At Home Realty Team',
   seoAboutDescription:
     'Alvaro and Sally Jaimes founded Right At Home Realty after two decades of serving the community. Meet the team and our story.',
-  seoContactTitle: 'Contact Us | Right At Home Realty',
+  seoContactTitle: 'Contact Us | Right At Home Realty Team',
   seoContactDescription:
     'Interested in working together? Contact the Right At Home Realty team today. We can\u2019t wait to hear from you.',
-  seoAppointmentsTitle: 'Appointments | Right At Home Realty',
-  seoAppointmentsDescription:
-    'Schedule a time that works for you and start turning your real estate goals into reality.',
-  seoNotFoundTitle: 'Page Not Found | Right At Home Realty',
+  seoNotFoundTitle: 'Page Not Found | Right At Home Realty Team',
   seoNotFoundDescription: 'The page you are looking for does not exist.',
-  ogSiteDescription: 'Right At Home Realty - guiding families home across the Carolinas.',
+  ogSiteDescription: 'Right At Home Realty Team - guiding families home across the Carolinas.',
   langSwitcherLabel: 'Language',
   menuHome: 'Home',
   menuBrowse: 'Browse',

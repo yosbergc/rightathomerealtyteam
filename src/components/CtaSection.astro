@@ -12,7 +12,7 @@ interface Props {
 
 const { locale, image } = Astro.props;
 const t = getDictionary(locale);
-const appointmentsUrl = localizedPath('/appointments', locale);
+const contactUrl = localizedPath('/contact', locale);
 ---
 
 <section class="section-pad bg-navy text-white">
@@ -34,7 +34,7 @@ const appointmentsUrl = localizedPath('/appointments', locale);
             <br />
             {t.ctaTitleLineTwo}
           </h2>
-          <a href={appointmentsUrl} class="btn btn-primary mt-8 px-8 py-3.5 text-[17px]">
+          <a href={contactUrl} class="btn btn-primary mt-8 px-8 py-3.5 text-[17px]">
             {t.ctaButton}
           </a>
         </div>

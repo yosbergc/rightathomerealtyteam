@@ -92,10 +92,10 @@ const jsonLd = [
         <div data-reveal class="hidden justify-self-end lg:block">
           <div class="relative max-w-[380px]">
             <Image
-              src={imageMap.heroPortrait}
-              alt="Right At Home Realty team member"
-              class="w-full rounded-[12px] object-cover"
-              width={963}
+              src={imageMap.aboutCommunity}
+              alt="The Right At Home Realty Team"
+              class="w-full rounded-[12px] object-cover object-top"
+              width={641}
               height={1000}
             />
             <span class="badge-pill absolute bottom-4 left-4 bg-[#C89B3C] px-4 py-2 text-[15px] font-semibold">
@@ -185,7 +185,11 @@ const jsonLd = [
   <section id="testimonial" class="section-pad bg-navy text-white">
     <div class="container-site">
       <div data-reveal>
-        <SectionHeading eyebrow={t.testimonialsEyebrow} title={t.testimonialsTitle} />
+        <SectionHeading
+          tone="light"
+          eyebrow={t.testimonialsEyebrow}
+          title={t.testimonialsTitle}
+        />
       </div>
       <div class="mt-12">
         <TestimonialCarousel testimonials={t.testimonialsList} />

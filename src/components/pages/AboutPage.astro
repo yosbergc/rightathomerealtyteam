@@ -124,7 +124,11 @@ const jsonLd = [
   <section id="testimonial" class="section-pad bg-navy text-white">
     <div class="container-site">
       <div data-reveal>
-        <SectionHeading eyebrow={t.testimonialsEyebrow} title={t.testimonialsTitle} />
+        <SectionHeading
+          tone="light"
+          eyebrow={t.testimonialsEyebrow}
+          title={t.testimonialsTitle}
+        />
       </div>
       <div class="mt-12">
         <TestimonialCarousel testimonials={t.testimonialsList} />
