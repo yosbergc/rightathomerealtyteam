@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Icon from './Icon.astro';
+import type { TeamMember } from '../i18n/types';
+
+interface Props {
+  member: TeamMember;
+  photo: ImageMetadata;
+}
+
+const { member, photo } = Astro.props;
+---
+
+<div class="card-surface group flex flex-col overflow-hidden transition-shadow duration-300 hover:shadow-lg">
+  <div class="relative aspect-[3/4] overflow-hidden bg-surface">
+    <Image
+      src={photo}
+      alt={member.name}
+      class="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
+      sizes="(max-width: 809px) 100vw, (max-width: 1199px) 50vw, 33vw"
+    />
+  </div>
+  <div class="flex flex-1 flex-col p-5">
+    <h3 class="heading-card">{member.name}</h3>
+    <p class="mt-1 text-sm font-medium text-brand">{member.title}</p>
+    <div class="mt-5 grid gap-2.5">
+      <a
+        href={`tel:${member.phone.replace(/[^+\d]/g, '')}`}
+        class="btn btn-outline-dark w-full py-2.5 text-sm"
+      >
+        <Icon name="phone" class="h-4 w-4" />
+        {member.phone}
+      </a>
+      <a href={`mailto:${member.email}`} class="btn btn-primary w-full py-2.5 text-sm">
+        <Icon name="mail" class="h-4 w-4" />
+        {member.name.split(' ')[0]}
+      </a>
+    </div>
+  </div>
+</div>

@@ -518,3 +518,402 @@
   object-fit: contain;
   border-radius: 8px;
 }
+
+.idx-search #idxaddons-omnisearch-form {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  align-items: flex-end !important;
+  margin: 0 !important;
+  padding: 20px !important;
+  background-color: #fff !important;
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  box-shadow: 0 18px 40px -18px rgb(0 0 0 / 0.35);
+}
+
+.idx-search .idxaddons-omnisearch-pt.pt-tabs {
+  width: 100% !important;
+  margin: 0 0 4px !important;
+  padding: 0 !important;
+  display: flex !important;
+  gap: 4px !important;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.idx-search .idxaddons-omnisearch-pt.pt-tabs > * {
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+}
+
+.idx-search .idxaddons-omnisearch-pt.pt-tabs label {
+  margin: 0 !important;
+}
+
+.idx-search .idxaddons-omnisearch-pt.pt-tabs span {
+  display: block !important;
+  padding: 10px 18px !important;
+  line-height: 1.2 !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: var(--color-muted) !important;
+  background-color: transparent !important;
+  border-radius: 4px 4px 0 0;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.idx-search .idxaddons-omnisearch-pt.pt-tabs span:hover {
+  color: var(--color-brand) !important;
+  background-color: transparent !important;
+}
+
+.idx-search .idxaddons-omnisearch-pt.pt-tabs input:checked + span {
+  color: var(--color-brand) !important;
+  background-color: transparent !important;
+  border-bottom-color: var(--color-brand);
+}
+
+.idx-search .idxaddons-omnisearch-pt.pt-tabs a {
+  display: block !important;
+  padding: 10px 18px !important;
+  line-height: 1.2 !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: var(--color-muted) !important;
+  background-color: transparent !important;
+  border-radius: 4px 4px 0 0;
+  border-bottom: 2px solid transparent;
+  text-decoration: none;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.idx-search .idxaddons-omnisearch-pt.pt-tabs a:hover {
+  color: var(--color-brand) !important;
+  background-color: transparent !important;
+}
+
+.idx-search .ms-ctn {
+  position: relative !important;
+  flex: 1 1 100% !important;
+  min-width: 220px !important;
+  height: 52px !important;
+  margin: 0 !important;
+  padding: 0 44px 0 16px !important;
+  background-color: var(--color-surface) !important;
+  border: 1px solid var(--color-line) !important;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.idx-search .ms-ctn-focus {
+  border-color: var(--color-brand) !important;
+  box-shadow: 0 0 0 3px rgb(0 86 199 / 0.12);
+}
+
+.idx-search .ms-ctn .ms-sel-ctn {
+  width: 100% !important;
+  overflow: visible !important;
+  padding-right: 0 !important;
+}
+
+.idx-search .ms-ctn input,
+.idx-search .ms-ctn .ms-sel-ctn input {
+  float: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  font-size: 16px !important;
+  color: var(--color-ink) !important;
+  line-height: 1.4 !important;
+  font-family: var(--font-sans) !important;
+}
+
+.idx-search .ms-ctn input:focus {
+  outline: none !important;
+  background: transparent !important;
+}
+
+.idx-search .ms-ctn .ms-sel-item {
+  background: rgb(0 86 199 / 0.1) !important;
+  color: var(--color-brand) !important;
+  border: 1px solid rgb(0 86 199 / 0.25) !important;
+  border-radius: 4px !important;
+  font-size: 13px !important;
+  padding: 2px 6px !important;
+  margin: 2px 6px 2px 0 !important;
+}
+
+.idx-search .ms-ctn .ms-trigger {
+  right: 12px !important;
+  width: 16px !important;
+  height: auto !important;
+  border: 0 !important;
+  background: transparent !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.idx-search .ms-ctn .ms-trigger .ms-trigger-ico {
+  border-top-color: var(--color-muted) !important;
+  margin: 0 !important;
+}
+
+.idx-search .ms-res-ctn {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  margin-top: 6px;
+  background-color: #fff !important;
+  border: 1px solid var(--color-line) !important;
+  border-radius: 8px;
+  box-shadow: 0 18px 40px -18px rgb(0 0 0 / 0.3);
+  z-index: 90 !important;
+  overflow-y: auto !important;
+  max-height: 320px;
+}
+
+.idx-search .ms-res-ctn .ms-res-item {
+  color: var(--color-ink) !important;
+  font-size: 15px !important;
+  line-height: 1.4 !important;
+  padding: 10px 16px !important;
+  font-family: var(--font-sans) !important;
+}
+
+.idx-search .ms-res-ctn .ms-res-item:hover,
+.idx-search .ms-res-ctn .ms-res-item-active {
+  background-color: var(--color-surface) !important;
+}
+
+.idx-search .ms-res-ctn .ms-res-group {
+  background: var(--color-surface) !important;
+  color: var(--color-muted) !important;
+  font-family: var(--font-sans) !important;
+}
+
+.idx-search #iaofMinPrice,
+.idx-search #iaofMaxPrice,
+.idx-search #iaofBeds,
+.idx-search #iaofBaths {
+  flex: 1 1 120px !important;
+  min-width: 110px !important;
+  height: 52px !important;
+  margin: 0 !important;
+  padding: 0 16px !important;
+  background-color: var(--color-surface) !important;
+  border: 1px solid var(--color-line) !important;
+  border-radius: 8px;
+  font-size: 16px !important;
+  color: var(--color-ink) !important;
+  font-family: var(--font-sans) !important;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.idx-search #iaofMinPrice:focus,
+.idx-search #iaofMaxPrice:focus,
+.idx-search #iaofBeds:focus,
+.idx-search #iaofBaths:focus {
+  outline: none;
+  border-color: var(--color-brand) !important;
+  box-shadow: 0 0 0 3px rgb(0 86 199 / 0.12);
+}
+
+.idx-search #idxaddons-omnisearch-form button[type="submit"] {
+  flex: 0 0 auto !important;
+  height: 52px !important;
+  margin: 0 !important;
+  padding: 0 28px !important;
+  background-color: var(--color-brand) !important;
+  color: #fff !important;
+  border: 1px solid var(--color-brand) !important;
+  border-radius: 8px;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  font-family: var(--font-sans) !important;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.idx-search #idxaddons-omnisearch-form button[type="submit"]:hover {
+  background-color: #0047a6 !important;
+  color: #fff !important;
+}
+
+.idx-search #idxaddons-omnisearch-form button[type="submit"]:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.idx-search #idxaddons-omnisearch-form .search_icon {
+  width: 18px !important;
+  height: 18px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+}
+
+.idx-search #idxaddons-omnisearch-form .search__circle {
+  width: 13px !important;
+  height: 13px !important;
+  border: 2px solid !important;
+  border-radius: 10px !important;
+}
+
+.idx-search #idxaddons-omnisearch-form .search__rectangle {
+  right: 0 !important;
+  top: 12px !important;
+  width: 6px !important;
+  border: 1px solid !important;
+  transform: rotate(45deg);
+}
+
+@media (max-width: 809px) {
+  .idx-search #idxaddons-omnisearch-form {
+    padding: 16px !important;
+    gap: 10px !important;
+  }
+  .idx-search .idxaddons-omnisearch-pt.pt-tabs span,
+  .idx-search .idxaddons-omnisearch-pt.pt-tabs a {
+    padding: 10px 14px !important;
+    font-size: 14px !important;
+  }
+  .idx-search .ms-ctn,
+  .idx-search #iaofMinPrice,
+  .idx-search #iaofMaxPrice,
+  .idx-search #iaofBeds,
+  .idx-search #iaofBaths,
+  .idx-search #idxaddons-omnisearch-form button[type="submit"] {
+    height: 50px !important;
+  }
+  .idx-search .ms-ctn {
+    flex: 1 1 100% !important;
+    min-width: 0 !important;
+  }
+  .idx-search #idxaddons-omnisearch-form button[type="submit"] {
+    width: 100% !important;
+  }
+}
+
+.idx-featured .AL-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 20px !important;
+  margin: 0 !important;
+}
+
+.idx-featured .AL-row .col,
+.idx-featured .AL-row .col-sm-12,
+.idx-featured .AL-row .col-md-6,
+.idx-featured .AL-row .col-lg-4 {
+  flex: 0 0 calc(33.333% - 14px) !important;
+  max-width: calc(33.333% - 14px) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .idx-featured .AL-row .col-md-6,
+  .idx-featured .AL-row .col-lg-4 {
+    flex: 0 0 calc(50% - 10px) !important;
+    max-width: calc(50% - 10px) !important;
+  }
+}
+
+@media (max-width: 809px) {
+  .idx-featured .AL-row .col-sm-12,
+  .idx-featured .AL-row .col-md-6,
+  .idx-featured .AL-row .col-lg-4 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+.idx-featured .showcase-photo {
+  display: block !important;
+  overflow: hidden !important;
+  position: relative !important;
+  border-radius: 12px;
+  background-color: var(--color-surface);
+}
+
+.idx-featured .showcase-photo::before {
+  padding-top: 75% !important;
+}
+
+.idx-featured .showcase-photo img {
+  object-fit: cover !important;
+  transition: transform 0.5s ease;
+}
+
+.idx-featured .showcase-property:hover .showcase-photo img {
+  transform: scale(1.04);
+}
+
+.idx-featured .showcase-property {
+  display: block !important;
+  background-color: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.idx-featured .showcase-property:hover {
+  box-shadow: 0 18px 40px -18px rgb(0 0 0 / 0.3);
+}
+
+.idx-featured .showcase-property .showcase-info {
+  padding: 16px 20px 20px;
+}
+
+.idx-featured .showcase-property .price {
+  display: block !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--color-ink) !important;
+  font-family: var(--font-sans) !important;
+}
+
+.idx-featured .showcase-property .address {
+  display: block !important;
+  margin: 6px 0 10px !important;
+  font-size: 15px !important;
+  color: var(--color-muted) !important;
+  font-family: var(--font-sans) !important;
+  line-height: 1.4 !important;
+}
+
+.idx-featured .showcase-property .basicInfo {
+  display: block !important;
+  font-size: 14px !important;
+  color: var(--color-muted) !important;
+  font-family: var(--font-sans) !important;
+}
+
+.idx-featured .AL-row:empty::after {
+  content: "Featured homes are updated directly from the MLS.";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  border: 1px dashed var(--color-line);
+  border-radius: 12px;
+  color: var(--color-muted);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  text-align: center;
+  padding: 24px;
+}

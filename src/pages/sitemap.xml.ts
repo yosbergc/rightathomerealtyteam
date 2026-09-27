@@ -52,12 +52,13 @@ export async function GET() {
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
   ];
 
-  const staticRoutes = [
+const staticRoutes = [
     { en: '/', es: '/es', priority: 1.0, changefreq: 'weekly' },
     { en: '/properties', es: '/es/propiedades', priority: 0.9, changefreq: 'weekly' },
     { en: '/blog', es: '/es/blog', priority: 0.9, changefreq: 'weekly' },
     { en: '/about', es: '/es/nosotros', priority: 0.7, changefreq: 'monthly' },
     { en: '/contact', es: '/es/contacto', priority: 0.7, changefreq: 'monthly' },
+    { en: '/appointments', es: '/es/citas', priority: 0.7, changefreq: 'monthly' },
   ];
 
   for (const route of staticRoutes) {

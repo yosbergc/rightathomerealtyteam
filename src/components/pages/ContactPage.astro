@@ -24,13 +24,6 @@ const t = getDictionary(locale);
 const path = locale === 'es' ? '/es/contacto' : '/contact';
 const rootPath = locale === 'es' ? '/es' : '/';
 
-const infoCards = [
-  { label: t.hoursLabel, value: siteConfig.hours, icon: 'clock' as const },
-  { label: t.phoneLabel, value: siteConfig.phone, icon: 'phone' as const, href: siteConfig.phoneHref },
-  { label: t.emailLabel, value: siteConfig.email, icon: 'mail' as const, href: siteConfig.emailHref },
-  { label: t.addressLabel, value: siteConfig.address, icon: 'location' as const },
-];
-
 const jsonLd = [
   buildOrganizationJsonLd(),
   buildWebPageJsonLd(t.seoContactTitle, path, t.seoContactDescription),
@@ -46,7 +39,7 @@ const jsonLd = [
   description={t.seoContactDescription}
   locale={locale}
   path={path}
-  image={imageMap.contactHero}
+  image={imageMap.hero}
   jsonLd={jsonLd}
 >
   <section class="section-pad pb-10 pt-32 md:pt-40">
@@ -60,33 +53,39 @@ const jsonLd = [
         <p class="text-body mt-5 text-muted">{t.contactHeroSubtitle}</p>
         <div class="mt-10 overflow-hidden rounded-[12px]">
           <Image
-            src={imageMap.contactHero}
+            src={imageMap.hero}
             alt=""
-            class="aspect-[4/3] w-full object-cover"
-            width={1200}
-            height={896}
+            class="aspect-[16/9] w-full object-cover"
+            width={1920}
+            height={1080}
             aria-hidden="true"
           />
         </div>
       </div>
       <div data-reveal class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {infoCards.map((card) => (
-          <div class="card-surface flex items-start gap-4 p-6">
-            <span class="icon-chip flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-surface">
-              <Icon name={card.icon} class="h-5 w-5 text-brand" />
-            </span>
-            <div>
-              <p class="text-sm text-muted">{card.label}</p>
-              {card.href ? (
-                <a href={card.href} class="mt-1 block font-semibold text-black transition-colors hover:text-brand">
-                  {card.value}
-                </a>
-              ) : (
-                <p class="mt-1 font-semibold text-black">{card.value}</p>
-              )}
+        {t.contactInfoCards.map((card, index) => {
+          const icons = ['phone', 'mail', 'location', 'house'] as const;
+          return (
+            <div class="card-surface flex items-start gap-4 p-6">
+              <span class="icon-chip flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-surface">
+                <Icon name={icons[index] ?? 'phone'} class="h-5 w-5 text-brand" />
+              </span>
+              <div>
+                <p class="text-sm text-muted">{card.label}</p>
+                {card.href ? (
+                  <a
+                    href={card.href}
+                    class="mt-1 block font-semibold text-black transition-colors hover:text-brand"
+                  >
+                    {card.value}
+                  </a>
+                ) : (
+                  <p class="mt-1 font-semibold text-black">{card.value}</p>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
         <div class="overflow-hidden rounded-[12px] border border-line sm:col-span-2">
           <PropertyMap locale={locale} embedUrl={siteConfig.contactMapEmbed} />
         </div>
@@ -106,11 +105,11 @@ const jsonLd = [
           <p class="text-body mt-4 text-muted">{t.contactFormParagraph}</p>
           <div class="mt-8 hidden overflow-hidden rounded-[12px] lg:block">
             <Image
-              src={imageMap.contactSide}
+              src={imageMap.aboutCommunity}
               alt=""
               class="aspect-[4/3] w-full object-cover"
-              width={1200}
-              height={896}
+              width={641}
+              height={1000}
               aria-hidden="true"
             />
           </div>

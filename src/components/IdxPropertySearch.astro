@@ -1,0 +1,20 @@
+---
+import { siteConfig } from '../config/site';
+
+interface Props {
+  placeholder?: string;
+  id?: string;
+}
+
+const { placeholder, id } = Astro.props;
+---
+
+<div class="idx-search" id={id}>
+  <script
+    is:inline
+    id="idxaddons-autocomplete-script"
+    src={siteConfig.idxSearchSrc}
+    data-agentid={siteConfig.idxSearchAgentId}
+    {...(placeholder ? { 'data-placeholder': placeholder } : {})}
+  ></script>
+</div>

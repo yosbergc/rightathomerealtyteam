@@ -16,7 +16,7 @@ interface Props {
 
 const { locale, variant, currentPath, enUrl, esUrl } = Astro.props;
 const t = getDictionary(locale);
-const contactUrl = localizedPath('/contact#contact-form', locale);
+const appointmentsUrl = localizedPath('/appointments', locale);
 ---
 
 <header
@@ -41,8 +41,8 @@ const contactUrl = localizedPath('/contact#contact-form', locale);
         <Icon name="menu" class="h-5 w-5" />
         {t.menu}
       </button>
-      <a href={contactUrl} class="btn btn-dark px-5 py-2.5 text-sm">
-        {t.bookConsultation}
+      <a href={appointmentsUrl} class="btn btn-dark px-5 py-2.5 text-sm">
+        {t.bookAppointment}
       </a>
     </div>
     <div class="flex items-center gap-4 lg:hidden">

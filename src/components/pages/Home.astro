@@ -3,23 +3,17 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Icon from '../Icon.astro';
 import SectionHeading from '../SectionHeading.astro';
-import PropertyGrid from '../PropertyGrid.astro';
+import IdxPropertySearch from '../IdxPropertySearch.astro';
+import IdxFeaturedHomes from '../IdxFeaturedHomes.astro';
 import CategoryCard from '../CategoryCard.astro';
-import StatsCounter from '../StatsCounter.astro';
+import TeamSection from '../TeamSection.astro';
 import TestimonialCarousel from '../TestimonialCarousel.astro';
 import BlogGrid from '../BlogGrid.astro';
 import CtaSection from '../CtaSection.astro';
 import FaqAccordion from '../FaqAccordion.astro';
 import { siteConfig } from '../../config/site';
 import { getDictionary, localizedPath } from '../../i18n';
-import {
-  getFeaturedProperties,
-  getProperties,
-  getCategories,
-  getPosts,
-  propertyUrl,
-} from '../../utils/content';
-import { formatPrice } from '../../utils/format';
+import { getCategories, getPosts } from '../../utils/content';
 import { imageMap } from '../../utils/images';
 import {
   buildOrganizationJsonLd,
@@ -36,15 +30,11 @@ interface Props {
 const { locale } = Astro.props;
 const t = getDictionary(locale);
 const path = locale === 'es' ? '/es' : '/';
-const [featured, allProperties, categories, posts] = await Promise.all([
-  getFeaturedProperties(locale, 6),
-  getProperties(locale),
-  getCategories(locale),
-  getPosts(locale),
-]);
+const [categories, posts] = await Promise.all([getCategories(locale), getPosts(locale)]);
 
-const heroProperty = allProperties.find((property) => property.data.translationKey === 'glass-pavilion');
 const blogPosts = posts.slice(0, 3);
+const searchPlaceholder =
+  locale === 'es' ? 'Busca por dirección, ciudad, condado o código postal' : 'Search for address, city, county, or zipcode';
 
 const jsonLd = [
   buildOrganizationJsonLd(),
@@ -62,84 +52,73 @@ const jsonLd = [
   headerVariant="transparent"
   jsonLd={jsonLd}
 >
-  <section class="relative flex min-h-[100svh] items-end overflow-hidden text-white">
+  <section class="relative flex min-h-[100svh] items-center overflow-hidden text-white">
     <Image
-      src={imageMap.heroGlassPavilion}
+      src={imageMap.hero}
       alt=""
       class="absolute inset-0 h-full w-full object-cover"
-      width={2752}
-      height={1536}
+      width={1920}
+      height={1080}
       aria-hidden="true"
     />
-    <div
-      class="absolute inset-0 mix-blend-multiply"
-      style="background: radial-gradient(50% 50% at 71.8% 50%, transparent 18%, rgba(0,0,0,0.32) 100%)"
-      aria-hidden="true"
-    ></div>
-    <div class="container-site relative z-10 pb-14 pt-36 md:pb-16">
-      <div class="grid items-end gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
+    <div class="absolute inset-0 bg-black/60" aria-hidden="true"></div>
+    <div class="container-site relative z-10 py-32 md:py-40">
+      <div class="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
         <div data-reveal>
-          <p class="flex items-center gap-2 text-[15px] font-medium text-white/90">
-            <Icon name="location" class="h-5 w-5 text-white" />
+          <p class="flex flex-wrap items-center gap-3 text-[15px] font-medium text-white/90">
+            <Icon name="house" class="h-[11px] w-3 text-[#C89B3C]" />
             {t.heroEyebrow}
+            <span class="badge-pill bg-[#C89B3C] px-3 py-1.5 text-[13px] font-semibold">
+              {siteConfig.heroBadge}
+            </span>
           </p>
-          <span class="badge-pill mt-5">{t.featuredProperty}</span>
-          <h1 class="heading-hero mt-4 text-white">{t.heroTitle}</h1>
-          <p class="mt-6 max-w-md text-[17px] leading-[1.5] text-white/85">{t.heroSubtitle}</p>
-          <div class="mt-9 flex flex-wrap gap-3">
-            <a href={localizedPath('/contact#contact-form', locale)} class="btn btn-primary">
-              {t.contactUs}
+          <h1 class="heading-hero mt-4 max-w-xl text-white">{t.heroTitle}</h1>
+          <p class="mt-6 max-w-xl text-[17px] leading-[1.5] text-white/85">{t.heroSubtitle}</p>
+          <div class="mt-9 max-w-2xl">
+            <IdxPropertySearch placeholder={searchPlaceholder} />
+          </div>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href={localizedPath('/contact', locale)} class="btn btn-primary">
+              {t.heroCtaWorth}
             </a>
-            {
-              heroProperty && (
-                <a href={propertyUrl(heroProperty, locale)} class="btn btn-outline">
-                  {t.viewProperty}
-                </a>
-              )
-            }
+            <a href="#listings" class="btn btn-outline">
+              {t.heroCtaSearch}
+            </a>
+            <a href={siteConfig.phoneHref} class="btn btn-outline">
+              {t.heroCtaCall}
+            </a>
           </div>
         </div>
-        {
-          heroProperty && (
-            <div data-reveal class="max-w-[540px] justify-self-end rounded-[12px] border border-white/10 bg-black/55 p-6 backdrop-blur-sm md:p-8">
-              <div class="grid grid-cols-2 items-center gap-6">
-                <div>
-                  <span class="badge-pill">{t.featuredProperty}</span>
-                  <p class="mt-3 text-[20px] font-semibold leading-tight md:text-[24px]">
-                    {heroProperty.data.title}
-                  </p>
-                </div>
-                <div class="overflow-hidden rounded-[8px]">
-                  <Image
-                    src={heroProperty.data.coverImage}
-                    alt={heroProperty.data.title}
-                    class="aspect-[4/3] w-full object-cover"
-                    width={1200}
-                    height={896}
-                  />
-                </div>
-              </div>
-              <div class="mt-6 grid grid-cols-4 gap-2 border-t border-white/10 pt-5">
-                <div>
-                  <p class="text-[17px] font-semibold">{heroProperty.data.beds}</p>
-                  <p class="text-[12px] text-white/60">{t.beds}</p>
-                </div>
-                <div>
-                  <p class="text-[17px] font-semibold">{heroProperty.data.baths}</p>
-                  <p class="text-[12px] text-white/60">{t.baths}</p>
-                </div>
-                <div>
-                  <p class="text-[17px] font-semibold">{formatPrice(heroProperty.data.sqft)}</p>
-                  <p class="text-[12px] text-white/60">sqft</p>
-                </div>
-                <div class="text-right">
-                  <p class="text-[12px] text-white/60">{t.sellingPrice}</p>
-                  <p class="text-[17px] font-semibold">$ {formatPrice(heroProperty.data.price)}</p>
-                </div>
-              </div>
-            </div>
-          )
-        }
+        <div data-reveal class="hidden justify-self-end lg:block">
+          <div class="relative max-w-[380px]">
+            <Image
+              src={imageMap.heroPortrait}
+              alt="Right At Home Realty team member"
+              class="w-full rounded-[12px] object-cover"
+              width={963}
+              height={1000}
+            />
+            <span class="badge-pill absolute bottom-4 left-4 bg-[#C89B3C] px-4 py-2 text-[15px] font-semibold">
+              {siteConfig.heroBadge}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="container-site">
+      <div class="grid gap-8 md:grid-cols-3">
+        {t.values.map((value) => (
+          <div data-reveal class="rounded-[12px] bg-surface p-8">
+            <span class="icon-chip flex h-12 w-12 items-center justify-center rounded-full bg-white">
+              <span class="h-5 w-5 rounded-full bg-brand" aria-hidden="true"></span>
+            </span>
+            <h2 class="heading-card mt-5">{value.title}</h2>
+            <p class="text-body mt-3 text-muted">{value.description}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -148,84 +127,38 @@ const jsonLd = [
     <div class="container-site">
       <div class="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
         <div data-reveal>
-          <h2 class="heading-section" data-split>{t.aboutTitle}</h2>
+          <SectionHeading eyebrow={t.aboutEyebrow} title={t.aboutTitle} />
+          <p class="text-body mt-5">{t.aboutParagraph}</p>
+          <a href={localizedPath('/about', locale)} class="btn btn-outline-dark mt-8">
+            {t.about}
+          </a>
         </div>
-        <div>
-          <div data-reveal>
-            <Image
-              src={imageMap.about}
-              alt="Realty Pro team"
-              class="w-full rounded-[12px] object-cover"
-              width={1376}
-              height={768}
-            />
-          </div>
-          <div data-reveal>
-            <p class="text-body mt-8">{t.aboutParagraph}</p>
-            <div class="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4">
-              {siteConfig.stats.map((stat, index) => (
-                <StatsCounter
-                  value={stat.value}
-                  suffix={stat.suffix}
-                  label={t.stats[index].label}
-                  color={index === 1 || index === 2 ? 'brand' : 'black'}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-pad bg-surface/40">
-    <div class="container-site">
-      <div class="flex flex-wrap items-end justify-between gap-6">
         <div data-reveal>
-          <SectionHeading
-            eyebrow={t.categoriesEyebrow}
-            title={t.categoriesTitle}
-            description={t.categoriesParagraph}
+          <Image
+            src={imageMap.aboutCommunity}
+            alt="Right At Home Realty serving the community"
+            class="w-full rounded-[12px] object-cover"
+            width={641}
+            height={1000}
           />
         </div>
-        <a href={localizedPath('/properties', locale)} class="btn btn-outline-dark mb-1 hidden md:inline-flex">
-          {t.viewAllProperties}
-        </a>
-      </div>
-      <div class="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {categories.map((category, index) => (
-          <div data-reveal>
-            <CategoryCard category={category} locale={locale} index={index + 1} />
-          </div>
-        ))}
-      </div>
-      <div class="mt-10 text-center md:hidden">
-        <a href={localizedPath('/properties', locale)} class="btn btn-outline-dark">
-          {t.viewAllProperties}
-        </a>
       </div>
     </div>
   </section>
 
-  <section class="section-pad">
+  <TeamSection locale={locale} />
+
+  <section id="listings" class="section-pad bg-surface/40">
     <div class="container-site">
-      <div data-reveal class="flex flex-wrap items-end justify-between gap-6">
+      <div data-reveal>
         <SectionHeading
           eyebrow={t.listingsEyebrow}
           title={t.listingsTitle}
           description={t.listingsParagraph}
         />
-        <a href={localizedPath('/properties', locale)} class="btn btn-outline-dark mb-1 hidden md:inline-flex">
-          {t.viewAllProperties}
-        </a>
       </div>
       <div class="mt-12">
-        <PropertyGrid properties={featured} locale={locale} />
-      </div>
-      <div class="mt-12 text-center md:hidden">
-        <a href={localizedPath('/properties', locale)} class="btn btn-outline-dark">
-          {t.viewAllProperties}
-        </a>
+        <IdxFeaturedHomes locale={locale} />
       </div>
     </div>
   </section>
@@ -233,16 +166,16 @@ const jsonLd = [
   <section class="section-pad">
     <div class="container-site">
       <div data-reveal>
-        <SectionHeading eyebrow={t.whyEyebrow} title={t.whyTitle} />
+        <SectionHeading
+          eyebrow={t.categoriesEyebrow}
+          title={t.categoriesTitle}
+          description={t.categoriesParagraph}
+        />
       </div>
-      <div class="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {t.values.map((value) => (
-          <div data-reveal class="rounded-[12px] bg-surface p-7">
-            <span class="icon-chip flex h-12 w-12 items-center justify-center rounded-full bg-white">
-              <Icon name="check" class="h-5 w-5 text-brand" />
-            </span>
-            <h3 class="heading-card mt-5">{value.title}</h3>
-            <p class="text-body mt-3 text-muted">{value.description}</p>
+      <div class="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {categories.map((category, index) => (
+          <div data-reveal>
+            <CategoryCard category={category} locale={locale} index={index + 1} />
           </div>
         ))}
       </div>
@@ -279,7 +212,7 @@ const jsonLd = [
     </div>
   </section>
 
-  <CtaSection locale={locale} image={imageMap.ctaBuilding} />
+  <CtaSection locale={locale} image={imageMap.hero} />
 
   <section id="faq" class="section-pad">
     <div class="container-site max-w-3xl">
@@ -293,4 +226,3 @@ const jsonLd = [
     </div>
   </section>
 </BaseLayout>
-

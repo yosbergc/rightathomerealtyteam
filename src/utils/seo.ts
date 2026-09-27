@@ -27,14 +27,11 @@ export function buildOrganizationJsonLd() {
     url: siteConfig.domain,
     email: siteConfig.email,
     telephone: siteConfig.phone,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: '123 Greenwich Avenue',
-      addressLocality: 'Greenwich',
-      addressRegion: 'CT',
-      postalCode: '06830',
-      addressCountry: 'US',
-    },
+    areaServed: [
+      { '@type': 'State', name: 'North Carolina' },
+      { '@type': 'State', name: 'South Carolina' },
+    ],
+    knowsLanguage: ['en', 'es'],
   };
 }
 

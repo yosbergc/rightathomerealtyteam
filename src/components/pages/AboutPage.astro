@@ -2,13 +2,11 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SectionHeading from '../SectionHeading.astro';
-import StatsCounter from '../StatsCounter.astro';
+import TeamBios from '../TeamBios.astro';
 import TestimonialCarousel from '../TestimonialCarousel.astro';
 import CtaSection from '../CtaSection.astro';
 import FaqAccordion from '../FaqAccordion.astro';
-import { siteConfig } from '../../config/site';
-import { getDictionary } from '../../i18n';
-import { getAuthor } from '../../utils/content';
+import { getDictionary, localizedPath } from '../../i18n';
 import { imageMap } from '../../utils/images';
 import {
   buildOrganizationJsonLd,
@@ -26,10 +24,6 @@ const { locale } = Astro.props;
 const t = getDictionary(locale);
 const path = locale === 'es' ? '/es/nosotros' : '/about';
 const rootPath = locale === 'es' ? '/es' : '/';
-const [marcus, daniela] = await Promise.all([
-  getAuthor('marcus-yi'),
-  getAuthor('daniela-reyes'),
-]);
 
 const jsonLd = [
   buildOrganizationJsonLd(),
@@ -46,134 +40,74 @@ const jsonLd = [
   description={t.seoAboutDescription}
   locale={locale}
   path={path}
-  image={imageMap.aboutHero}
+  image={imageMap.aboutHeroImage}
   jsonLd={jsonLd}
 >
   <section class="relative overflow-hidden text-white">
     <Image
-      src={imageMap.aboutHero}
+      src={imageMap.aboutHeroImage}
       alt=""
       class="absolute inset-0 h-full w-full object-cover"
-      width={2752}
-      height={1536}
+      width={2100}
+      height={749}
       aria-hidden="true"
     />
-    <div class="absolute inset-0 bg-black/55" aria-hidden="true"></div>
-    <div class="container-site relative z-10 flex min-h-[70svh] flex-col justify-end pb-14 pt-40">
+    <div class="absolute inset-0 bg-black/65" aria-hidden="true"></div>
+    <div class="container-site relative z-10 flex min-h-[60svh] flex-col justify-end pb-14 pt-40">
       <div data-reveal>
-        <p class="eyebrow text-white">
-          <span class="inline-flex items-center gap-2">
-            <span class="h-[11px] w-3 text-quote" aria-hidden="true"></span>
-            {t.aboutHeroEyebrow}
-          </span>
-        </p>
+        <p class="eyebrow text-white">{t.aboutHeroEyebrow}</p>
         <h1 class="heading-hero mt-4 max-w-3xl text-white">{t.aboutHeroTitle}</h1>
       </div>
       <div data-reveal class="mt-10 grid max-w-3xl grid-cols-2 gap-6 sm:grid-cols-4">
-        <div>
-          <p class="text-[22px] font-semibold">{t.founded}</p>
-          <p class="mt-1 text-sm text-white/70">{siteConfig.founded}</p>
-        </div>
-        <div>
-          <p class="text-[22px] font-semibold">{t.office}</p>
-          <p class="mt-1 text-sm text-white/70">{siteConfig.office}</p>
-        </div>
-        <div>
-          <p class="text-[22px] font-semibold">{t.activeCaseload}</p>
-          <p class="mt-1 text-sm text-white/70">{siteConfig.activeCaseload}</p>
-        </div>
-        <div>
-          <p class="text-[22px] font-semibold">{t.foundersLabel}</p>
-          <p class="mt-1 text-sm text-white/70">{siteConfig.founders}</p>
-        </div>
+        {t.aboutHeroFacts.map((fact) => (
+          <div>
+            <p class="text-[22px] font-semibold">{fact.label}</p>
+            <p class="mt-1 text-sm text-white/70">{fact.value}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
   <section class="section-pad">
     <div class="container-site">
-      <div class="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+      <div class="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
         <div data-reveal>
-          <h2 class="heading-section" data-split>{t.aboutTitle}</h2>
-        </div>
-        <div>
-          <div data-reveal>
-            <Image
-              src={imageMap.about}
-              alt="Realty Pro team"
-              class="w-full rounded-[12px] object-cover"
-              width={1376}
-              height={768}
-            />
-          </div>
-          <div data-reveal>
-            <p class="text-body mt-8">{t.aboutParagraph}</p>
-            <div class="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4">
-              {siteConfig.stats.map((stat, index) => (
-                <StatsCounter
-                  value={stat.value}
-                  suffix={stat.suffix}
-                  label={t.stats[index].label}
-                  color={index === 1 || index === 2 ? 'brand' : 'black'}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-pad bg-surface/40">
-    <div class="container-site">
-      <div data-reveal>
-        <SectionHeading eyebrow={t.noteEyebrow} title={t.noteTitle} />
-        <p class="text-body mt-4 text-muted">{t.noteIntro}</p>
-      </div>
-      <div class="mt-12 grid gap-12 lg:grid-cols-[auto_1fr] lg:gap-16">
-        <div data-reveal class="flex gap-4">
-          {
-            marcus && (
-              <Image
-                src={marcus.data.avatar}
-                alt={marcus.data.name}
-                class="h-24 w-24 rounded-full object-cover"
-                width={192}
-                height={192}
-              />
-            )
-          }
-          {
-            daniela && (
-              <Image
-                src={daniela.data.avatar}
-                alt={daniela.data.name}
-                class="h-24 w-24 rounded-full object-cover"
-                width={192}
-                height={192}
-              />
-            )
-          }
-        </div>
-        <div data-reveal>
-          <p class="text-[18px] font-semibold text-black">{siteConfig.foundersShort}</p>
-          <p class="text-sm text-muted">{siteConfig.foundingRole}</p>
-          <div class="mt-8 grid gap-6">
-            {t.letter.map((paragraph) => (
-              <p class="text-body">{paragraph}</p>
+          <SectionHeading eyebrow={t.aboutStoryEyebrow} title={t.aboutStoryTitle} />
+          <div class="mt-6 grid gap-5 text-body">
+            {t.aboutStoryParagraphs.map((paragraph) => (
+              <p>{paragraph}</p>
             ))}
           </div>
+          <a href={localizedPath('/contact', locale)} class="btn btn-primary mt-8">
+            {t.contactUs}
+          </a>
+        </div>
+        <div data-reveal class="grid gap-5">
+          {t.valueBadges.map((badge) => (
+            <div class="card-surface flex items-start gap-4 p-6">
+              <span class="icon-chip mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-surface">
+                <span class="h-5 w-5 rounded-full bg-brand" aria-hidden="true"></span>
+              </span>
+              <div>
+                <h3 class="heading-card">{badge.title}</h3>
+                <p class="text-body mt-2 text-muted">{badge.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   </section>
 
+  <TeamBios locale={locale} />
+
   <section class="section-pad">
     <div class="container-site">
       <div data-reveal>
-        <SectionHeading eyebrow={t.whyEyebrow} title={t.whyTitle} />
+        <SectionHeading eyebrow={t.valuesEyebrow} title={t.valuesTitle} />
       </div>
-      <div class="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-3">
         {t.values.map((value) => (
           <div data-reveal class="rounded-[12px] bg-surface p-7">
             <span class="icon-chip flex h-12 w-12 items-center justify-center rounded-full bg-white">
@@ -198,7 +132,7 @@ const jsonLd = [
     </div>
   </section>
 
-  <CtaSection locale={locale} image={imageMap.ctaBuilding} />
+  <CtaSection locale={locale} image={imageMap.hero} />
 
   <section id="faq" class="section-pad">
     <div class="container-site max-w-3xl">

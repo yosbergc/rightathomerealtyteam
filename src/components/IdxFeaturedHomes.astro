@@ -1,0 +1,21 @@
+---
+import { siteConfig } from '../config/site';
+import { getDictionary } from '../i18n';
+import type { Locale } from '../content.config';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+---
+
+<div class="idx-featured" aria-label={t.listingsTitle}>
+  <script
+    is:inline
+    id="idxaddons-featured-15903955"
+    data-style="1"
+    src={siteConfig.idxFeaturedSrc}
+  ></script>
+</div>

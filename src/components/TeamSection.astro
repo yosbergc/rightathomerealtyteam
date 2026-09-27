@@ -1,0 +1,33 @@
+---
+import TeamCard from './TeamCard.astro';
+import SectionHeading from './SectionHeading.astro';
+import { getDictionary } from '../i18n';
+import { teamPhotos } from '../utils/images';
+import type { Locale } from '../content.config';
+
+interface Props {
+  locale: Locale;
+  sectionClass?: string;
+}
+
+const { locale, sectionClass = 'section-pad' } = Astro.props;
+const t = getDictionary(locale);
+---
+
+<section class={sectionClass}>
+  <div class="container-site">
+    <div data-reveal>
+      <SectionHeading eyebrow={t.teamEyebrow} title={t.teamTitle} description={t.teamIntro} />
+    </div>
+    <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {t.teamMembers.map((member) => (
+        <div data-reveal>
+          <TeamCard
+            member={member}
+            photo={teamPhotos[member.photo as keyof typeof teamPhotos]}
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

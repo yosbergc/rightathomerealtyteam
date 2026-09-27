@@ -51,7 +51,7 @@ const description =
   data.seoDescription ??
   `${data.beds} ${t.beds.toLowerCase()}, ${data.baths} ${t.baths.toLowerCase()} ${data.propertyType.toLowerCase()} in ${
     data.city
-  }, ${data.state}. $${formatPrice(data.price)}. ${locale === 'es' ? 'Contacta a Realty Pro.' : 'Contact Realty Pro.'}`;
+  }, ${data.state}. $${formatPrice(data.price)}. ${locale === 'es' ? 'Contacta a Right At Home Realty.' : 'Contact Right At Home Realty.'}`;
 
 const ogImage = await getImage({ src: data.coverImage, width: 1200 });
 const imageUrl = absoluteUrl(ogImage.src);
@@ -184,13 +184,10 @@ alternates={buildAlternates(propertyUrl(enProperty, 'en'), propertyUrl(esPropert
     </div>
   </section>
 
-  <section class="border-y border-line py-6">
+<section class="border-y border-line py-6">
     <div class="container-site flex flex-col gap-2 text-sm text-muted md:flex-row md:justify-between">
       <p>
-        {t.listedBy}: Marcus marcus@everhomerealty, EverHome Realty
-      </p>
-      <p>
-        {t.source}: RMLS (OR), MLS#: 505158869
+        {t.listedBy}: Right At Home Realty
       </p>
     </div>
   </section>

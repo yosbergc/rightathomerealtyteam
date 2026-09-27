@@ -17,7 +17,9 @@ const t = getDictionary(locale);
 const categories = await getCategories(locale);
 
 const browseLinks = [
-  { label: t.contactUs, href: localizedPath('/contact#contact-form', locale) },
+  { label: t.properties, href: localizedPath('/properties', locale) },
+  { label: t.appointments, href: localizedPath('/appointments', locale) },
+  { label: t.contactUs, href: localizedPath('/contact', locale) },
   ...categories.map((category) => ({
     label: category.data.name,
     href: categoryUrl(category, locale),
@@ -100,7 +102,7 @@ const companyLinks = [
                 aria-label={social.label}
                 class="inline-flex h-10 w-10 items-center justify-center rounded-[4px] bg-white/10 text-white transition-colors hover:bg-white/20"
               >
-                <Icon name={social.label.toLowerCase() as 'linkedin' | 'facebook' | 'instagram' | 'x'} class="h-5 w-5" />
+                <Icon name={social.label.toLowerCase() as 'facebook' | 'instagram' | 'tiktok'} class="h-5 w-5" />
               </a>
             </li>
           ))}
@@ -120,10 +122,7 @@ const companyLinks = [
   <div class="border-t border-white/10">
     <div class="container-site flex flex-col items-center justify-between gap-3 py-6 text-[13px] text-white/60 md:flex-row">
       <p>
-        ©{new Date().getFullYear()} {t.copyright} - {t.designedBy}{' '}
-        <a href={siteConfig.creditHref} target="_blank" rel="noopener noreferrer" class="text-brand-light hover:underline">
-          {siteConfig.creditName}
-        </a>
+        ©{new Date().getFullYear()} {t.copyright}
       </p>
       <nav class="flex items-center gap-5">
         <a href={localizedPath('/legal/terms-conditions', locale)} class="transition-colors hover:text-white">

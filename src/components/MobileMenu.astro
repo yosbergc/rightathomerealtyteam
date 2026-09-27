@@ -16,12 +16,12 @@ interface Props {
 const { locale, currentPath, enUrl, esUrl } = Astro.props;
 const t = getDictionary(locale);
 const categories = await getCategories(locale);
-const contactUrl = localizedPath('/contact#contact-form', locale);
+const appointmentsUrl = localizedPath('/appointments', locale);
 
 const mainLinks = [
   { label: t.home, href: localizedPath('/', locale) },
   { label: t.properties, href: localizedPath('/properties', locale) },
-  { label: t.blog, href: localizedPath('/blog', locale) },
+  { label: t.appointments, href: localizedPath('/appointments', locale) },
   { label: t.about, href: localizedPath('/about', locale) },
   { label: t.contact, href: localizedPath('/contact', locale) },
 ];
@@ -68,10 +68,10 @@ const companyLinks = [
             ))}
           </ul>
           <a
-            href={contactUrl}
+            href={appointmentsUrl}
             class="btn btn-primary mt-8"
           >
-            {t.bookConsultation}
+            {t.bookAppointment}
           </a>
         </nav>
         <div class="grid gap-10 md:grid-cols-2">

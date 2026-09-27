@@ -1,8 +1,6 @@
 ---
-import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import type { Testimonial } from '../i18n/types';
-import { imageMap } from '../utils/images';
 
 interface Props {
   testimonials: Testimonial[];
@@ -19,32 +17,21 @@ const { testimonials } = Astro.props;
     {testimonials.map((testimonial) => (
       <div
         data-carousel-slide
-        class="w-full min-w-[88%] snap-start md:min-w-[70%] lg:min-w-[64%]"
+        class="w-full min-w-[88%] snap-start md:min-w-[70%] lg:min-w-[55%]"
         aria-label={`${testimonial.name}`}
       >
-        <figure class="grid gap-6 rounded-[12px] border border-white/10 bg-white/5 p-6 md:grid-cols-[auto_1fr] md:p-8">
-          <div class="relative mx-auto h-56 w-44 shrink-0 md:mx-0">
-            <span class="absolute -left-3 -top-3 block h-14 w-14 rounded-[20px] bg-brand" aria-hidden="true"></span>
-            <span class="absolute -bottom-3 -right-3 block h-14 w-14 rounded-[20px] bg-quote" aria-hidden="true"></span>
-            <Image
-              src={imageMap[testimonial.image as keyof typeof imageMap]}
-              alt={testimonial.name}
-              class="relative h-full w-full rounded-[12px] object-cover"
-              width={896}
-              height={1200}
-            />
-            <span class="badge-pill absolute bottom-3 left-3 bg-black/55">{testimonial.badge}</span>
-          </div>
-          <div class="flex flex-col justify-center">
+        <figure class="flex h-full flex-col rounded-[12px] border border-white/10 bg-white/5 p-8 md:p-10">
+          <div class="flex items-center gap-2">
             <Icon name="house" class="quote-mark h-[11px] w-3" />
-            <blockquote class="mt-4 text-[20px] font-normal leading-[1.4] tracking-[-0.02em] text-white md:text-[24px]">
-              “{testimonial.quote}”
-            </blockquote>
-            <figcaption class="mt-5">
-              <p class="font-semibold text-white">{testimonial.name}</p>
-              <p class="mt-0.5 text-sm text-white/60">{testimonial.tag}</p>
-            </figcaption>
+            <span class="h-px flex-1 bg-white/15" aria-hidden="true"></span>
           </div>
+          <blockquote class="mt-6 flex-1 text-[19px] font-normal leading-[1.5] tracking-[-0.02em] text-white md:text-[22px]">
+            “{testimonial.quote}”
+          </blockquote>
+          <figcaption class="mt-8">
+            <p class="font-semibold text-white">{testimonial.name}</p>
+            <p class="mt-0.5 text-sm text-white/60">{testimonial.tag}</p>
+          </figcaption>
         </figure>
       </div>
     ))}
