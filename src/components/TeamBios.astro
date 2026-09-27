@@ -4,7 +4,6 @@ import Icon from './Icon.astro';
 import SectionHeading from './SectionHeading.astro';
 import { getDictionary } from '../i18n';
 import { teamPhotos } from '../utils/images';
-import { siteConfig } from '../config/site';
 import type { Locale } from '../content.config';
 
 interface Props {
@@ -60,19 +59,24 @@ const t = getDictionary(locale);
                 <Icon name="mail" class="h-4 w-4" />
                 {member.email}
               </a>
-              <div class="flex items-center gap-2">
-                {siteConfig.socials.map((social) => (
-                  <a
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${social.label} - ${member.name}`}
-                    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-surface text-ink transition-colors hover:bg-brand hover:text-white"
-                  >
-                    <Icon name={social.label.toLowerCase() as 'facebook' | 'instagram' | 'tiktok' | 'x'} class="h-4 w-4" />
-                  </a>
-                ))}
-              </div>
+              {member.socials && member.socials.length > 0 && (
+                <div class="flex items-center gap-2">
+                  {member.socials.map((social) => (
+                    <a
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${social.label} - ${member.name}`}
+                      class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-surface text-ink transition-colors hover:bg-brand hover:text-white"
+                    >
+                      <Icon
+                        name={social.label.toLowerCase() as 'facebook' | 'instagram' | 'tiktok' | 'x'}
+                        class="h-4 w-4"
+                      />
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </article>

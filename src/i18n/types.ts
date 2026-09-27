@@ -8,6 +8,7 @@ export type TeamMember = {
   phone: string;
   email: string;
   photo: string;
+  socials?: { label: string; href: string }[];
 };
 export type Faq = { question: string; answer: string };
 

@@ -64,6 +64,11 @@ export const en: Translation = {
       phone: '+1-704-779-1180',
       email: 'Realtoralvarojaimes@gmail.com',
       photo: 'alvaro-jaimes',
+      socials: [
+        { label: 'Facebook', href: 'https://www.facebook.com/jay.photos.31521/' },
+        { label: 'Instagram', href: 'https://www.instagram.com/realtor_alvaro_jaimes' },
+        { label: 'TikTok', href: 'https://www.tiktok.com/@realtoralvarojaimes' },
+      ],
     },
     {
       name: 'Sally Jaimes',
@@ -77,6 +82,10 @@ export const en: Translation = {
       phone: '+1-718-300-0404',
       email: 'Sallyjaimestherealtor@gmail.com',
       photo: 'sally-jaimes',
+      socials: [
+        { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=100075956286314&mibextid=ZbWKwL' },
+        { label: 'Instagram', href: 'https://www.instagram.com/sallyjaimesrealtor' },
+      ],
     },
     {
       name: 'Nancy Brogdon',
@@ -90,6 +99,7 @@ export const en: Translation = {
       phone: '+1-704-915-6911',
       email: 'rubyrealtorllc@gmail.com',
       photo: 'nancy-brogdon',
+      socials: [{ label: 'Instagram', href: 'https://www.instagram.com/Realtor_Nancy_Brogdon' }],
     },
   ],
   valuesEyebrow: 'Why Choose Us',
