@@ -1,0 +1,113 @@
+---
+import { siteConfig } from '../config/site';
+import { getDictionary } from '../i18n';
+import type { Locale } from '../content.config';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+const honeypots = ['botcheck', 'website', 'company', 'title', 'description', 'feedback', 'notes', 'details', 'remarks', 'comments'];
+
+const inputClass =
+  'w-full rounded-[4px] border border-line bg-surface px-4 py-3 text-[15px] text-ink placeholder:text-[#8a8a8a] focus:border-brand';
+const labelClass = 'mb-1.5 block text-sm font-semibold text-white';
+const errorClass = 'mt-1 block min-h-[16px] text-[13px] text-red-600';
+---
+
+<form
+  data-form
+  data-endpoint={siteConfig.formEndpoint}
+  data-access-key={siteConfig.web3formsAccessKey}
+  data-sending={t.sending}
+  class="card-surface p-6 md:p-8"
+  novalidate
+>
+  <input type="hidden" name="subject" value={`New agent application - ${siteConfig.name}`} />
+  <input type="hidden" name="from_name" value={siteConfig.name} />
+  <div class="grid gap-4">
+    <div>
+      <label class={labelClass} for="join-name">{t.joinNameLabel}</label>
+      <input
+        id="join-name"
+        type="text"
+        name="name"
+        placeholder={t.joinNamePlaceholder}
+        required
+        data-required
+        data-msg-required={t.validationRequired}
+        class={inputClass}
+      />
+      <span class={errorClass} data-error aria-live="polite"></span>
+    </div>
+    <div>
+      <label class={labelClass} for="join-phone">{t.joinPhoneLabel}</label>
+      <input
+        id="join-phone"
+        type="tel"
+        name="phone"
+        placeholder={t.joinPhonePlaceholder}
+        required
+        data-required
+        data-msg-required={t.validationRequired}
+        class={inputClass}
+      />
+      <span class={errorClass} data-error aria-live="polite"></span>
+    </div>
+    <div>
+      <label class={labelClass} for="join-email">{t.joinEmailLabel}</label>
+      <input
+        id="join-email"
+        type="email"
+        name="email"
+        placeholder={t.joinEmailPlaceholder}
+        required
+        data-required
+        data-type="email"
+        data-msg-required={t.validationRequired}
+        data-msg-email={t.validationEmail}
+        class={inputClass}
+      />
+      <span class={errorClass} data-error aria-live="polite"></span>
+    </div>
+    <div>
+      <label class={labelClass} for="join-message">{t.joinMessageLabel}</label>
+      <textarea
+        id="join-message"
+        name="message"
+        placeholder={t.joinMessagePlaceholder}
+        required
+        data-required
+        data-msg-required={t.validationMessage}
+        rows={5}
+        class={`${inputClass} resize-y`}
+      ></textarea>
+      <span class={errorClass} data-error aria-live="polite"></span>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary mt-6 w-full px-6 py-3" data-submit>
+    <span data-submit-label>{t.joinSend}</span>
+  </button>
+  {
+    honeypots.map((name) => (
+      <input
+        type="text"
+        name={name}
+        tabindex="-1"
+        autocomplete="off"
+        class="absolute -left-[9999px] h-0 w-0 opacity-0"
+        aria-hidden="true"
+      />
+    ))
+  }
+</form>
+<div data-form-status aria-live="polite">
+  <p class="mt-4 hidden rounded-[4px] border border-green-300 bg-green-50 px-4 py-3 text-sm text-green-800" data-status-success>
+    <strong>{t.successTitle}.</strong> {t.successMessage}
+  </p>
+  <p class="mt-4 hidden rounded-[4px] border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-800" data-status-error>
+    <strong>{t.errorTitle}.</strong> {t.errorMessage}
+  </p>
+</div>

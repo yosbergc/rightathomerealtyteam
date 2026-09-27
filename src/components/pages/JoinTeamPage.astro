@@ -1,0 +1,154 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../Icon.astro';
+import SectionHeading from '../SectionHeading.astro';
+import JoinTeamForm from '../JoinTeamForm.astro';
+import CtaSection from '../CtaSection.astro';
+import { getDictionary, localizedPath } from '../../i18n';
+import { imageMap } from '../../utils/images';
+import {
+  buildOrganizationJsonLd,
+  buildWebPageJsonLd,
+  buildBreadcrumbJsonLd,
+} from '../../utils/seo';
+import { absoluteUrl } from '../../utils/content';
+import type { Locale } from '../../content.config';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+const path = locale === 'es' ? '/es/join' : '/join';
+const rootPath = locale === 'es' ? '/es' : '/';
+
+const jsonLd = [
+  buildOrganizationJsonLd(),
+  buildWebPageJsonLd(t.seoJoinTitle, path, t.seoJoinDescription),
+  buildBreadcrumbJsonLd([
+    { name: 'Home', url: absoluteUrl(rootPath) },
+    { name: t.agent, url: absoluteUrl(path) },
+  ]),
+];
+---
+
+<BaseLayout
+  title={t.seoJoinTitle}
+  description={t.seoJoinDescription}
+  locale={locale}
+  path={path}
+  image={imageMap.aboutCommunity}
+  jsonLd={jsonLd}
+>
+  <section class="relative overflow-hidden text-white">
+    <Image
+      src={imageMap.aboutCommunity}
+      alt=""
+      class="absolute inset-0 h-full w-full object-cover"
+      width={2100}
+      height={749}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+      aria-hidden="true"
+    />
+    <div class="absolute inset-0 bg-black/65" aria-hidden="true"></div>
+    <div class="container-site relative z-10 flex min-h-[60svh] flex-col justify-end pb-14 pt-40">
+      <div data-reveal>
+        <p class="eyebrow text-white">
+          <Icon name="house" class="h-[11px] w-3 text-[#C89B3C]" />
+          {t.joinEyebrow}
+        </p>
+        <h1 class="heading-hero mt-4 max-w-3xl text-white">{t.joinHeroTitle}</h1>
+        <p class="mt-6 max-w-2xl text-[17px] leading-[1.5] text-white/85">{t.joinHeroSubtitle}</p>
+        <a href="#join-form" class="btn btn-primary mt-9 px-8 py-3.5 text-[17px]">
+          {t.joinSend}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="container-site">
+      <div class="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
+        <div data-reveal>
+          <SectionHeading eyebrow={t.joinIntroEyebrow} title={t.joinIntroTitle} />
+          <p class="text-body mt-5">{t.joinIntroParagraph}</p>
+          <ul class="mt-7 grid gap-3">
+            {t.joinIntroPoints.map((point) => (
+              <li class="flex items-start gap-3 text-body">
+                <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand/20 text-brand-light">
+                  <Icon name="check" class="h-4 w-4" />
+                </span>
+                {point}
+              </li>
+            ))}
+          </ul>
+          <a href={localizedPath('/contact', locale)} class="btn btn-outline-dark mt-8">
+            {t.contactUs}
+          </a>
+        </div>
+        <div data-reveal>
+          <Image
+            src={imageMap.alvaroSally}
+            alt="The Right At Home Realty team"
+            class="w-full rounded-[12px] object-cover"
+            width={1000}
+            height={750}
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad bg-surface/40">
+    <div class="container-site">
+      <div data-reveal>
+        <SectionHeading
+          eyebrow={t.joinBenefitsEyebrow}
+          title={t.joinBenefitsTitle}
+        />
+      </div>
+      <div class="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-3">
+        {t.joinBenefits.map((benefit) => (
+          <div data-reveal class="card-surface flex h-full flex-col p-7">
+            <span class="icon-chip flex h-12 w-12 items-center justify-center rounded-full bg-white">
+              <span class="h-5 w-5 rounded-full bg-brand" aria-hidden="true"></span>
+            </span>
+            <h3 class="heading-card mt-5">{benefit.title}</h3>
+            <p class="text-body mt-3 text-muted">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="join-form" class="section-pad">
+    <div class="container-site">
+      <div class="grid gap-12 lg:grid-cols-2 lg:items-start">
+        <div data-reveal>
+          <SectionHeading eyebrow={t.joinFormEyebrow} title={t.joinFormTitle} />
+          <p class="text-body mt-4 text-muted">{t.joinFormParagraph}</p>
+          <div class="mt-8 hidden overflow-hidden rounded-[12px] lg:block">
+            <Image
+              src={imageMap.hero}
+              alt=""
+              class="aspect-[4/3] w-full object-cover"
+              width={1920}
+              height={1080}
+              aria-hidden="true"
+            />
+          </div>
+        </div>
+        <div data-reveal>
+          <JoinTeamForm locale={locale} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaSection locale={locale} image={imageMap.hero} />
+</BaseLayout>

@@ -20,6 +20,7 @@ export const en: Translation = {
   readMore: 'Read more',
   viewProperty: 'View property',
   contactUs: 'Contact Us',
+  agent: 'Agent',
   from: 'From',
   contactAgent: 'Contact Agent',
   beds: 'Beds',
@@ -287,6 +288,55 @@ export const en: Translation = {
   successMessage: 'Thanks for reaching out. We\u2019ll get back to you within 24 hours.',
   errorTitle: 'Something went wrong',
   errorMessage: 'Please try again, or email us directly.',
+  joinEyebrow: 'Join Our Team',
+  joinHeroTitle: 'Build your real estate career with us',
+  joinHeroSubtitle:
+    'Right At Home Realty is growing. If you are a licensed agent - or ready to become one - we offer the tools, training, and team support to help you serve clients and grow your business across North and South Carolina.',
+  joinIntroEyebrow: 'Why Right At Home Realty',
+  joinIntroTitle: 'A team that works like a family',
+  joinIntroParagraph:
+    'We are a boutique team where every agent is a name, not a number. You get direct support from Alvaro and Sally, shared leads, and a culture built on service, protection, and trust.',
+  joinIntroPoints: [
+    'Licensed in North Carolina and South Carolina',
+    'Team support and shared referrals',
+    'Flexible commission structure',
+    'Bilingual: English and Spanish',
+  ],
+  joinBenefitsEyebrow: 'The opportunity',
+  joinBenefitsTitle: 'What we offer our agents',
+  joinBenefits: [
+    {
+      title: 'Lead support',
+      description:
+        'Access to incoming leads and referrals from our website and MLS presence, so you spend less time prospecting and more time selling.',
+    },
+    {
+      title: 'Training & mentorship',
+      description:
+        'One-on-one coaching on listings, contracts, and negotiation from agents who have guided dozens of families home.',
+    },
+    {
+      title: 'Marketing & tools',
+      description:
+        'Professional photography, staging resources, and a team brand that helps you look established from day one.',
+    },
+  ],
+  joinFormEyebrow: 'Apply Today',
+  joinFormTitle: 'Take the next step in your career',
+  joinFormParagraph:
+    'Tell us about yourself - your experience, your goals, and how you would like to grow with our team. We will get back to you within 24 hours.',
+  joinNameLabel: 'Name*',
+  joinNamePlaceholder: 'Your name',
+  joinPhoneLabel: 'Phone number*',
+  joinPhonePlaceholder: 'Your phone number',
+  joinEmailLabel: 'Email address*',
+  joinEmailPlaceholder: 'Your email, example: jane@gmail.com',
+  joinMessageLabel: 'About you*',
+  joinMessagePlaceholder: 'Tell us about your real estate experience and your goals',
+  joinSend: 'Send Application',
+  seoJoinTitle: 'Join Our Team | Right At Home Realty',
+  seoJoinDescription:
+    'Become a real estate agent with Right At Home Realty in North and South Carolina. Apply today and grow your career with a team built on service and trust.',
   validationRequired: 'This field is required',
   validationEmail: 'Please enter a valid email address',
   validationMessage: 'Please write a message before sending',
