@@ -1,0 +1,130 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { getDictionary } from '../i18n';
+import { teamPhotos } from '../utils/images';
+import type { Locale } from '../content.config';
+
+interface Props {
+  locale: Locale;
+  buttonClass?: string;
+  class?: string;
+  dropUp?: boolean;
+}
+
+const {
+  locale,
+  buttonClass = 'btn btn-primary w-full py-3',
+  class: className = '',
+  dropUp = false,
+} = Astro.props;
+const t = getDictionary(locale);
+---
+
+<div class:list={['contact-agents', dropUp && 'drop-up', className]} data-contact-agents>
+  <button
+    type="button"
+    data-contact-agents-toggle
+    aria-expanded="false"
+    aria-haspopup="true"
+    class={buttonClass}
+  >
+    {t.contactAgent}
+  </button>
+  <div data-contact-agents-panel class="contact-agents-panel" role="menu" aria-label={t.contactAgent}>
+    {t.teamMembers.map((member) => (
+      <a
+        href={`tel:${member.phone.replace(/[^+\d]/g, '')}`}
+        class="flex items-center gap-3 rounded-[8px] px-3 py-2.5 transition-colors hover:bg-surface"
+        role="menuitem"
+      >
+        <Image
+          src={teamPhotos[member.photo as keyof typeof teamPhotos]}
+          alt={member.name}
+          width={80}
+          height={80}
+          loading="lazy"
+          class="h-10 w-10 shrink-0 rounded-full border border-line object-cover object-top"
+        />
+        <span class="min-w-0 flex-1">
+          <span class="block truncate text-sm font-semibold text-black">{member.name}</span>
+          <span class="mt-0.5 flex items-center gap-0.5" aria-label="5-star rating">
+            {Array.from({ length: 5 }).map(() => (
+              <Icon name="star" class="h-3.5 w-3.5 text-amber-400" />
+            ))}
+          </span>
+        </span>
+        <Icon name="phone" class="h-5 w-5 shrink-0 text-brand" />
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  .contact-agents {
+    position: relative;
+  }
+
+  .contact-agents-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    z-index: 50;
+    padding: 8px;
+    background-color: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: 12px;
+    box-shadow: 0 20px 40px -20px rgb(0 0 0 / 0.3);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(8px);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      visibility 0.2s;
+  }
+
+  .contact-agents.drop-up .contact-agents-panel {
+    top: auto;
+    bottom: calc(100% + 8px);
+    transform: translateY(-8px);
+  }
+
+  .contact-agents[data-open] .contact-agents-panel {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-contact-agents]').forEach((container) => {
+    const toggle = container.querySelector<HTMLButtonElement>('[data-contact-agents-toggle]');
+    const panel = container.querySelector<HTMLElement>('[data-contact-agents-panel]');
+    if (!toggle || !panel) return;
+
+    const open = () => {
+      container.setAttribute('data-open', '');
+      toggle.setAttribute('aria-expanded', 'true');
+    };
+    const close = () => {
+      container.removeAttribute('data-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+
+    toggle.addEventListener('click', (event) => {
+      event.stopPropagation();
+      if (container.hasAttribute('data-open')) close();
+      else open();
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!container.contains(event.target as Node)) close();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') close();
+    });
+    document.addEventListener('scroll', close, { passive: true });
+  });
+</script>

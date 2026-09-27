@@ -10,6 +10,7 @@ import PropertyTags from '../PropertyTags.astro';
 import FacilityList from '../FacilityList.astro';
 import PropertyMap from '../PropertyMap.astro';
 import SimilarProperties from '../SimilarProperties.astro';
+import ContactAgents from '../ContactAgents.astro';
 import { getDictionary, localizedPath } from '../../i18n';
 import {
   getPropertyByTranslationKey,
@@ -176,9 +177,7 @@ alternates={buildAlternates(propertyUrl(enProperty, 'en'), propertyUrl(esPropert
             <span>$ </span>
             <span>{formatPrice(data.price)}</span>
           </p>
-          <a href={localizedPath('/contact#contact-form', locale)} class="btn btn-primary mt-6 w-full py-3">
-            {t.contactAgent}
-          </a>
+<ContactAgents locale={locale} buttonClass="btn btn-primary mt-6 w-full py-3" />
         </div>
       </aside>
     </div>
@@ -203,9 +202,7 @@ alternates={buildAlternates(propertyUrl(enProperty, 'en'), propertyUrl(esPropert
           <span>{formatPrice(data.price)}</span>
         </p>
       </div>
-      <a href={localizedPath('/contact#contact-form', locale)} class="btn btn-primary shrink-0 px-6 py-2.5">
-        {t.contactAgent}
-      </a>
+<ContactAgents locale={locale} dropUp buttonClass="btn btn-primary shrink-0 px-6 py-2.5" />
     </div>
   </div>
 </BaseLayout>
