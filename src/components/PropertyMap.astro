@@ -1,24 +1,33 @@
 ---
 import { siteConfig } from '../config/site';
 import { getDictionary } from '../i18n';
+import Icon from './Icon.astro';
 import type { Locale } from '../content.config';
 
 interface Props {
   locale: Locale;
   embedUrl?: string;
+  compact?: boolean;
 }
 
-const { locale, embedUrl = siteConfig.mapEmbed } = Astro.props;
+const { locale, embedUrl = siteConfig.mapEmbed, compact = false } = Astro.props;
 const t = getDictionary(locale);
 ---
 
-<h2 class="heading-section">{t.location}</h2>
-<div class="mt-6 overflow-hidden rounded-[12px] border border-line">
+{compact ? (
+  <div class="flex items-center gap-2">
+    <Icon name="location" class="h-5 w-5 text-brand" />
+    <h2 class="heading-card">{t.location}</h2>
+  </div>
+) : (
+  <h2 class="heading-section">{t.location}</h2>
+)}
+<div class={compact ? 'mt-3' : 'mt-6 overflow-hidden rounded-[12px] border border-line'}>
   <iframe
     src={embedUrl}
     title={t.location}
     loading="lazy"
     referrerpolicy="no-referrer-when-downgrade"
-    class="h-[320px] w-full border-0 md:h-[420px]"
+    class={compact ? 'h-[280px] w-full border-0' : 'h-[320px] w-full border-0 md:h-[420px]'}
   ></iframe>
 </div>

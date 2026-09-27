@@ -9,7 +9,7 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = getDictionary(locale);
-const honeypots = ['website', 'company', 'subject', 'title', 'description', 'feedback', 'notes', 'details', 'remarks', 'comments'];
+const honeypots = ['botcheck', 'website', 'company', 'title', 'description', 'feedback', 'notes', 'details', 'remarks', 'comments'];
 
 const inputClass =
   'w-full rounded-[4px] border border-line bg-white px-4 py-3 text-[15px] text-ink placeholder:text-[#9a9a9a] focus:border-brand';
@@ -20,17 +20,20 @@ const errorClass = 'mt-1 block min-h-[16px] text-[13px] text-red-600';
 <form
   data-form
   data-endpoint={siteConfig.formEndpoint}
+  data-access-key={siteConfig.web3formsAccessKey}
   data-sending={t.sending}
   class="card-surface p-6 md:p-8"
   novalidate
 >
+  <input type="hidden" name="subject" value={`New message from the ${siteConfig.name} website`} />
+  <input type="hidden" name="from_name" value={siteConfig.name} />
   <div class="grid gap-4">
     <div>
       <label class={labelClass} for="contact-name">{t.nameLabel}</label>
       <input
         id="contact-name"
         type="text"
-        name="Name"
+        name="name"
         placeholder={t.namePlaceholder}
         required
         data-required
@@ -44,7 +47,7 @@ const errorClass = 'mt-1 block min-h-[16px] text-[13px] text-red-600';
       <input
         id="contact-phone"
         type="tel"
-        name="Phone number"
+        name="phone"
         placeholder={t.phoneNumberPlaceholder}
         class={inputClass}
       />
@@ -54,7 +57,7 @@ const errorClass = 'mt-1 block min-h-[16px] text-[13px] text-red-600';
       <input
         id="contact-email"
         type="email"
-        name="Email address"
+        name="email"
         placeholder={t.emailPlaceholder}
         required
         data-required
@@ -69,7 +72,7 @@ const errorClass = 'mt-1 block min-h-[16px] text-[13px] text-red-600';
       <label class={labelClass} for="contact-message">{t.messageLabel}</label>
       <textarea
         id="contact-message"
-        name="Message"
+        name="message"
         placeholder={t.messagePlaceholder}
         required
         data-required

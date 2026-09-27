@@ -9,22 +9,25 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = getDictionary(locale);
-const honeypots = ['website', 'company', 'message', 'subject', 'title', 'description', 'feedback', 'notes', 'details', 'remarks', 'comments'];
+const honeypots = ['botcheck', 'website', 'company', 'title', 'description', 'feedback', 'notes', 'details', 'remarks', 'comments'];
 ---
 
 <form
   data-form
   data-endpoint={siteConfig.formEndpoint}
+  data-access-key={siteConfig.web3formsAccessKey}
   data-sending="..."
   class="mt-4 flex w-full flex-col gap-2 sm:flex-row sm:items-start"
   novalidate
 >
+  <input type="hidden" name="subject" value={`Newsletter subscription - ${siteConfig.name}`} />
+  <input type="hidden" name="from_name" value={siteConfig.name} />
   <div class="flex-1">
     <label class="sr-only" for="subscribe-email">{t.newsletterTitle}</label>
     <input
       id="subscribe-email"
       type="email"
-      name="Email address"
+      name="email"
       placeholder={t.subscribePlaceholder}
       required
       data-required

@@ -16,7 +16,8 @@ export const siteConfig = {
     { label: 'Instagram', href: 'https://www.instagram.com/realtor_alvaro_jaimes' },
     { label: 'TikTok', href: 'https://www.tiktok.com/@realtoralvarojaimes' },
   ],
-  formEndpoint: '',
+  formEndpoint: 'https://api.web3forms.com/submit',
+  web3formsAccessKey: import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '',
   mapEmbed:
     'https://maps.google.com/maps?q=Charlotte%2C%20NC&z=10&output=embed',
   contactMapEmbed: 'https://maps.google.com/maps?q=Gastonia%2C%20NC&z=9&output=embed',

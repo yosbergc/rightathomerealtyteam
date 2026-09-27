@@ -4,6 +4,7 @@ const forms = document.querySelectorAll<HTMLFormElement>('[data-form]');
 
 forms.forEach((form) => {
   const endpoint = form.dataset.endpoint ?? '';
+  const accessKey = form.dataset.accessKey ?? '';
   const submitButton = form.querySelector<HTMLButtonElement>('[data-submit]');
   const submitLabel = form.querySelector<HTMLElement>('[data-submit-label]');
   const status = form.parentElement?.querySelector<HTMLElement>('[data-form-status]');
@@ -56,19 +57,22 @@ forms.forEach((form) => {
     if (submitButton) submitButton.disabled = true;
     if (submitLabel) submitLabel.textContent = form.dataset.sending ?? '...';
 
-    const honeypotFilled = Array.from(form.querySelectorAll<HTMLInputElement>('input[name]')).some(
-      (input) => input.className.includes('opacity-0') && input.value,
-    );
+    const honeypots = Array.from(
+      form.querySelectorAll<HTMLInputElement>('input[name]'),
+    ).filter((input) => input.className.includes('opacity-0'));
 
-    if (honeypotFilled) {
+    if (honeypots.some((input) => input.value)) {
       showStatus(successBlock);
     } else {
       const payload: Record<string, string> = {};
-      form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input[name], textarea[name]').forEach((field) => {
-        payload[field.name] = field.value;
-      });
+      form
+        .querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input[name], textarea[name]')
+        .forEach((field) => {
+          if (field.className.includes('opacity-0')) return;
+          payload[field.name] = field.value;
+        });
       try {
-        await submitForm(endpoint, payload);
+        await submitForm(endpoint, payload, accessKey);
         form.reset();
         showStatus(successBlock);
       } catch {

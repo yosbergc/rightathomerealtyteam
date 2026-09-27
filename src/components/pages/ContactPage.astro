@@ -73,24 +73,24 @@ const jsonLd = [
               <span class="icon-chip flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-surface">
                 <Icon name={icons[index] ?? 'phone'} class="h-5 w-5 text-brand" />
               </span>
-              <div>
+              <div class="min-w-0">
                 <p class="text-sm text-muted">{card.label}</p>
                 {card.href ? (
                   <a
                     href={card.href}
-                    class="mt-1 block font-semibold text-black transition-colors hover:text-brand"
+                    class="mt-1 block break-words font-semibold text-black transition-colors hover:text-brand"
                   >
                     {card.value}
                   </a>
                 ) : (
-                  <p class="mt-1 font-semibold text-black">{card.value}</p>
+                  <p class="mt-1 break-words font-semibold text-black">{card.value}</p>
                 )}
               </div>
             </div>
           );
         })}
-        <div class="overflow-hidden rounded-[12px] border border-line sm:col-span-2">
-          <PropertyMap locale={locale} embedUrl={siteConfig.contactMapEmbed} />
+        <div class="sm:col-span-2">
+          <PropertyMap locale={locale} embedUrl={siteConfig.contactMapEmbed} compact />
         </div>
       </div>
     </div>

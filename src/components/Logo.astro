@@ -8,16 +8,14 @@ const { class: className = '' } = Astro.props;
 
 <a
   href="/"
-  class={`inline-flex items-center gap-2.5 ${className}`}
+  class={`inline-flex items-center ${className}`}
   aria-label="Right At Home Realty home"
 >
-  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-    <path
-      d="M5 14 16 5l11 9v10.5A2.5 2.5 0 0 1 24.5 27h-5V19h-7v8h-5A2.5 2.5 0 0 1 5 24.5V14Z"
-      fill="currentColor"
-    />
-  </svg>
-  <span class="whitespace-nowrap text-[17px] font-semibold leading-none tracking-tight sm:text-[22px] lg:text-[24px]">
-    Right At Home Realty Team
-  </span>
+  <img
+    src="/og-image.png"
+    alt="Right At Home Realty Team"
+    width={955}
+    height={521}
+    class="h-10 w-auto object-contain md:h-11"
+  />
 </a>
