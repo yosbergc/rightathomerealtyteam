@@ -79,7 +79,7 @@ export const en: Translation = {
     },
     {
       name: 'Nancy Brogdon',
-      title: 'REALTOR® | Assistant Chief of Police',
+      title: 'REALTOR® | Police Executive',
       bio: [
         "I'm originally from Chicago, but right after college, I moved to North Carolina to pursue my dream of becoming a police officer. Twenty-two years later, I continue my career in law enforcement, and I can honestly say I still love serving my community and helping others.",
         "Now, I'm excited to add a new chapter to my journey as a real estate broker. I'm bringing that same passion for service, dedication, and commitment to helping people into my real estate career.",
