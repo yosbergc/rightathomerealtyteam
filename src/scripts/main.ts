@@ -176,18 +176,33 @@ carousels.forEach((carousel) => {
   const prev = carousel.querySelector<HTMLButtonElement>('[data-carousel-prev]');
   const next = carousel.querySelector<HTMLButtonElement>('[data-carousel-next]');
   if (!track) return;
+  const slides = Array.from(track.querySelectorAll<HTMLElement>('[data-carousel-slide]'));
+  const step = () => {
+    if (!slides.length) return 0;
+    const first = slides[0].getBoundingClientRect();
+    const gap = slides.length > 1 ? slides[1].getBoundingClientRect().left - first.right : 0;
+    return first.width + gap;
+  };
   const updateButtons = () => {
     const maxScroll = track.scrollWidth - track.clientWidth;
     prev?.setAttribute('aria-disabled', String(track.scrollLeft <= 0));
     next?.setAttribute('aria-disabled', String(track.scrollLeft >= maxScroll - 1));
   };
-  const scrollBySlide = (direction: number) => {
-    const slide = track.querySelector<HTMLElement>('[data-carousel-slide]');
-    const amount = slide?.getBoundingClientRect().width ?? track.clientWidth;
-    track.scrollBy({ left: amount * direction, behavior: reducedMotion ? 'auto' : 'smooth' });
+  const move = (direction: number) => {
+    if (!slides.length) return;
+    const size = step();
+    const current = Math.round(track.scrollLeft / size);
+    const target = Math.min(Math.max(current + direction, 0), slides.length - 1);
+    const left = Math.min(target * size, track.scrollWidth - track.clientWidth);
+    try {
+      track.scrollTo({ left, behavior: reducedMotion ? 'auto' : 'smooth' });
+    } catch {
+      track.scrollLeft = left;
+    }
+    if (track.scrollLeft !== left) track.scrollLeft = left;
   };
-  prev?.addEventListener('click', () => scrollBySlide(-1));
-  next?.addEventListener('click', () => scrollBySlide(1));
+  prev?.addEventListener('click', () => move(-1));
+  next?.addEventListener('click', () => move(1));
   track.addEventListener('scroll', updateButtons, { passive: true });
   updateButtons();
 });

@@ -126,16 +126,16 @@ alternates={buildAlternates(propertyUrl(enProperty, 'en'), propertyUrl(esPropert
         <p class="mt-2 text-body text-muted">{data.address}</p>
 
         <div class="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-[15px] text-muted">
-          <span class="text-ink">
-            <strong class="font-semibold text-black">{data.beds}</strong> {t.beds}
+<span class="text-ink">
+            <strong class="font-semibold text-white">{data.beds}</strong> {t.beds}
           </span>
           <span class="h-4 w-px bg-line" aria-hidden="true"></span>
           <span class="text-ink">
-            <strong class="font-semibold text-black">{data.baths}</strong> {t.baths}
+            <strong class="font-semibold text-white">{data.baths}</strong> {t.baths}
           </span>
           <span class="h-4 w-px bg-line" aria-hidden="true"></span>
           <span class="text-ink">
-            <strong class="font-semibold text-black">{formatPrice(data.sqft)}</strong> sqft
+            <strong class="font-semibold text-white">{formatPrice(data.sqft)}</strong> sqft
           </span>
         </div>
 
@@ -173,7 +173,7 @@ alternates={buildAlternates(propertyUrl(enProperty, 'en'), propertyUrl(esPropert
       <aside class="lg:sticky lg:top-24 lg:self-start">
         <div data-reveal class="card-surface p-6 md:p-8">
           <p class="text-sm text-muted">{t.from}</p>
-          <p class="mt-1 text-[32px] font-semibold leading-tight tracking-[-0.04em] text-black">
+          <p class="mt-1 text-[32px] font-semibold leading-tight tracking-[-0.04em] text-white">
             <span>$ </span>
             <span>{formatPrice(data.price)}</span>
           </p>
@@ -193,11 +193,11 @@ alternates={buildAlternates(propertyUrl(enProperty, 'en'), propertyUrl(esPropert
 
   <SimilarProperties properties={related} locale={locale} />
 
-  <div class="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white p-4 shadow-[0_-2px_8px_rgba(0,0,0,0.1)] lg:hidden">
+  <div class="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-black p-4 shadow-[0_-2px_8px_rgba(0,0,0,0.4)] lg:hidden">
     <div class="container-site flex items-center justify-between gap-4">
       <div>
         <p class="text-[12px] text-muted">{t.from}</p>
-        <p class="text-[20px] font-semibold text-black">
+        <p class="text-[20px] font-semibold text-white">
           <span>$ </span>
           <span>{formatPrice(data.price)}</span>
         </p>

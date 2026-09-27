@@ -8,14 +8,21 @@ interface Props {
   align?: 'left' | 'center';
   icon?: 'house' | 'star' | 'quill';
   as?: 'h1' | 'h2' | 'h3';
-  tone?: 'dark' | 'light';
+  tone?: 'dark' | 'light' | 'onWhite';
 }
 
 const { eyebrow, title, description, align = 'left', icon = 'house', as = 'h2', tone = 'dark' } = Astro.props;
 const headingClass = 'heading-section mt-3';
-const eyebrowClass = tone === 'light' ? 'eyebrow text-white/80' : 'eyebrow';
-const titleClass = tone === 'light' ? `${headingClass} text-white` : headingClass;
-const descriptionClass = tone === 'light' ? 'text-body mt-4 text-white/70' : 'text-body mt-4 text-muted';
+const eyebrowClass =
+  tone === 'light' ? 'eyebrow text-white/80' : tone === 'onWhite' ? 'eyebrow text-black/70' : 'eyebrow';
+const titleClass =
+  tone === 'light' ? `${headingClass} text-white` : tone === 'onWhite' ? `${headingClass} text-black` : headingClass;
+const descriptionClass =
+  tone === 'light'
+    ? 'text-body mt-4 text-white/70'
+    : tone === 'onWhite'
+      ? 'text-body mt-4 text-black/70'
+      : 'text-body mt-4 text-muted';
 ---
 
 <div class:list={['max-w-2xl', align === 'center' && 'mx-auto text-center']}>

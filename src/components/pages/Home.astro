@@ -8,12 +8,11 @@ import PropertyGrid from '../PropertyGrid.astro';
 import CategoryCard from '../CategoryCard.astro';
 import TeamSection from '../TeamSection.astro';
 import TestimonialCarousel from '../TestimonialCarousel.astro';
-import BlogGrid from '../BlogGrid.astro';
 import CtaSection from '../CtaSection.astro';
 import FaqAccordion from '../FaqAccordion.astro';
 import { siteConfig } from '../../config/site';
 import { getDictionary, localizedPath } from '../../i18n';
-import { getFeaturedProperties, getCategories, getPosts } from '../../utils/content';
+import { getFeaturedProperties, getCategories } from '../../utils/content';
 import { imageMap } from '../../utils/images';
 import {
   buildOrganizationJsonLd,
@@ -30,13 +29,11 @@ interface Props {
 const { locale } = Astro.props;
 const t = getDictionary(locale);
 const path = locale === 'es' ? '/es' : '/';
-const [featuredProperties, categories, posts] = await Promise.all([
+const [featuredProperties, categories] = await Promise.all([
   getFeaturedProperties(locale, 6),
   getCategories(locale),
-  getPosts(locale),
 ]);
 
-const blogPosts = posts.slice(0, 3);
 const searchPlaceholder =
   locale === 'es' ? 'Busca por dirección, ciudad, condado o código postal' : 'Search for address, city, county, or zipcode';
 
@@ -192,36 +189,17 @@ const jsonLd = [
     </div>
   </section>
 
-  <section id="testimonial" class="section-pad bg-navy text-white">
+  <section id="testimonial" class="section-pad bg-white text-black">
     <div class="container-site">
       <div data-reveal>
         <SectionHeading
-          tone="light"
+          tone="onWhite"
           eyebrow={t.testimonialsEyebrow}
           title={t.testimonialsTitle}
         />
       </div>
       <div class="mt-12">
         <TestimonialCarousel testimonials={t.testimonialsList} />
-      </div>
-    </div>
-  </section>
-
-  <section class="section-pad">
-    <div class="container-site">
-      <div data-reveal class="flex flex-wrap items-end justify-between gap-6">
-        <SectionHeading eyebrow={t.blogEyebrow} title={t.blogTitle} />
-        <a href={localizedPath('/blog', locale)} class="btn btn-outline-dark mb-1 hidden md:inline-flex">
-          {t.viewBlogs}
-        </a>
-      </div>
-      <div class="mt-12">
-        <BlogGrid posts={blogPosts} locale={locale} />
-      </div>
-      <div class="mt-12 text-center md:hidden">
-        <a href={localizedPath('/blog', locale)} class="btn btn-outline-dark">
-          {t.viewBlogs}
-        </a>
       </div>
     </div>
   </section>

@@ -35,14 +35,14 @@ const { data } = property;
     <p class="mt-1 text-sm leading-snug text-muted">{data.address}</p>
     <div class="mt-4 flex items-center gap-3 text-sm text-muted">
       <span>{data.beds} {t.beds}</span>
-      <span class="h-4 w-px bg-[#dbdbdb]" aria-hidden="true"></span>
+      <span class="h-4 w-px bg-white/20" aria-hidden="true"></span>
       <span>{data.baths} {t.baths}</span>
-      <span class="h-4 w-px bg-[#dbdbdb]" aria-hidden="true"></span>
+      <span class="h-4 w-px bg-white/20" aria-hidden="true"></span>
       <span>{formatPrice(data.sqft)} sqft</span>
     </div>
     <div class="price-chip mt-5 self-start">
-      <span class="text-[17px] font-semibold text-black">$</span>
-      <span class="text-[17px] font-semibold text-black">{formatPrice(data.price)}</span>
+      <span class="text-[17px] font-semibold text-white">$</span>
+      <span class="text-[17px] font-semibold text-white">{formatPrice(data.price)}</span>
     </div>
   </div>
 </a>

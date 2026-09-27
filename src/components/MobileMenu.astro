@@ -36,10 +36,10 @@ const companyLinks = [
 <div data-menu class="menu-overlay" role="dialog" aria-modal="true" aria-label={t.menu}>
   <div class="flex h-full flex-col">
     <div class="container-site flex h-[72px] items-center justify-between">
-      <Logo class="text-black" />
+      <Logo class="text-white" />
       <button
         data-menu-toggle
-        class="inline-flex items-center gap-2 rounded-[4px] border border-black/20 px-4 py-2 text-sm font-semibold"
+        class="inline-flex items-center gap-2 rounded-[4px] border border-white/25 px-4 py-2 text-sm font-semibold"
         aria-expanded="false"
       >
         {t.menu}
@@ -57,7 +57,7 @@ const companyLinks = [
                 <a
                   href={link.href}
                   class:list={[
-                    'text-[32px] font-semibold leading-tight tracking-[-0.04em] text-black transition-colors hover:text-brand',
+                    'text-[32px] font-semibold leading-tight tracking-[-0.04em] text-white transition-colors hover:text-brand',
                     currentPath === link.href && 'text-brand',
                   ]}
                 >
@@ -79,7 +79,7 @@ const companyLinks = [
             <ul class="grid gap-3">
               {categories.map((category) => (
                 <li>
-                  <a href={categoryUrl(category, locale)} class="text-[17px] font-medium text-black/80 transition-colors hover:text-brand">
+                  <a href={categoryUrl(category, locale)} class="text-[17px] font-medium text-white/80 transition-colors hover:text-brand">
                     {category.data.name}
                   </a>
                 </li>
@@ -91,7 +91,7 @@ const companyLinks = [
             <ul class="grid gap-3">
               {companyLinks.map((link) => (
                 <li>
-                  <a href={link.href} class="text-[17px] font-medium text-black/80 transition-colors hover:text-brand">
+                  <a href={link.href} class="text-[17px] font-medium text-white/80 transition-colors hover:text-brand">
                     {link.label}
                   </a>
                 </li>
@@ -101,9 +101,9 @@ const companyLinks = [
         </div>
       </div>
     </div>
-    <div class="container-site flex h-[72px] items-center justify-between border-t border-black/10">
-      <a href={siteConfig.emailHref} class="text-sm font-medium text-black/70">{siteConfig.email}</a>
-      <LanguageSwitcher locale={locale} enUrl={enUrl} esUrl={esUrl} class="text-black" />
+    <div class="container-site flex h-[72px] items-center justify-between border-t border-white/10">
+      <a href={siteConfig.emailHref} class="text-sm font-medium text-white/70">{siteConfig.email}</a>
+      <LanguageSwitcher locale={locale} enUrl={enUrl} esUrl={esUrl} class="text-white" />
     </div>
   </div>
 </div>

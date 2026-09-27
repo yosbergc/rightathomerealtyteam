@@ -20,17 +20,18 @@ const { testimonials } = Astro.props;
         class="w-full min-w-[88%] snap-start md:min-w-[70%] lg:min-w-[55%]"
         aria-label={`${testimonial.name}`}
       >
-        <figure class="flex h-full flex-col rounded-[12px] border border-white/10 bg-white/5 p-8 md:p-10">
-          <div class="flex items-center gap-2">
-            <Icon name="house" class="quote-mark h-[11px] w-3" />
-            <span class="h-px flex-1 bg-white/15" aria-hidden="true"></span>
+        <figure class="flex h-full flex-col rounded-[12px] border border-line bg-white p-8 shadow-[0_18px_40px_-24px_rgba(0,0,0,0.25)] md:p-10">
+          <div class="flex items-center gap-1.5" aria-label="5-star rating">
+            {Array.from({ length: 5 }).map(() => (
+              <Icon name="star" class="h-5 w-5 text-[#C89B3C]" />
+            ))}
           </div>
-          <blockquote class="mt-6 flex-1 text-[19px] font-normal leading-[1.5] tracking-[-0.02em] text-white md:text-[22px]">
+          <blockquote class="mt-6 flex-1 text-[19px] font-normal leading-[1.5] tracking-[-0.02em] text-[#1a1a1a] md:text-[22px]">
             “{testimonial.quote}”
           </blockquote>
-          <figcaption class="mt-8">
-            <p class="font-semibold text-white">{testimonial.name}</p>
-            <p class="mt-0.5 text-sm text-white/60">{testimonial.tag}</p>
+          <figcaption class="mt-8 border-t border-line pt-5">
+            <p class="font-semibold text-black">{testimonial.name}</p>
+            <p class="mt-0.5 text-sm text-black/60">{testimonial.tag}</p>
           </figcaption>
         </figure>
       </div>
@@ -41,7 +42,7 @@ const { testimonials } = Astro.props;
       type="button"
       data-carousel-prev
       aria-label="Previous"
-      class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/55 text-white transition-colors hover:bg-black/75"
+      class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-black text-white transition-colors hover:bg-[#C89B3C]"
     >
       <Icon name="arrow-left" class="h-5 w-5" />
     </button>
@@ -49,7 +50,7 @@ const { testimonials } = Astro.props;
       type="button"
       data-carousel-next
       aria-label="Next"
-      class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/55 text-white transition-colors hover:bg-black/75"
+      class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-black text-white transition-colors hover:bg-[#C89B3C]"
     >
       <Icon name="arrow-right" class="h-5 w-5" />
     </button>

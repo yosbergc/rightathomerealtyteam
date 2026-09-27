@@ -12,6 +12,7 @@ interface Props {
 
 const { locale, sectionClass = 'section-pad' } = Astro.props;
 const t = getDictionary(locale);
+const members = [...t.teamMembers].sort(() => Math.random() - 0.5);
 ---
 
 <section class={sectionClass}>
@@ -20,7 +21,7 @@ const t = getDictionary(locale);
       <SectionHeading eyebrow={t.teamEyebrow} title={t.teamTitle} description={t.teamIntro} />
     </div>
     <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-      {t.teamMembers.map((member) => (
+      {members.map((member) => (
         <div data-reveal>
           <TeamCard
             member={member}

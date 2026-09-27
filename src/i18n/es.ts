@@ -2,7 +2,7 @@ import type { Translation } from './types';
 
 export const es: Translation = {
 localeName: 'Español',
-  navPhone: '+1-980-500-9231',
+  navPhone: '+1-704-779-1180',
   menu: 'Menú',
   home: 'Inicio',
   properties: 'Listados de propiedades',
@@ -193,7 +193,7 @@ localeName: 'Español',
   footerAddress: 'Sirviendo a Carolina del Norte y Carolina del Sur',
   footerContact: 'Contacto',
   contactEmail: 'Realtoralvarojaimes@gmail.com',
-  contactPhone: '+1-980-500-9231',
+  contactPhone: '+1-704-779-1180',
 legalLabel: 'Legal',
   termsOfService: 'Términos del servicio',
   privacyPolicy: 'Política de privacidad',
@@ -268,7 +268,7 @@ ofProperties: 'de',
   contactHeroSubtitle:
     'Completa algunos datos y nos pondremos en contacto contigo en breve. ¡Estamos ansiosos por saber de ti!',
   contactInfoCards: [
-    { label: 'Teléfono', value: '+1-980-500-9231', href: 'tel:+19805009231' },
+    { label: 'Teléfono', value: '+1-704-779-1180', href: 'tel:+17047791180' },
     { label: 'Correo', value: 'Realtoralvarojaimes@gmail.com', href: 'mailto:Realtoralvarojaimes@gmail.com' },
     { label: 'Área de servicio', value: 'Carolina del Norte y Carolina del Sur' },
     { label: 'Bilingüe', value: 'Hablamos Español' },
