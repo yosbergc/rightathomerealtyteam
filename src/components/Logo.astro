@@ -1,9 +1,10 @@
 ---
 interface Props {
   class?: string;
+  size?: string;
 }
 
-const { class: className = '' } = Astro.props;
+const { class: className = '', size = 'h-10 md:h-11' } = Astro.props;
 ---
 
 <a
@@ -16,6 +17,6 @@ const { class: className = '' } = Astro.props;
     alt="Right At Home Realty Team"
     width={955}
     height={521}
-    class="h-10 w-auto object-contain md:h-11"
+    class={`w-auto object-contain ${size}`}
   />
 </a>
