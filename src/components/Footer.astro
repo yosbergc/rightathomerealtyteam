@@ -5,7 +5,6 @@ import NewsletterForm from './NewsletterForm.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import { siteConfig } from '../config/site';
 import { getDictionary, localizedPath } from '../i18n';
-import { getCategories, categoryUrl } from '../utils/content';
 import type { Locale } from '../content.config';
 
 interface Props {
@@ -14,15 +13,9 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = getDictionary(locale);
-const categories = await getCategories(locale);
 
 const browseLinks = [
-  { label: t.properties, href: localizedPath('/properties', locale) },
   { label: t.contactUs, href: localizedPath('/contact', locale) },
-  ...categories.map((category) => ({
-    label: category.data.name,
-    href: categoryUrl(category, locale),
-  })),
 ];
 
 const companyLinks = [
@@ -123,14 +116,6 @@ const companyLinks = [
       <p>
         ©{new Date().getFullYear()} {t.copyright}
       </p>
-      <nav class="flex items-center gap-5">
-        <a href={localizedPath('/legal/terms-conditions', locale)} class="transition-colors hover:text-white">
-          {t.termsOfService}
-        </a>
-        <a href={localizedPath('/legal/privacy-policy', locale)} class="transition-colors hover:text-white">
-          {t.privacyPolicy}
-        </a>
-      </nav>
     </div>
   </div>
 </footer>

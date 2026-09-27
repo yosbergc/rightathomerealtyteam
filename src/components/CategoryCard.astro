@@ -1,26 +1,21 @@
 ---
 import { Image } from 'astro:assets';
-import { categoryUrl, type Category } from '../utils/content';
-import type { Locale } from '../content.config';
+import type { Category } from '../utils/content';
 
 interface Props {
   category: Category;
-  locale: Locale;
   index: number;
 }
 
-const { category, locale, index } = Astro.props;
+const { category, index } = Astro.props;
 ---
 
-<a
-  href={categoryUrl(category, locale)}
-  class="group block overflow-hidden rounded-[8px] border border-line transition-shadow duration-300 hover:shadow-lg"
->
+<div class="block overflow-hidden rounded-[8px] border border-line">
   <div class="relative aspect-[4/3] overflow-hidden">
     <Image
       src={category.data.heroImage}
       alt={category.data.name}
-      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+      class="h-full w-full object-cover"
       sizes="(max-width: 809px) 100vw, (max-width: 1199px) 50vw, 25vw"
     />
     <span class="absolute inset-0 bg-black/20" aria-hidden="true"></span>
@@ -31,4 +26,4 @@ const { category, locale, index } = Astro.props;
     </span>
     <span class="text-[18px] font-semibold text-white">{category.data.name}</span>
   </div>
-</a>
+</div>

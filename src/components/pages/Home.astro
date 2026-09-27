@@ -4,15 +4,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Icon from '../Icon.astro';
 import SectionHeading from '../SectionHeading.astro';
 import IdxPropertySearch from '../IdxPropertySearch.astro';
-import PropertyGrid from '../PropertyGrid.astro';
-import CategoryCard from '../CategoryCard.astro';
 import TeamSection from '../TeamSection.astro';
 import TestimonialCarousel from '../TestimonialCarousel.astro';
 import CtaSection from '../CtaSection.astro';
 import FaqAccordion from '../FaqAccordion.astro';
 import { siteConfig } from '../../config/site';
 import { getDictionary, localizedPath } from '../../i18n';
-import { getFeaturedProperties, getCategories } from '../../utils/content';
 import { imageMap } from '../../utils/images';
 import {
   buildOrganizationJsonLd,
@@ -29,10 +26,6 @@ interface Props {
 const { locale } = Astro.props;
 const t = getDictionary(locale);
 const path = locale === 'es' ? '/es' : '/';
-const [featuredProperties, categories] = await Promise.all([
-  getFeaturedProperties(locale, 6),
-  getCategories(locale),
-]);
 
 const searchPlaceholder =
   locale === 'es' ? 'Busca por dirección, ciudad, condado o código postal' : 'Search for address, city, county, or zipcode';
@@ -65,6 +58,19 @@ const jsonLd = [
       fetchpriority="high"
       aria-hidden="true"
     />
+    <video
+      class="absolute inset-0 h-full w-full object-cover"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="none"
+      disablepictureinpicture
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <source src="/video.mp4" type="video/mp4" />
+    </video>
     <div class="absolute inset-0 bg-black/60" aria-hidden="true"></div>
     <div class="container-site relative z-10 py-32 md:py-40">
       <div class="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
@@ -154,40 +160,6 @@ const jsonLd = [
   </section>
 
   <TeamSection locale={locale} />
-
-  <section id="listings" class="section-pad bg-surface/40">
-    <div class="container-site">
-      <div data-reveal>
-        <SectionHeading
-          eyebrow={t.listingsEyebrow}
-          title={t.listingsTitle}
-          description={t.listingsParagraph}
-        />
-      </div>
-      <div class="mt-12">
-        <PropertyGrid properties={featuredProperties} locale={locale} />
-      </div>
-    </div>
-  </section>
-
-  <section class="section-pad">
-    <div class="container-site">
-      <div data-reveal>
-        <SectionHeading
-          eyebrow={t.categoriesEyebrow}
-          title={t.categoriesTitle}
-          description={t.categoriesParagraph}
-        />
-      </div>
-      <div class="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2">
-        {categories.map((category, index) => (
-          <div data-reveal>
-            <CategoryCard category={category} locale={locale} index={index + 1} />
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
 
   <section id="testimonial" class="section-pad bg-white text-black">
     <div class="container-site">

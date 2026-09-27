@@ -3,7 +3,6 @@ import Logo from './Logo.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import { siteConfig } from '../config/site';
 import { getDictionary, localizedPath } from '../i18n';
-import { getCategories, categoryUrl } from '../utils/content';
 import type { Locale } from '../content.config';
 
 interface Props {
@@ -15,12 +14,10 @@ interface Props {
 
 const { locale, currentPath, enUrl, esUrl } = Astro.props;
 const t = getDictionary(locale);
-const categories = await getCategories(locale);
 const contactUrl = localizedPath('/contact', locale);
 
 const mainLinks = [
   { label: t.home, href: localizedPath('/', locale) },
-  { label: t.properties, href: localizedPath('/properties', locale) },
   { label: t.about, href: localizedPath('/about', locale) },
   { label: t.agent, href: localizedPath('/join', locale) },
   { label: t.contact, href: localizedPath('/contact', locale) },
@@ -29,8 +26,6 @@ const mainLinks = [
 const companyLinks = [
   { label: t.testimonials, href: localizedPath('/#testimonial', locale) },
   { label: t.faqs, href: localizedPath('/#faq', locale) },
-  { label: t.termsOfService, href: localizedPath('/legal/terms-conditions', locale) },
-  { label: t.privacyPolicy, href: localizedPath('/legal/privacy-policy', locale) },
 ];
 ---
 
@@ -74,20 +69,7 @@ const companyLinks = [
             {t.contactUs}
           </a>
         </nav>
-        <div class="grid gap-10 md:grid-cols-2">
-          <nav aria-label={t.menuBrowse}>
-            <p class="eyebrow mb-4">{t.menuBrowse}</p>
-            <ul class="grid gap-3">
-              {categories.map((category) => (
-                <li>
-                  <a href={categoryUrl(category, locale)} class="text-[17px] font-medium text-white/80 transition-colors hover:text-brand">
-                    {category.data.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <nav aria-label={t.menuCompany}>
+        <nav aria-label={t.menuCompany}>
             <p class="eyebrow mb-4">{t.menuCompany}</p>
             <ul class="grid gap-3">
               {companyLinks.map((link) => (
@@ -99,7 +81,6 @@ const companyLinks = [
               ))}
             </ul>
           </nav>
-        </div>
       </div>
     </div>
     <div class="container-site flex h-[72px] items-center justify-between border-t border-white/10">

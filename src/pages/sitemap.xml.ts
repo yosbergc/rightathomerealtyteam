@@ -1,4 +1,4 @@
-import { getCategories, getProperties, getPosts, getLegalDocs, contentSlug } from '../utils/content';
+import { getProperties, getPosts, contentSlug } from '../utils/content';
 import { siteConfig } from '../config/site';
 
 const SITE = siteConfig.domain;
@@ -35,17 +35,12 @@ function urlEntry(
 }
 
 export async function GET() {
-  const [categoriesEn, categoriesEs, propertiesEn, propertiesEs, postsEn, postsEs, legalEn, legalEs] =
-    await Promise.all([
-      getCategories('en'),
-      getCategories('es'),
-      getProperties('en'),
-      getProperties('es'),
-      getPosts('en'),
-      getPosts('es'),
-      getLegalDocs('en'),
-      getLegalDocs('es'),
-    ]);
+  const [propertiesEn, propertiesEs, postsEn, postsEs] = await Promise.all([
+    getProperties('en'),
+    getProperties('es'),
+    getPosts('en'),
+    getPosts('es'),
+  ]);
 
   const lines: string[] = [
     '<?xml version="1.0" encoding="UTF-8"?>',
@@ -54,7 +49,6 @@ export async function GET() {
 
 const staticRoutes = [
     { en: '/', es: '/es', priority: 1.0, changefreq: 'weekly' },
-    { en: '/properties', es: '/es/propiedades', priority: 0.9, changefreq: 'weekly' },
     { en: '/blog', es: '/es/blog', priority: 0.9, changefreq: 'weekly' },
     { en: '/about', es: '/es/nosotros', priority: 0.7, changefreq: 'monthly' },
     { en: '/contact', es: '/es/contacto', priority: 0.7, changefreq: 'monthly' },
@@ -65,17 +59,7 @@ const staticRoutes = [
     lines.push(urlEntry(route.en, route.es, route.priority, route.changefreq));
   }
 
-  const categoryMapEn = new Map(categoriesEn.map((category) => [category.data.translationKey, category]));
-  for (const categoryEs of categoriesEs) {
-    const categoryEn = categoryMapEn.get(categoryEs.data.translationKey);
-    if (categoryEn) {
-      lines.push(
-        urlEntry(`/category/${contentSlug(categoryEn)}`, `/es/categoria/${contentSlug(categoryEs)}`, 0.8, 'weekly'),
-      );
-    }
-  }
-
-  const propertyMapEn = new Map(propertiesEn.map((property) => [property.data.translationKey, property]));
+const propertyMapEn = new Map(propertiesEn.map((property) => [property.data.translationKey, property]));
   for (const propertyEs of propertiesEs) {
     const propertyEn = propertyMapEn.get(propertyEs.data.translationKey);
     if (propertyEn) {
@@ -100,17 +84,7 @@ const staticRoutes = [
     }
   }
 
-  const legalMapEn = new Map(legalEn.map((doc) => [doc.data.translationKey, doc]));
-  for (const docEs of legalEs) {
-    const docEn = legalMapEn.get(docEs.data.translationKey);
-    if (docEn) {
-      lines.push(
-        urlEntry(`/legal/${contentSlug(docEn)}`, `/es/legal/${contentSlug(docEs)}`, 0.3, 'yearly'),
-      );
-    }
-  }
-
-  lines.push('</urlset>');
+lines.push('</urlset>');
 
   return new Response(lines.join('\n'), {
     headers: { 'Content-Type': 'application/xml' },
