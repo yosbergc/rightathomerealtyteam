@@ -188,7 +188,7 @@ export const en: Translation = {
   newsletterTitle: 'Stay informed about the Carolinas real estate market.',
   subscribePlaceholder: 'Enter your email to subscribe',
   subscribe: 'Subscribe',
-  footerAddress: 'Serving North Carolina & South Carolina',
+  footerAddress: 'Serving North Carolina, South Carolina & all over the United States',
   footerContact: 'Contact',
   contactEmail: 'Realtoralvarojaimes@gmail.com',
   contactPhone: '+1-704-779-1180',
@@ -232,7 +232,7 @@ export const en: Translation = {
   aboutHeroTitle: 'Twenty years of service. one team built to guide you home.',
   aboutHeroFacts: [
     { label: 'Founded', value: 'By Alvaro & Sally Jaimes' },
-    { label: 'Service Area', value: 'North Carolina & South Carolina' },
+    { label: 'Service Area', value: 'North Carolina, South Carolina & all over the United States' },
     { label: 'Licensed', value: 'NC & SC' },
     { label: 'Hablamos Español', value: 'English & Spanish' },
   ],
@@ -268,7 +268,7 @@ export const en: Translation = {
   contactInfoCards: [
     { label: 'Phone', value: '+1-704-779-1180', href: 'tel:+17047791180' },
     { label: 'Email', value: 'Realtoralvarojaimes@gmail.com', href: 'mailto:Realtoralvarojaimes@gmail.com' },
-    { label: 'Service Area', value: 'North Carolina & South Carolina' },
+    { label: 'Service Area', value: 'North Carolina, South Carolina & all over the United States' },
     { label: 'Bilingual', value: 'Hablamos Español' },
   ],
   contactFormTitle: "Let's find out what's possible together.",

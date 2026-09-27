@@ -6,7 +6,7 @@ export const siteConfig = {
   phoneHref: 'tel:+17047791180',
   email: 'Realtoralvarojaimes@gmail.com',
   emailHref: 'mailto:Realtoralvarojaimes@gmail.com',
-  serviceArea: 'North Carolina & South Carolina',
+  serviceArea: 'North Carolina, South Carolina & all over the United States',
   serviceAreaDetail:
     'Charlotte, Gastonia, Concord, Rock Hill, Tega Cay and beyond - plus referrals in all 50 states.',
   founded: 'By Alvaro & Sally Jaimes',
