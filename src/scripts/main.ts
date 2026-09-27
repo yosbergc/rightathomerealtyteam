@@ -21,6 +21,34 @@ function detectLocale(): void {
 document.documentElement.classList.add('js-enabled');
 detectLocale();
 
+function applyExternalTargets(): void {
+  const host = window.location.hostname;
+  document.querySelectorAll<HTMLAnchorElement>('a[href]').forEach((link) => {
+    let url: URL;
+    try {
+      url = new URL(link.getAttribute('href') ?? '', window.location.href);
+    } catch {
+      return;
+    }
+    if (url.protocol === 'http:' || url.protocol === 'https:') {
+      if (url.hostname !== host) {
+        link.target = '_blank';
+        link.rel = 'noopener';
+      }
+    }
+  });
+  const form = document.getElementById('idxaddons-omnisearch-form');
+  if (form && !form.hasAttribute('target')) form.setAttribute('target', '_blank');
+}
+
+applyExternalTargets();
+const externalLinksObserver = new MutationObserver(() => {
+  applyExternalTargets();
+  if (document.getElementById('idxaddons-omnisearch-form')) externalLinksObserver.disconnect();
+});
+externalLinksObserver.observe(document.body, { childList: true, subtree: true });
+setTimeout(() => externalLinksObserver.disconnect(), 10000);
+
 const header = document.querySelector<HTMLElement>('[data-header]');
 if (header) {
   const applyHeaderState = () => {

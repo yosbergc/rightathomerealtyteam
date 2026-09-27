@@ -23,7 +23,4 @@ export const siteConfig = {
   idxSearchSrc:
     'https://idxaddons.com/addon/omnisearch/MnJtNXlEU1NNM3E%3DcDm-qgLoemE/?pts=tabs&srt=newest',
   idxSearchAgentId: '15903955',
-  idxFeaturedSrc:
-    'https://idxaddons.com/addon/featured/MnJtNXlEU1NNM3E%3DcDm-qgLoemE/?agent=15903955&listingagent=72068411&per=6',
-  idxFeaturedAgentId: '15903955',
 } as const;

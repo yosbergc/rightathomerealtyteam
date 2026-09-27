@@ -780,7 +780,17 @@
 }
 
 @media (max-width: 809px) {
-  .idx-search #idxaddons-omnisearch-form {
+.idx-search {
+  min-height: 320px;
+}
+
+@media (min-width: 810px) {
+  .idx-search {
+    min-height: 220px;
+  }
+}
+
+.idx-search #idxaddons-omnisearch-form {
     padding: 16px !important;
     gap: 10px !important;
   }
@@ -806,114 +816,4 @@
   }
 }
 
-.idx-featured .AL-row {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 20px !important;
-  margin: 0 !important;
-}
 
-.idx-featured .AL-row .col,
-.idx-featured .AL-row .col-sm-12,
-.idx-featured .AL-row .col-md-6,
-.idx-featured .AL-row .col-lg-4 {
-  flex: 0 0 calc(33.333% - 14px) !important;
-  max-width: calc(33.333% - 14px) !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-  .idx-featured .AL-row .col-md-6,
-  .idx-featured .AL-row .col-lg-4 {
-    flex: 0 0 calc(50% - 10px) !important;
-    max-width: calc(50% - 10px) !important;
-  }
-}
-
-@media (max-width: 809px) {
-  .idx-featured .AL-row .col-sm-12,
-  .idx-featured .AL-row .col-md-6,
-  .idx-featured .AL-row .col-lg-4 {
-    flex: 0 0 100% !important;
-    max-width: 100% !important;
-  }
-}
-
-.idx-featured .showcase-photo {
-  display: block !important;
-  overflow: hidden !important;
-  position: relative !important;
-  border-radius: 12px;
-  background-color: var(--color-surface);
-}
-
-.idx-featured .showcase-photo::before {
-  padding-top: 75% !important;
-}
-
-.idx-featured .showcase-photo img {
-  object-fit: cover !important;
-  transition: transform 0.5s ease;
-}
-
-.idx-featured .showcase-property:hover .showcase-photo img {
-  transform: scale(1.04);
-}
-
-.idx-featured .showcase-property {
-  display: block !important;
-  background-color: #fff;
-  border: 1px solid var(--color-line);
-  border-radius: 12px;
-  overflow: hidden;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.idx-featured .showcase-property:hover {
-  box-shadow: 0 18px 40px -18px rgb(0 0 0 / 0.3);
-}
-
-.idx-featured .showcase-property .showcase-info {
-  padding: 16px 20px 20px;
-}
-
-.idx-featured .showcase-property .price {
-  display: block !important;
-  font-size: 20px !important;
-  font-weight: 600 !important;
-  letter-spacing: -0.02em !important;
-  color: var(--color-ink) !important;
-  font-family: var(--font-sans) !important;
-}
-
-.idx-featured .showcase-property .address {
-  display: block !important;
-  margin: 6px 0 10px !important;
-  font-size: 15px !important;
-  color: var(--color-muted) !important;
-  font-family: var(--font-sans) !important;
-  line-height: 1.4 !important;
-}
-
-.idx-featured .showcase-property .basicInfo {
-  display: block !important;
-  font-size: 14px !important;
-  color: var(--color-muted) !important;
-  font-family: var(--font-sans) !important;
-}
-
-.idx-featured .AL-row:empty::after {
-  content: "Featured homes are updated directly from the MLS.";
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 280px;
-  border: 1px dashed var(--color-line);
-  border-radius: 12px;
-  color: var(--color-muted);
-  font-family: var(--font-sans);
-  font-size: 15px;
-  text-align: center;
-  padding: 24px;
-}

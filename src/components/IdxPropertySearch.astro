@@ -3,15 +3,17 @@ import { siteConfig } from '../config/site';
 
 interface Props {
   placeholder?: string;
-  id?: string;
 }
 
-const { placeholder, id } = Astro.props;
+const { placeholder } = Astro.props;
 ---
 
-<div class="idx-search" id={id}>
+<link rel="preconnect" href="https://idxaddons.com" />
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+<div class="idx-search">
   <script
     is:inline
+    defer
     id="idxaddons-autocomplete-script"
     src={siteConfig.idxSearchSrc}
     data-agentid={siteConfig.idxSearchAgentId}
