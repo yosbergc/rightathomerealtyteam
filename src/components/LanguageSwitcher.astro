@@ -22,23 +22,23 @@ const t = getDictionary(locale);
     href={enUrl}
     data-lang="en"
     class:list={[
-      'inline-flex items-center justify-center rounded px-2.5 py-1 text-sm font-semibold leading-none transition-colors',
+      'inline-flex items-center justify-center rounded px-3 py-1.5 text-base font-semibold leading-none transition-colors',
       locale === 'en' ? 'bg-brand text-white' : 'text-current hover:opacity-70',
     ]}
     aria-current={locale === 'en' ? 'page' : undefined}
   >
-    EN
+    English
   </a>
   <a
     href={esUrl}
     data-lang="es"
     class:list={[
-      'inline-flex items-center justify-center rounded px-2.5 py-1 text-sm font-semibold leading-none transition-colors',
+      'inline-flex items-center justify-center rounded px-3 py-1.5 text-base font-semibold leading-none transition-colors',
       locale === 'es' ? 'bg-brand text-white' : 'text-current hover:opacity-70',
     ]}
     aria-current={locale === 'es' ? 'page' : undefined}
   >
-    ES
+    Español
   </a>
 </nav>
 
