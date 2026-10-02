@@ -27,6 +27,9 @@ export function buildOrganizationJsonLd() {
     url: siteConfig.domain,
     email: siteConfig.email,
     telephone: siteConfig.phone,
+    logo: absoluteUrl('/og-image.webp'),
+    image: absoluteUrl('/og-image.webp'),
+    sameAs: siteConfig.socials.map((social) => social.href),
     areaServed: [
       { '@type': 'State', name: 'North Carolina' },
       { '@type': 'State', name: 'South Carolina' },

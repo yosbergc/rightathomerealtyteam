@@ -3,7 +3,7 @@ import mdx from '@astrojs/mdx';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://realtypro-new-for-realtors.framer.website',
+  site: 'https://rightathomerealtyteam.com',
   output: 'static',
   trailingSlash: 'ignore',
   integrations: [mdx()],

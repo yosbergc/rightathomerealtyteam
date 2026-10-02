@@ -13,6 +13,7 @@ export const siteConfig = {
   heroBadge: 'Hablamos Español',
   socials: [
     { label: 'Instagram', href: 'https://www.instagram.com/rightathomerealtyteam/' },
+    { label: 'TikTok', href: 'https://www.tiktok.com/@realtoralvarojaimes1' },
   ],
   formEndpoint: 'https://api.web3forms.com/submit',
   web3formsAccessKey: import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '',
