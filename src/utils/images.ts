@@ -4,7 +4,7 @@ import hero from '../assets/images/site/hero.jpg';
 import logo from '../assets/images/site/logo.png';
 import alvaroJaimes from '../assets/images/team/alvaro-jaimes.jpg';
 import sallyJaimes from '../assets/images/team/sally-jaimes-hi.jpg';
-import nancyBrogdon from '../assets/images/team/nancy.avif';
+import nancyBrogdon from '../assets/images/team/nancy.png';
 import alvaroSally from '../assets/images/team/alvaro-sally.jpg';
 
 export const imageMap = {
