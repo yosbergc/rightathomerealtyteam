@@ -23,4 +23,8 @@ export const siteConfig = {
   idxSearchSrc:
     'https://idxaddons.com/addon/omnisearch/MnJtNXlEU1NNM3E%3DcDm-qgLoemE/?pts=tabs&srt=newest',
   idxSearchAgentId: '15903955',
+  idxFeaturedSrc:
+    'https://idxaddons.com/addon/featured/MnJtNXlEU1NNM3E%3DcDm-qgLoemE/?fallback=3820&agent=15903955&listingagent=72068411&per=6&theme=casabella',
+  idxSearchPageBuilderSrc:
+    'https://idxaddons.com/addon/pagebuilder/cDm-qgLoemE2rm5yDSSM3q/973b18bb541fb993e0fd4f8c7e493588',
 } as const;

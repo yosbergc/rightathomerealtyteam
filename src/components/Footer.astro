@@ -15,6 +15,7 @@ const { locale } = Astro.props;
 const t = getDictionary(locale);
 
 const browseLinks = [
+  { label: t.propertySearch, href: '/search' },
   { label: t.contactUs, href: localizedPath('/contact', locale) },
 ];
 

@@ -1,0 +1,8 @@
+<script is:inline>
+var today = new Date();
+var expirationDate = new Date(today);
+expirationDate.setFullYear(expirationDate.getFullYear() + 1);
+var formattedExpirationDate = expirationDate.toUTCString();
+var cookieString = "IDX-agentOwner=15903955; domain=.thefirmreteam.com; samesite=None; expires=" + formattedExpirationDate + "; secure";
+document.cookie = cookieString;
+</script>

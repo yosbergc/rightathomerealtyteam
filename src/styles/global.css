@@ -817,4 +817,106 @@ body {
   }
 }
 
+/* IDX Featured listings widget */
+#main .idx-featured {
+  color: #fff;
+}
+
+#main .idx-featured a {
+  color: inherit;
+}
+
+#main .idx-featured .IDX-showcaseTable {
+  font-family: var(--font-sans) !important;
+  font-size: 14px !important;
+  border-spacing: 12px 18px !important;
+}
+
+#main .idx-featured .IDX-showcaseCell {
+  padding: 0 8px 18px !important;
+  vertical-align: top;
+}
+
+#main .idx-featured .IDX-showcaseContainer {
+  padding: 0 0 18px !important;
+  background-color: #161616 !important;
+  border: 1px solid var(--color-line) !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: none !important;
+  transition: border-color 0.25s ease, transform 0.25s ease !important;
+}
+
+#main .idx-featured .IDX-showcaseContainer:hover {
+  border-color: var(--color-brand) !important;
+  transform: translateY(-3px);
+}
+
+#main .idx-featured .IDX-showcaseLink {
+  padding-top: 66% !important;
+}
+
+#main .idx-featured .IDX-showcasePhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#main .idx-featured .IDX-showcaseAddress {
+  margin: 0 !important;
+  padding: 14px 16px 0 !important;
+  font-family: var(--font-sans) !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  color: #fff !important;
+}
+
+#main .idx-featured .IDX-showcaseCityStateZip {
+  padding: 4px 16px 0 !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+  color: var(--color-muted) !important;
+}
+
+#main .idx-featured .IDX-showcasePrice {
+  padding: 10px 16px 0 !important;
+  font-family: var(--font-sans) !important;
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--color-brand) !important;
+}
+
+#main .idx-featured .IDX-showcaseBeds,
+#main .idx-featured .IDX-showcaseBaths {
+  display: inline-block !important;
+  padding: 10px 10px 0 16px !important;
+  font-size: 13px !important;
+  color: var(--color-muted) !important;
+  border-right: 1px solid var(--color-line) !important;
+}
+
+#main .idx-featured .IDX-showcaseBaths {
+  border-right: 0 !important;
+  padding-left: 10px !important;
+}
+
+#main .idx-featured .IDX-showcaseStatus {
+  font-family: var(--font-sans) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  border-radius: 4px !important;
+  padding: 4px 8px !important;
+}
+
+@media (max-width: 640px) {
+  #main .idx-featured .IDX-showcaseCell {
+    min-width: 100% !important;
+    padding: 0 0 12px !important;
+  }
+}
+
 

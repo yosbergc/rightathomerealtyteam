@@ -10,6 +10,7 @@ interface Props {
   buttonClass?: string;
   class?: string;
   dropUp?: boolean;
+  label?: string;
 }
 
 const {
@@ -17,9 +18,11 @@ const {
   buttonClass = 'btn btn-primary w-full py-3',
   class: className = '',
   dropUp = false,
+  label,
 } = Astro.props;
 const t = getDictionary(locale);
 const members = [...t.teamMembers].sort(() => Math.random() - 0.5);
+const buttonLabel = label ?? t.contactAgent;
 ---
 
 <div class:list={['contact-agents', dropUp && 'drop-up', className]} data-contact-agents>
@@ -30,7 +33,7 @@ const members = [...t.teamMembers].sort(() => Math.random() - 0.5);
     aria-haspopup="true"
     class={buttonClass}
   >
-    {t.contactAgent}
+    {buttonLabel}
   </button>
   <div data-contact-agents-panel class="contact-agents-panel" role="menu" aria-label={t.contactAgent}>
     {members.map((member) => (
@@ -71,6 +74,8 @@ const members = [...t.teamMembers].sort(() => Math.random() - 0.5);
     top: calc(100% + 8px);
     left: 0;
     right: 0;
+    min-width: 15rem;
+    max-width: min(20rem, calc(100vw - 2rem));
     z-index: 50;
     padding: 8px;
     background-color: #161616;
@@ -106,6 +111,13 @@ const members = [...t.teamMembers].sort(() => Math.random() - 0.5);
     if (!toggle || !panel) return;
 
     const open = () => {
+      const gap = 12;
+      const rect = toggle.getBoundingClientRect();
+      const panelHeight = panel.offsetHeight || 220;
+      const spaceBelow = window.innerHeight - rect.bottom;
+      const spaceAbove = rect.top;
+      const shouldDropUp = spaceBelow < panelHeight + gap && spaceAbove > spaceBelow;
+      container.classList.toggle('drop-up', shouldDropUp);
       container.setAttribute('data-open', '');
       toggle.setAttribute('aria-expanded', 'true');
     };
@@ -118,6 +130,10 @@ const members = [...t.teamMembers].sort(() => Math.random() - 0.5);
       event.stopPropagation();
       if (container.hasAttribute('data-open')) close();
       else open();
+    });
+
+    window.addEventListener('resize', () => {
+      if (container.hasAttribute('data-open')) open();
     });
 
     document.addEventListener('click', (event) => {

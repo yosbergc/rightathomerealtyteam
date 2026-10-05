@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Icon from '../Icon.astro';
 import SectionHeading from '../SectionHeading.astro';
 import IdxPropertySearch from '../IdxPropertySearch.astro';
+import ContactAgents from '../ContactAgents.astro';
 import TeamSection from '../TeamSection.astro';
 import TestimonialCarousel from '../TestimonialCarousel.astro';
 import CtaSection from '../CtaSection.astro';
@@ -46,7 +47,7 @@ const jsonLd = [
   headerVariant="transparent"
   jsonLd={jsonLd}
 >
-  <section class="relative flex min-h-[100svh] items-center overflow-hidden text-white">
+  <section class="relative flex min-h-[100svh] items-center text-white">
     <Image
       src={imageMap.hero}
       alt=""
@@ -88,15 +89,13 @@ const jsonLd = [
             <IdxPropertySearch placeholder={searchPlaceholder} />
           </div>
           <div class="mt-6 flex flex-wrap gap-3">
-            <a href={localizedPath('/contact', locale)} class="btn btn-primary">
-              {t.heroCtaWorth}
+            <a href="/search" class="btn btn-primary">
+              {t.propertySearch}
             </a>
             <a href="#listings" class="btn btn-outline">
               {t.heroCtaSearch}
             </a>
-            <a href={siteConfig.phoneHref} class="btn btn-outline">
-              {t.heroCtaCall}
-            </a>
+            <ContactAgents locale={locale} buttonClass="btn btn-outline" label={t.heroCtaCall} />
           </div>
         </div>
         <div data-reveal class="hidden justify-self-end lg:block">
@@ -153,6 +152,26 @@ const jsonLd = [
             decoding="async"
           />
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="listings" class="section-pad">
+    <div class="container-site">
+      <div data-reveal>
+        <SectionHeading
+          eyebrow={t.listingsEyebrow}
+          title={t.listingsTitle}
+          description={t.listingsParagraph}
+        />
+      </div>
+      <div class="idx-featured mt-12">
+        <script
+          is:inline
+          id="idxaddons-featured-15903955"
+          data-style="1"
+          src={siteConfig.idxFeaturedSrc}
+        ></script>
       </div>
     </div>
   </section>

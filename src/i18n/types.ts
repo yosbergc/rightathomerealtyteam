@@ -115,6 +115,7 @@ export type Translation = {
   pricePerSqft: string;
   hoaFee: string;
   searchPlaceholder: string;
+  propertySearch: string;
   filterCategory: string;
   filterAll: string;
   aboutHeroEyebrow: string;

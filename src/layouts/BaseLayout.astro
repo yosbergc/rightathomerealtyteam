@@ -6,6 +6,7 @@ import Seo from '../components/Seo.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import LeadPopup from '../components/LeadPopup.astro';
+import IdxAgentCookie from '../components/IdxAgentCookie.astro';
 import { localizedPath } from '../i18n';
 import type { Locale } from '../content.config';
 
@@ -84,5 +85,6 @@ const redirectConfig = locale === 'en' ? { other: otherPath } : { other: '' };
       import '../scripts/main.ts';
       import '../scripts/forms.ts';
     </script>
+    <IdxAgentCookie />
   </body>
 </html>

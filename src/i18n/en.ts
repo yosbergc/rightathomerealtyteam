@@ -236,6 +236,7 @@ export const en: Translation = {
   pricePerSqft: 'Price per sqft',
   hoaFee: 'HOA fee',
   searchPlaceholder: 'Search properties',
+  propertySearch: 'Property Search',
   filterCategory: 'Category',
   filterAll: 'All',
   aboutHeroEyebrow: 'Our Story',
