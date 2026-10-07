@@ -85,7 +85,7 @@ const buttonLabel = label ?? t.contactAgent;
     display: none;
     visibility: hidden;
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateX(var(--panel-shift-x, 0)) translateY(8px);
     transition:
       opacity 0.2s ease,
       transform 0.2s ease,
@@ -95,14 +95,14 @@ const buttonLabel = label ?? t.contactAgent;
   .contact-agents.drop-up .contact-agents-panel {
     top: auto;
     bottom: calc(100% + 8px);
-    transform: translateY(-8px);
+    transform: translateX(var(--panel-shift-x, 0)) translateY(-8px);
   }
 
   .contact-agents[data-open] .contact-agents-panel {
     display: block;
     visibility: visible;
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(var(--panel-shift-x, 0)) translateY(0);
   }
 </style>
 
@@ -114,18 +114,32 @@ const buttonLabel = label ?? t.contactAgent;
 
     const open = () => {
       const gap = 12;
+      const margin = 16;
+      panel.style.setProperty('--panel-shift-x', '0px');
+      container.setAttribute('data-open', '');
+      toggle.setAttribute('aria-expanded', 'true');
+
       const rect = toggle.getBoundingClientRect();
       const panelHeight = panel.offsetHeight || 220;
       const spaceBelow = window.innerHeight - rect.bottom;
       const spaceAbove = rect.top;
       const shouldDropUp = spaceBelow < panelHeight + gap && spaceAbove > spaceBelow;
       container.classList.toggle('drop-up', shouldDropUp);
-      container.setAttribute('data-open', '');
-      toggle.setAttribute('aria-expanded', 'true');
+
+      const panelRect = panel.getBoundingClientRect();
+      let shift = 0;
+      if (panelRect.right > window.innerWidth - margin) {
+        shift = window.innerWidth - margin - panelRect.right;
+      }
+      if (panelRect.left + shift < margin) {
+        shift = margin - panelRect.left;
+      }
+      panel.style.setProperty('--panel-shift-x', `${shift}px`);
     };
     const close = () => {
       container.removeAttribute('data-open');
       toggle.setAttribute('aria-expanded', 'false');
+      panel.style.removeProperty('--panel-shift-x');
     };
 
     toggle.addEventListener('click', (event) => {
