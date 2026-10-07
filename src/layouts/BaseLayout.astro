@@ -24,6 +24,7 @@ interface Props {
   noindex?: boolean;
   publishedTime?: string;
   modifiedTime?: string;
+  autoLocaleRedirect?: boolean;
 }
 
 const {
@@ -39,6 +40,7 @@ const {
   noindex = false,
   publishedTime,
   modifiedTime,
+  autoLocaleRedirect = true,
 } = Astro.props;
 
 const alternateEn = alternates?.en ?? localizedPath(path, 'en');
@@ -48,7 +50,7 @@ const toRelative = (value: string) =>
 const enUrl = toRelative(alternateEn);
 const esUrl = toRelative(alternateEs);
 const otherPath = locale === 'en' ? esUrl : enUrl;
-const redirectConfig = locale === 'en' ? { other: otherPath } : { other: '' };
+const redirectConfig = autoLocaleRedirect && locale === 'en' ? { other: otherPath } : { other: '' };
 ---
 
 <!doctype html>

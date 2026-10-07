@@ -242,6 +242,14 @@ ofProperties: 'de',
   propertySearch: 'Búsqueda de propiedades',
   filterCategory: 'Categoría',
   filterAll: 'Todas',
+  recentlySold: 'Vendidas recientemente',
+  recentlySoldEyebrow: 'Vendidas recientemente',
+  recentlySoldTitle: 'Casas que vendimos recientemente',
+  recentlySoldSubtitle:
+    'Un vistazo a algunas de las casas que nuestro equipo ayudó a vender recientemente en Carolina del Norte y Carolina del Sur.',
+  seoRecentlySoldTitle: 'Vendidas recientemente | Right At Home Realty Team',
+  seoRecentlySoldDescription:
+    'Mira las casas vendidas recientemente por el equipo de Right At Home Realty en Carolina del Norte y Carolina del Sur.',
   aboutHeroEyebrow: 'Nuestra historia',
   aboutHeroTitle: 'Veinte años de servicio. un equipo construido para guiarte a casa.',
   aboutHeroFacts: [

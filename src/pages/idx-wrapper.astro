@@ -1,20 +1,16 @@
 ---
-import IdxAgentCookie from '../components/IdxAgentCookie.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="noindex" />
-    <title>IDX Wrapper</title>
-    <IdxAgentCookie />
-  </head>
-  <body>
-    <div id="main">
-      <div id="idxStart" style="display: none;"></div>
-      <div id="idxStop" style="display: none;"></div>
-    </div>
-  </body>
-</html>
+<BaseLayout
+  title="IDX Wrapper | Right At Home Realty Team"
+  description="Property search and IDX listings for Right At Home Realty Team."
+  locale="en"
+  path="/idx-wrapper"
+  alternates={{ en: '/idx-wrapper', es: '/search' }}
+  noindex
+  autoLocaleRedirect={false}
+>
+  <div id="idxStart" style="display: none;"></div>
+  <div id="idxStop" style="display: none;"></div>
+</BaseLayout>

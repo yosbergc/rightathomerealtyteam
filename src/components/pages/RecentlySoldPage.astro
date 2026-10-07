@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../SectionHeading.astro';
+import { siteConfig } from '../../config/site';
+import { getDictionary } from '../../i18n';
+import {
+  buildOrganizationJsonLd,
+  buildWebPageJsonLd,
+  buildBreadcrumbJsonLd,
+} from '../../utils/seo';
+import type { Locale } from '../../content.config';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+const path = locale === 'es' ? '/es/vendidas-recientemente' : '/recently-sold';
+const rootPath = locale === 'es' ? '/es' : '/';
+
+const jsonLd = [
+  buildOrganizationJsonLd(),
+  buildWebPageJsonLd(t.seoRecentlySoldTitle, path, t.seoRecentlySoldDescription),
+  buildBreadcrumbJsonLd([
+    { name: 'Home', url: rootPath },
+    { name: t.recentlySold, url: path },
+  ]),
+];
+---
+
+<BaseLayout
+  title={t.seoRecentlySoldTitle}
+  description={t.seoRecentlySoldDescription}
+  locale={locale}
+  path={path}
+  jsonLd={jsonLd}
+>
+  <section class="section-pad pb-10 pt-32 md:pt-40">
+    <div class="container-site">
+      <div data-reveal>
+        <SectionHeading
+          align="center"
+          as="h1"
+          eyebrow={t.recentlySoldEyebrow}
+          title={t.recentlySoldTitle}
+          description={t.recentlySoldSubtitle}
+        />
+      </div>
+    </div>
+  </section>
+  <section class="pb-20 md:pb-28">
+    <div class="container-site">
+      <div class="idx-featured">
+        <script
+          is:inline
+          id="idxaddons-sold-15903955"
+          data-style="1"
+          src={siteConfig.idxSoldSrc}
+        ></script>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

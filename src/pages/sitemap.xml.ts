@@ -53,6 +53,7 @@ const staticRoutes = [
     { en: '/about', es: '/es/nosotros', priority: 0.7, changefreq: 'monthly' },
     { en: '/contact', es: '/es/contacto', priority: 0.7, changefreq: 'monthly' },
     { en: '/join', es: '/es/join', priority: 0.6, changefreq: 'monthly' },
+    { en: '/recently-sold', es: '/es/vendidas-recientemente', priority: 0.8, changefreq: 'weekly' },
   ];
 
   for (const route of staticRoutes) {

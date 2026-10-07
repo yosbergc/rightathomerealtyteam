@@ -15,6 +15,7 @@ const enToEsStatic: Record<string, string> = {
   '/blog': '/es/blog',
   '/about': '/es/nosotros',
   '/contact': '/es/contacto',
+  '/recently-sold': '/es/vendidas-recientemente',
   '/404': '/es/404',
 };
 

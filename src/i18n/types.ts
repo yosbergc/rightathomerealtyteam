@@ -118,6 +118,12 @@ export type Translation = {
   propertySearch: string;
   filterCategory: string;
   filterAll: string;
+  recentlySold: string;
+  recentlySoldEyebrow: string;
+  recentlySoldTitle: string;
+  recentlySoldSubtitle: string;
+  seoRecentlySoldTitle: string;
+  seoRecentlySoldDescription: string;
   aboutHeroEyebrow: string;
   aboutHeroTitle: string;
   aboutHeroFacts: { label: string; value: string }[];

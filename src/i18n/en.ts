@@ -239,6 +239,14 @@ export const en: Translation = {
   propertySearch: 'Property Search',
   filterCategory: 'Category',
   filterAll: 'All',
+  recentlySold: 'Recently Sold',
+  recentlySoldEyebrow: 'Recently Sold',
+  recentlySoldTitle: 'Homes we recently sold',
+  recentlySoldSubtitle:
+    'A look at some of the homes our team recently helped sell across North Carolina and South Carolina.',
+  seoRecentlySoldTitle: 'Recently Sold | Right At Home Realty Team',
+  seoRecentlySoldDescription:
+    'See homes recently sold by the Right At Home Realty Team across North Carolina and South Carolina.',
   aboutHeroEyebrow: 'Our Story',
   aboutHeroTitle: 'Twenty years of service. one team built to guide you home.',
   aboutHeroFacts: [
