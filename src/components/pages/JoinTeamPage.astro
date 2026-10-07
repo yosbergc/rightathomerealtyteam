@@ -133,12 +133,14 @@ const jsonLd = [
           <SectionHeading eyebrow={t.joinFormEyebrow} title={t.joinFormTitle} />
           <p class="text-body mt-4 text-muted">{t.joinFormParagraph}</p>
           <div class="mt-8 hidden overflow-hidden rounded-[12px] lg:block">
-            <Image
-              src={imageMap.hero}
+            <img
+              src="/house.avif"
               alt=""
               class="aspect-[4/3] w-full object-cover"
               width={1920}
-              height={1080}
+              height={1280}
+              loading="lazy"
+              decoding="async"
               aria-hidden="true"
             />
           </div>
