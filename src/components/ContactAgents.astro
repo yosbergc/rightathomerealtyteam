@@ -82,6 +82,7 @@ const buttonLabel = label ?? t.contactAgent;
     border: 1px solid var(--color-line);
     border-radius: 12px;
     box-shadow: 0 20px 40px -20px rgb(0 0 0 / 0.3);
+    display: none;
     visibility: hidden;
     opacity: 0;
     transform: translateY(8px);
@@ -98,6 +99,7 @@ const buttonLabel = label ?? t.contactAgent;
   }
 
   .contact-agents[data-open] .contact-agents-panel {
+    display: block;
     visibility: visible;
     opacity: 1;
     transform: translateY(0);

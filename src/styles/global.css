@@ -23,12 +23,14 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
 body {
     font-family: var(--font-sans);
     color: rgb(255 255 255 / 0.9);
     background-color: #000;
+    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
