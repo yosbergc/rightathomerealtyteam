@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Icon from '../Icon.astro';
 import ContactForm from '../ContactForm.astro';
@@ -52,13 +51,12 @@ const jsonLd = [
         <h1 class="heading-hero mt-4 text-[40px] md:text-[52px]">{t.contactHeroTitle}</h1>
         <p class="text-body mt-5 text-muted">{t.contactHeroSubtitle}</p>
         <div class="mt-10 overflow-hidden rounded-[12px]">
-          <Image
-            src={imageMap.hero}
+          <img
+            src="/apartment.webp"
             alt=""
             class="aspect-[16/9] w-full object-cover"
             width={1920}
-            height={1080}
-            sizes="(min-width: 1200px) 560px, 100vw"
+            height={1280}
             loading="eager"
             decoding="async"
             aria-hidden="true"

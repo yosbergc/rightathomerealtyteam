@@ -150,8 +150,8 @@ photo: 'nancy-brogdon',
   blogTitle: 'Ideas de nuestros expertos',
   blogSubtitle:
     'Consejos prácticos, análisis honestos del mercado y guías escritas por los agentes que trabajan este mercado todos los días.',
-  ctaTitleLineOne: '¿Buscas encontrar la casa de tus sueños o vender la actual?',
-  ctaTitleLineTwo: 'Estamos aquí para guiarte en cada paso del camino.',
+  ctaTitleLineOne: '¿Listo para comprar o vender tu casa?',
+  ctaTitleLineTwo: 'Te guiamos en cada paso del camino.',
   ctaButton: 'Contáctanos',
   ctaMerits: [
     'Dos de nuestros tres agentes sirven activamente en la aplicación de la ley',

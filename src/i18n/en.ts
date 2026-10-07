@@ -147,8 +147,8 @@ export const en: Translation = {
   blogTitle: 'Insights From Our Experts',
   blogSubtitle:
     'Practical advice, honest market takes, and guides written by the agents who work this market every day.',
-  ctaTitleLineOne: 'Looking to find your dream home or sell your current one?',
-  ctaTitleLineTwo: "We're here to guide you every step of the way.",
+  ctaTitleLineOne: 'Ready to buy or sell your home?',
+  ctaTitleLineTwo: "We'll guide you every step of the way.",
   ctaButton: 'Contact Us',
   ctaMerits: [
     'Two of our three agents actively serve in law enforcement',
