@@ -25,6 +25,7 @@ interface Props {
   publishedTime?: string;
   modifiedTime?: string;
   autoLocaleRedirect?: boolean;
+  baseHref?: string;
 }
 
 const {
@@ -41,6 +42,7 @@ const {
   publishedTime,
   modifiedTime,
   autoLocaleRedirect = true,
+  baseHref,
 } = Astro.props;
 
 const alternateEn = alternates?.en ?? localizedPath(path, 'en');
@@ -56,6 +58,7 @@ const redirectConfig = autoLocaleRedirect && locale === 'en' ? { other: otherPat
 <!doctype html>
 <html lang={locale === 'es' ? 'es' : 'en'}>
   <head>
+    {baseHref && <base href={baseHref} />}
     <Seo
       title={title}
       description={description}
