@@ -2,7 +2,7 @@
 
 export const en: Translation = {
   localeName: 'English',
-  navPhone: '+1-704-779-1180',
+  navPhone: '+1-803-630-3282',
   menu: 'Menu',
   home: 'Home',
   properties: 'Property Listings',
@@ -143,6 +143,39 @@ export const en: Translation = {
       tag: 'Client',
     },
   ],
+  googleReviewsEyebrow: 'Google Reviews',
+  googleReviewsTitle: 'What clients say on Google',
+  googleReviewsSubtitle:
+    'Real reviews from Carolina families who trusted our team.',
+  googleReviewsRating: '5.0',
+  googleReviewsRatingLabel: 'Google rating',
+  googleReviewsCta: 'Write a review',
+  googleReviewsList: [
+    {
+      name: 'Gaby Nunez',
+      meta: '4 reviews',
+      quote:
+        'It was a pleasure working with agent Alvaro Jaimes; he was a great help in my process of finding my house. He and his team, Sally and Nancy, were very attentive. Thank you so much; I highly recommend them. They are truly an excellent team.',
+    },
+    {
+      name: 'Divier Ojeda',
+      meta: 'Local Guide · 107 reviews',
+      quote:
+        'Had an excellent and smooth process with Alvaro. Him and his team were very quick to respond and purchased my very first home. Thank you Right At Home Team. I highly recommend Alvaro and his team.',
+    },
+    {
+      name: 'Tonya Taylor',
+      meta: '7 reviews',
+      quote:
+        "I have worked with this group for over three years now, and you couldn't ask for more honest and hardworking individuals. You are in the best hands with all of them, and they will make sure you are well informed and happy with the results!",
+    },
+    {
+      name: 'Stephanie Jamoulis',
+      meta: '1 review',
+      quote:
+        'Nancy is truly amazing to work with! She is professional, knowledgeable, dependable, and genuinely cares about the people she works with. She has a way of making everything feel easy and comfortable, and she is always willing to go the extra mile to make sure you feel supported and confident throughout the process.',
+    },
+  ],
   blogEyebrow: 'Blog',
   blogTitle: 'Insights From Our Experts',
   blogSubtitle:
@@ -201,7 +234,7 @@ export const en: Translation = {
   footerAddress: 'Serving North Carolina, South Carolina & all over the United States',
   footerContact: 'Contact',
   contactEmail: 'info@rightathomerealtyteam.com',
-  contactPhone: '+1-704-779-1180',
+  contactPhone: '+1-803-630-3282',
   legalLabel: 'Legal',
   termsOfService: 'Terms Of Service',
   privacyPolicy: 'Privacy Policy',
@@ -285,7 +318,7 @@ export const en: Translation = {
   contactHeroSubtitle:
     "Fill out some info and we will be in touch shortly. We can't wait to hear from you!",
   contactInfoCards: [
-    { label: 'Phone', value: '+1-704-779-1180', href: 'tel:+17047791180' },
+    { label: 'Phone', value: '+1-803-630-3282', href: 'tel:+18036303282' },
     { label: 'Email', value: 'info@rightathomerealtyteam.com', href: 'mailto:info@rightathomerealtyteam.com' },
     { label: 'Service Area', value: 'North Carolina, South Carolina & all over the United States' },
     { label: 'Bilingual', value: 'Hablamos Español' },

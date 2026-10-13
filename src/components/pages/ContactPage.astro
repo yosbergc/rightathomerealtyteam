@@ -76,7 +76,12 @@ const jsonLd = [
                 {card.href ? (
                   <a
                     href={card.href}
-                    class="mt-1 block break-words font-semibold text-white transition-colors hover:text-brand"
+                    class:list={[
+                      'mt-1 block break-words font-semibold transition-colors hover:text-brand',
+                      index === 0
+                        ? 'text-[22px] leading-tight text-brand'
+                        : 'text-white',
+                    ]}
                   >
                     {card.value}
                   </a>

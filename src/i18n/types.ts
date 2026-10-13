@@ -1,5 +1,6 @@
 export type Value = { title: string; description: string };
 export type Testimonial = { quote: string; name: string; tag: string };
+export type GoogleReview = { name: string; meta: string; quote: string };
 export type ValueBadge = { title: string; description: string };
 export type TeamMember = {
   name: string;
@@ -64,6 +65,13 @@ export type Translation = {
   testimonialsEyebrow: string;
   testimonialsTitle: string;
   testimonialsList: Testimonial[];
+  googleReviewsEyebrow: string;
+  googleReviewsTitle: string;
+  googleReviewsSubtitle: string;
+  googleReviewsRating: string;
+  googleReviewsRatingLabel: string;
+  googleReviewsCta: string;
+  googleReviewsList: GoogleReview[];
   blogEyebrow: string;
   blogTitle: string;
   ctaTitleLineOne: string;

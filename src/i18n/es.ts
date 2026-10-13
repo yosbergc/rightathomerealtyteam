@@ -2,7 +2,7 @@ import type { Translation } from './types';
 
 export const es: Translation = {
 localeName: 'Español',
-  navPhone: '+1-704-779-1180',
+  navPhone: '+1-803-630-3282',
   menu: 'Menú',
   home: 'Inicio',
   properties: 'Listados de propiedades',
@@ -146,6 +146,39 @@ photo: 'nancy-brogdon',
       tag: 'Cliente',
     },
   ],
+  googleReviewsEyebrow: 'Reseñas de Google',
+  googleReviewsTitle: 'Lo que dicen nuestros clientes en Google',
+  googleReviewsSubtitle:
+    'Reseñas reales de familias en las Carolinas que confiaron en nuestro equipo.',
+  googleReviewsRating: '5.0',
+  googleReviewsRatingLabel: 'Calificación en Google',
+  googleReviewsCta: 'Escribe una reseña',
+  googleReviewsList: [
+    {
+      name: 'Gaby Nunez',
+      meta: '4 reseñas',
+      quote:
+        'Fue un placer trabajar con el agente Alvaro Jaimes; fue de gran ayuda en mi proceso de encontrar mi casa. Él y su equipo, Sally y Nancy, fueron muy atentos. Muchas gracias; los recomiendo ampliamente. Son realmente un excelente equipo.',
+    },
+    {
+      name: 'Divier Ojeda',
+      meta: 'Local Guide · 107 reseñas',
+      quote:
+        'Tuve un proceso excelente y fluido con Alvaro. Él y su equipo respondieron muy rápido y compré mi primera casa. Gracias Right At Home Team. Recomiendo ampliamente a Alvaro y su equipo.',
+    },
+    {
+      name: 'Tonya Taylor',
+      meta: '7 reseñas',
+      quote:
+        'He trabajado con este grupo por más de tres años y no podrías pedir personas más honestas y trabajadoras. Estás en las mejores manos con todos ellos, y se asegurarán de que estés bien informado y feliz con los resultados.',
+    },
+    {
+      name: 'Stephanie Jamoulis',
+      meta: '1 reseña',
+      quote:
+        '¡Nancy es realmente increíble para trabajar! Es profesional, con mucho conocimiento, confiable y se preocupa genuinamente por las personas con quienes trabaja. Tiene una forma de hacer que todo se sienta fácil y cómodo, y siempre está dispuesta a dar un paso extra para asegurarse de que te sientas apoyado y seguro durante todo el proceso.',
+    },
+  ],
   blogEyebrow: 'Blog',
   blogTitle: 'Ideas de nuestros expertos',
   blogSubtitle:
@@ -204,7 +237,7 @@ photo: 'nancy-brogdon',
   footerAddress: 'Sirviendo en Carolina del Norte, Carolina del Sur y por todo Estados Unidos',
   footerContact: 'Contacto',
   contactEmail: 'info@rightathomerealtyteam.com',
-  contactPhone: '+1-704-779-1180',
+  contactPhone: '+1-803-630-3282',
 legalLabel: 'Legal',
   termsOfService: 'Términos del servicio',
   privacyPolicy: 'Política de privacidad',
@@ -288,7 +321,7 @@ ofProperties: 'de',
   contactHeroSubtitle:
     'Completa algunos datos y nos pondremos en contacto contigo en breve. ¡Estamos ansiosos por saber de ti!',
   contactInfoCards: [
-    { label: 'Teléfono', value: '+1-704-779-1180', href: 'tel:+17047791180' },
+    { label: 'Teléfono', value: '+1-803-630-3282', href: 'tel:+18036303282' },
     { label: 'Correo', value: 'info@rightathomerealtyteam.com', href: 'mailto:info@rightathomerealtyteam.com' },
     { label: 'Área de servicio', value: 'Carolina del Norte, Carolina del Sur y por todo Estados Unidos' },
     { label: 'Bilingüe', value: 'Hablamos Español' },

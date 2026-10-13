@@ -2,10 +2,11 @@ export const siteConfig = {
   name: 'Right At Home Realty Team',
   legalName: 'Right At Home Realty Team',
   domain: 'https://rightathomerealtyteam.com',
-  phone: '+1-704-779-1180',
-  phoneHref: 'tel:+17047791180',
+  phone: '+1-803-630-3282',
+  phoneHref: 'tel:+18036303282',
   email: 'info@rightathomerealtyteam.com',
   emailHref: 'mailto:info@rightathomerealtyteam.com',
+  googleReviewUrl: 'https://search.google.com/local/writereview?placeid=ChIJV43z6ehV6UwRVWPsnHWfL6M',
   serviceArea: 'North Carolina, South Carolina & all over the United States',
   serviceAreaDetail:
     'Charlotte, Gastonia, Concord, Rock Hill, Tega Cay and beyond - plus referrals in all 50 states.',

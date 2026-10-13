@@ -6,7 +6,7 @@ import SectionHeading from '../SectionHeading.astro';
 import IdxPropertySearch from '../IdxPropertySearch.astro';
 import ContactAgents from '../ContactAgents.astro';
 import TeamSection from '../TeamSection.astro';
-import TestimonialCarousel from '../TestimonialCarousel.astro';
+import GoogleReviews from '../GoogleReviews.astro';
 import CtaSection from '../CtaSection.astro';
 import FaqAccordion from '../FaqAccordion.astro';
 import { siteConfig } from '../../config/site';
@@ -178,20 +178,7 @@ const jsonLd = [
 
   <TeamSection locale={locale} />
 
-  <section id="testimonial" class="section-pad bg-white text-black">
-    <div class="container-site">
-      <div data-reveal>
-        <SectionHeading
-          tone="onWhite"
-          eyebrow={t.testimonialsEyebrow}
-          title={t.testimonialsTitle}
-        />
-      </div>
-      <div class="mt-12">
-        <TestimonialCarousel testimonials={t.testimonialsList} />
-      </div>
-    </div>
-  </section>
+  <GoogleReviews locale={locale} />
 
   <CtaSection locale={locale} />
 

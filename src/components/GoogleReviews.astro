@@ -1,0 +1,110 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import GoogleIcon from './GoogleIcon.astro';
+import Icon from './Icon.astro';
+import { getDictionary } from '../i18n';
+import { siteConfig } from '../config/site';
+import type { Locale } from '../content.config';
+
+interface Props {
+  locale: Locale;
+  anchorId?: string;
+}
+
+const { locale, anchorId = 'testimonial' } = Astro.props;
+const t = getDictionary(locale);
+
+const spanClasses = [
+  'sm:col-span-2 lg:col-span-2',
+  'sm:col-span-1 lg:col-span-1',
+  'sm:col-span-1 lg:col-span-1',
+  'sm:col-span-2 lg:col-span-2',
+];
+
+const initials = (name: string) =>
+  name
+    .split(' ')
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? '')
+    .join('');
+---
+
+<section id={anchorId} class="section-pad bg-[#f6f4ef] text-black">
+  <div class="container-site">
+    <div class="grid items-center gap-8 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
+      <div data-reveal>
+        <SectionHeading
+          tone="onWhite"
+          icon="star"
+          eyebrow={t.googleReviewsEyebrow}
+          title={t.googleReviewsTitle}
+          description={t.googleReviewsSubtitle}
+        />
+      </div>
+      <div
+        data-reveal
+        class="flex flex-col gap-6 rounded-[20px] border border-black/10 bg-white p-6 shadow-[0_30px_60px_-40px_rgba(0,0,0,0.35)] sm:flex-row sm:items-center sm:justify-between lg:flex-col lg:items-stretch"
+      >
+        <div class="flex items-center gap-4">
+          <GoogleIcon class="h-10 w-10 shrink-0" />
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-[40px] font-semibold leading-none tracking-[-0.04em] text-black">
+                {t.googleReviewsRating}
+              </span>
+              <span class="flex gap-0.5 pb-1" aria-hidden="true">
+                {Array.from({ length: 5 }).map(() => (
+                  <Icon name="star" class="h-4 w-4 text-[#FABB05]" />
+                ))}
+              </span>
+            </div>
+            <p class="mt-1 text-sm text-black/60">{t.googleReviewsRatingLabel}</p>
+          </div>
+        </div>
+        <a
+          href={siteConfig.googleReviewUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary w-full px-6 py-3.5 text-[16px] sm:w-auto lg:w-full"
+        >
+          <GoogleIcon class="h-5 w-5" />
+          {t.googleReviewsCta}
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+      {t.googleReviewsList.map((review, index) => (
+        <article
+          data-reveal
+          class:list={[
+            'group flex flex-col rounded-[20px] border border-black/10 bg-white p-6 shadow-[0_30px_60px_-45px_rgba(0,0,0,0.5)] transition duration-300 hover:-translate-y-1 hover:border-[#C89B3C]/60 hover:shadow-[0_40px_70px_-40px_rgba(0,0,0,0.45)] md:p-8',
+            spanClasses[index] ?? '',
+          ]}
+        >
+          <div class="flex items-center justify-between gap-4">
+            <GoogleIcon class="h-6 w-6" />
+            <span class="flex gap-0.5" aria-label="5 out of 5 stars">
+              {Array.from({ length: 5 }).map(() => (
+                <Icon name="star" class="h-4 w-4 text-[#FABB05]" />
+              ))}
+            </span>
+          </div>
+          <blockquote class="mt-5 flex-1 text-[16px] leading-[1.55] tracking-[-0.01em] text-black/85 md:text-[17px]">
+            “{review.quote}”
+          </blockquote>
+          <footer class="mt-6 flex items-center gap-3 border-t border-black/10 pt-5">
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#C89B3C]/15 text-sm font-semibold text-[#8a6a1f]">
+              {initials(review.name)}
+            </span>
+            <span class="min-w-0">
+              <span class="block truncate font-semibold text-black">{review.name}</span>
+              <span class="block truncate text-[13px] text-black/55">{review.meta}</span>
+            </span>
+          </footer>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

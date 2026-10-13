@@ -54,7 +54,11 @@ const companyLinks = [
             </a>
           </li>
           <li>
-            <a href={siteConfig.phoneHref} class="text-white/85 transition-colors hover:text-white">
+            <a
+              href={siteConfig.phoneHref}
+              class="group inline-flex items-center gap-2 text-[20px] font-semibold leading-tight text-white transition-colors hover:text-brand"
+            >
+              <Icon name="phone" class="h-5 w-5 text-brand" />
               {t.contactPhone}
             </a>
           </li>
