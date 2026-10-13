@@ -4,8 +4,8 @@ export const siteConfig = {
   domain: 'https://rightathomerealtyteam.com',
   phone: '+1-704-779-1180',
   phoneHref: 'tel:+17047791180',
-  email: 'Realtoralvarojaimes@gmail.com',
-  emailHref: 'mailto:Realtoralvarojaimes@gmail.com',
+  email: 'info@rightathomerealtyteam.com',
+  emailHref: 'mailto:info@rightathomerealtyteam.com',
   serviceArea: 'North Carolina, South Carolina & all over the United States',
   serviceAreaDetail:
     'Charlotte, Gastonia, Concord, Rock Hill, Tega Cay and beyond - plus referrals in all 50 states.',
