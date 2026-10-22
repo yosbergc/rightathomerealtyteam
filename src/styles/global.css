@@ -494,10 +494,29 @@ body {
 
 .carousel-track {
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
 }
 
 .carousel-track::-webkit-scrollbar {
   display: none;
+}
+
+.carousel-track.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
+.carousel-track.is-dragging * {
+  user-select: none;
+}
+
+[data-carousel-prev][aria-disabled='true'],
+[data-carousel-next][aria-disabled='true'] {
+  opacity: 0.35;
+  pointer-events: none;
 }
 
 .lightbox {

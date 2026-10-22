@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import SectionHeading from './SectionHeading.astro';
+import { siteConfig } from '../config/site';
 import { getDictionary } from '../i18n';
 import { teamPhotos } from '../utils/images';
 import type { Locale } from '../content.config';
@@ -49,7 +50,7 @@ const t = getDictionary(locale);
             </div>
             <div class="mt-8 flex flex-wrap items-center gap-3">
               <a
-                href={`tel:${member.phone.replace(/[^+\d]/g, '')}`}
+                href={siteConfig.phoneHref}
                 class="btn btn-primary px-5 py-2.5 text-sm"
               >
                 <Icon name="phone" class="h-4 w-4" />

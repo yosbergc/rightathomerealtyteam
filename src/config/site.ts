@@ -3,6 +3,7 @@ export const siteConfig = {
   legalName: 'Right At Home Realty Team',
   domain: 'https://rightathomerealtyteam.com',
   phone: '+1-803-630-3282',
+  phoneDisplay: '803-630-3282',
   phoneHref: 'tel:+18036303282',
   email: 'info@rightathomerealtyteam.com',
   emailHref: 'mailto:info@rightathomerealtyteam.com',

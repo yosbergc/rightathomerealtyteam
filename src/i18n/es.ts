@@ -2,7 +2,7 @@ import type { Translation } from './types';
 
 export const es: Translation = {
 localeName: 'Español',
-  navPhone: '+1-803-630-3282',
+  navPhone: '803-630-3282',
   menu: 'Menú',
   home: 'Inicio',
   properties: 'Listados de propiedades',
@@ -63,7 +63,7 @@ localeName: 'Español',
       ],
 photo: 'alvaro-jaimes',
 
-      phone: '+1-704-779-1180',
+      phone: '803-630-3282',
       email: 'alvaro@rightathomerealtyteam.com',
       socials: [
         { label: 'Facebook', href: 'https://www.facebook.com/jay.photos.31521/' },
@@ -82,7 +82,7 @@ photo: 'alvaro-jaimes',
       ],
 photo: 'sally-jaimes',
 
-      phone: '+1-718-300-0404',
+      phone: '803-630-3282',
       email: 'sally@rightathomerealtyteam.com',
       socials: [
         { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=100075956286314&mibextid=ZbWKwL' },
@@ -100,7 +100,7 @@ photo: 'sally-jaimes',
       ],
 photo: 'nancy-brogdon',
 
-      phone: '+1-704-915-6911',
+      phone: '803-630-3282',
       email: 'nancy@rightathomerealtyteam.com',
       socials: [{ label: 'Instagram', href: 'https://www.instagram.com/Realtor_Nancy_Brogdon' }],
     },
@@ -237,7 +237,7 @@ photo: 'nancy-brogdon',
   footerAddress: 'Sirviendo en Carolina del Norte, Carolina del Sur y por todo Estados Unidos',
   footerContact: 'Contacto',
   contactEmail: 'info@rightathomerealtyteam.com',
-  contactPhone: '+1-803-630-3282',
+  contactPhone: '803-630-3282',
 legalLabel: 'Legal',
   termsOfService: 'Términos del servicio',
   privacyPolicy: 'Política de privacidad',
@@ -321,7 +321,7 @@ ofProperties: 'de',
   contactHeroSubtitle:
     'Completa algunos datos y nos pondremos en contacto contigo en breve. ¡Estamos ansiosos por saber de ti!',
   contactInfoCards: [
-    { label: 'Teléfono', value: '+1-803-630-3282', href: 'tel:+18036303282' },
+    { label: 'Teléfono', value: '803-630-3282', href: 'tel:+18036303282' },
     { label: 'Correo', value: 'info@rightathomerealtyteam.com', href: 'mailto:info@rightathomerealtyteam.com' },
     { label: 'Área de servicio', value: 'Carolina del Norte, Carolina del Sur y por todo Estados Unidos' },
     { label: 'Bilingüe', value: 'Hablamos Español' },

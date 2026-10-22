@@ -2,7 +2,7 @@
 
 export const en: Translation = {
   localeName: 'English',
-  navPhone: '+1-803-630-3282',
+  navPhone: '803-630-3282',
   menu: 'Menu',
   home: 'Home',
   properties: 'Property Listings',
@@ -61,7 +61,7 @@ export const en: Translation = {
         "We wanted our clients to experience that same sense of comfort and belonging. We also believe strongly in teamwork - our agents work together as one team with one common goal: helping families find the home that is right for them.",
         "As a licensed REALTOR® in North Carolina and South Carolina, I would be honored to help you buy, sell, or invest and to Protect, Serve, and Guide You Home.",
       ],
-      phone: '+1-704-779-1180',
+      phone: '803-630-3282',
       email: 'alvaro@rightathomerealtyteam.com',
       photo: 'alvaro-jaimes',
       socials: [
@@ -79,7 +79,7 @@ export const en: Translation = {
         "Family is at the heart of everything I do. I understand that a home is more than a property - it's where memories are made, families grow, and life happens.",
         "Whether you're buying, selling, relocating, or investing, I would be honored to help make your experience as smooth and stress-free as possible.",
       ],
-      phone: '+1-718-300-0404',
+      phone: '803-630-3282',
       email: 'sally@rightathomerealtyteam.com',
       photo: 'sally-jaimes',
       socials: [
@@ -96,7 +96,7 @@ export const en: Translation = {
         "Outside of work, I'm a wife to an amazing husband, a mom to four incredible kids, and we have four Huskies who keep us very busy!",
         "For me, it's always been about people, relationships, and serving others. I'm excited for the opportunity to help my clients navigate one of life's biggest decisions and find a place they're proud to call home.",
       ],
-      phone: '+1-704-915-6911',
+      phone: '803-630-3282',
       email: 'nancy@rightathomerealtyteam.com',
       photo: 'nancy-brogdon',
       socials: [{ label: 'Instagram', href: 'https://www.instagram.com/Realtor_Nancy_Brogdon' }],
@@ -234,7 +234,7 @@ export const en: Translation = {
   footerAddress: 'Serving North Carolina, South Carolina & all over the United States',
   footerContact: 'Contact',
   contactEmail: 'info@rightathomerealtyteam.com',
-  contactPhone: '+1-803-630-3282',
+  contactPhone: '803-630-3282',
   legalLabel: 'Legal',
   termsOfService: 'Terms Of Service',
   privacyPolicy: 'Privacy Policy',
@@ -318,7 +318,7 @@ export const en: Translation = {
   contactHeroSubtitle:
     "Fill out some info and we will be in touch shortly. We can't wait to hear from you!",
   contactInfoCards: [
-    { label: 'Phone', value: '+1-803-630-3282', href: 'tel:+18036303282' },
+    { label: 'Phone', value: '803-630-3282', href: 'tel:+18036303282' },
     { label: 'Email', value: 'info@rightathomerealtyteam.com', href: 'mailto:info@rightathomerealtyteam.com' },
     { label: 'Service Area', value: 'North Carolina, South Carolina & all over the United States' },
     { label: 'Bilingual', value: 'Hablamos Español' },

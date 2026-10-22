@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import { getDictionary } from '../i18n';
+import { siteConfig } from '../config/site';
 import { teamPhotos } from '../utils/images';
 import type { Locale } from '../content.config';
 
@@ -38,7 +39,7 @@ const buttonLabel = label ?? t.contactAgent;
   <div data-contact-agents-panel class="contact-agents-panel" role="menu" aria-label={t.contactAgent}>
     {members.map((member) => (
       <a
-        href={`tel:${member.phone.replace(/[^+\d]/g, '')}`}
+        href={siteConfig.phoneHref}
         class="flex items-center gap-3 rounded-[8px] px-3 py-2.5 transition-colors hover:bg-surface"
         role="menuitem"
       >

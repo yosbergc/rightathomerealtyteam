@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import Icon from './Icon.astro';
+import { siteConfig } from '../config/site';
 import type { TeamMember } from '../i18n/types';
 
 interface Props {
@@ -26,7 +27,7 @@ const { member, photo } = Astro.props;
     <p class="mt-1 text-sm font-medium text-brand">{member.title}</p>
     <div class="mt-5 grid gap-2.5">
       <a
-        href={`tel:${member.phone.replace(/[^+\d]/g, '')}`}
+        href={siteConfig.phoneHref}
         class="btn btn-outline-dark w-full py-2.5 text-sm"
       >
         <Icon name="phone" class="h-4 w-4" />

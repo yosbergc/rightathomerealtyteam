@@ -204,6 +204,44 @@ carousels.forEach((carousel) => {
   prev?.addEventListener('click', () => move(-1));
   next?.addEventListener('click', () => move(1));
   track.addEventListener('scroll', updateButtons, { passive: true });
+  window.addEventListener('resize', updateButtons, { passive: true });
+
+  let dragging = false;
+  let dragStartX = 0;
+  let dragStartScroll = 0;
+
+  track.addEventListener('pointerdown', (event) => {
+    if (event.pointerType === 'touch' || event.button !== 0) return;
+    dragging = true;
+    dragStartX = event.clientX;
+    dragStartScroll = track.scrollLeft;
+    track.classList.add('is-dragging');
+    try {
+      track.setPointerCapture(event.pointerId);
+    } catch {
+      // ignore browsers without pointer capture
+    }
+  });
+
+  track.addEventListener('pointermove', (event) => {
+    if (!dragging) return;
+    track.scrollLeft = dragStartScroll - (event.clientX - dragStartX);
+  });
+
+  const endDrag = (event: PointerEvent) => {
+    if (!dragging) return;
+    dragging = false;
+    track.classList.remove('is-dragging');
+    try {
+      track.releasePointerCapture(event.pointerId);
+    } catch {
+      // ignore browsers without pointer capture
+    }
+    updateButtons();
+  };
+
+  track.addEventListener('pointerup', endDrag);
+  track.addEventListener('pointercancel', endDrag);
   updateButtons();
 });
 

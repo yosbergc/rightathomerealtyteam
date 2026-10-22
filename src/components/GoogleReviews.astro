@@ -14,12 +14,12 @@ interface Props {
 const { locale, anchorId = 'testimonial' } = Astro.props;
 const t = getDictionary(locale);
 
-const spanClasses = [
-  'sm:col-span-2 lg:col-span-2',
-  'sm:col-span-1 lg:col-span-1',
-  'sm:col-span-1 lg:col-span-1',
-  'sm:col-span-2 lg:col-span-2',
-];
+const prevLabel = locale === 'es' ? 'Reseña anterior' : 'Previous review';
+const nextLabel = locale === 'es' ? 'Reseña siguiente' : 'Next review';
+const dragHint =
+  locale === 'es'
+    ? 'Desliza o mantén presionado para mover las reseñas.'
+    : 'Swipe or drag to move through the reviews.';
 
 const initials = (name: string) =>
   name
@@ -30,12 +30,35 @@ const initials = (name: string) =>
     .join('');
 ---
 
-<section id={anchorId} class="section-pad bg-[#f6f4ef] text-black">
-  <div class="container-site">
-    <div class="grid items-center gap-8 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
+<section
+  id={anchorId}
+  data-reviews
+  class="relative isolate overflow-hidden bg-black section-pad text-white"
+>
+  <video
+    data-reviews-video
+    class="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover"
+    muted
+    loop
+    playsinline
+    preload="none"
+    disablepictureinpicture
+    tabindex="-1"
+    aria-hidden="true"
+  >
+    <source data-reviews-video-src="/team-video.mp4" type="video/mp4" />
+  </video>
+  <div class="absolute inset-0 -z-10 bg-black/45" aria-hidden="true"></div>
+  <div
+    class="absolute inset-0 -z-10 bg-gradient-to-br from-black/55 via-black/20 to-black/65"
+    aria-hidden="true"
+  ></div>
+
+  <div class="container-site relative">
+    <div class="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
       <div data-reveal>
         <SectionHeading
-          tone="onWhite"
+          tone="light"
           icon="star"
           eyebrow={t.googleReviewsEyebrow}
           title={t.googleReviewsTitle}
@@ -44,67 +67,171 @@ const initials = (name: string) =>
       </div>
       <div
         data-reveal
-        class="flex flex-col gap-6 rounded-[20px] border border-black/10 bg-white p-6 shadow-[0_30px_60px_-40px_rgba(0,0,0,0.35)] sm:flex-row sm:items-center sm:justify-between lg:flex-col lg:items-stretch"
+        class="flex flex-wrap items-center gap-4 rounded-[18px] border border-white/15 bg-white/[0.08] p-4 backdrop-blur-md sm:p-5 lg:shrink-0"
       >
-        <div class="flex items-center gap-4">
-          <GoogleIcon class="h-10 w-10 shrink-0" />
+        <div class="flex items-center gap-3">
+          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white">
+            <GoogleIcon class="h-6 w-6" />
+          </span>
           <div>
             <div class="flex items-center gap-2">
-              <span class="text-[40px] font-semibold leading-none tracking-[-0.04em] text-black">
+              <span class="text-[26px] font-semibold leading-none tracking-[-0.04em]">
                 {t.googleReviewsRating}
               </span>
-              <span class="flex gap-0.5 pb-1" aria-hidden="true">
+              <span class="flex gap-0.5 pb-0.5" aria-hidden="true">
                 {Array.from({ length: 5 }).map(() => (
                   <Icon name="star" class="h-4 w-4 text-[#FABB05]" />
                 ))}
               </span>
             </div>
-            <p class="mt-1 text-sm text-black/60">{t.googleReviewsRatingLabel}</p>
+            <p class="mt-1 text-[13px] text-white/60">{t.googleReviewsRatingLabel}</p>
           </div>
         </div>
-        <a
-          href={siteConfig.googleReviewUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn btn-primary w-full px-6 py-3.5 text-[16px] sm:w-auto lg:w-full"
-        >
-          <GoogleIcon class="h-5 w-5" />
-          {t.googleReviewsCta}
-        </a>
       </div>
     </div>
 
-    <div class="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-      {t.googleReviewsList.map((review, index) => (
-        <article
-          data-reveal
-          class:list={[
-            'group flex flex-col rounded-[20px] border border-black/10 bg-white p-6 shadow-[0_30px_60px_-45px_rgba(0,0,0,0.5)] transition duration-300 hover:-translate-y-1 hover:border-[#C89B3C]/60 hover:shadow-[0_40px_70px_-40px_rgba(0,0,0,0.45)] md:p-8',
-            spanClasses[index] ?? '',
-          ]}
-        >
-          <div class="flex items-center justify-between gap-4">
-            <GoogleIcon class="h-6 w-6" />
-            <span class="flex gap-0.5" aria-label="5 out of 5 stars">
-              {Array.from({ length: 5 }).map(() => (
-                <Icon name="star" class="h-4 w-4 text-[#FABB05]" />
-              ))}
-            </span>
-          </div>
-          <blockquote class="mt-5 flex-1 text-[16px] leading-[1.55] tracking-[-0.01em] text-black/85 md:text-[17px]">
-            “{review.quote}”
-          </blockquote>
-          <footer class="mt-6 flex items-center gap-3 border-t border-black/10 pt-5">
-            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#C89B3C]/15 text-sm font-semibold text-[#8a6a1f]">
-              {initials(review.name)}
-            </span>
-            <span class="min-w-0">
-              <span class="block truncate font-semibold text-black">{review.name}</span>
-              <span class="block truncate text-[13px] text-black/55">{review.meta}</span>
-            </span>
-          </footer>
-        </article>
-      ))}
+    <div
+      data-carousel
+      class="relative mt-12"
+      role="region"
+      aria-roledescription="carousel"
+      aria-label={t.googleReviewsTitle}
+    >
+      <div
+        data-carousel-track
+        class="carousel-track flex snap-x snap-mandatory gap-5 overflow-x-auto pb-3 md:gap-6"
+      >
+        {t.googleReviewsList.map((review) => (
+          <article
+            data-carousel-slide
+            class="w-[86%] shrink-0 snap-start sm:w-[62%] md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]"
+            aria-label={review.name}
+          >
+            <div class="flex h-full flex-col rounded-[20px] border border-white/15 bg-white/[0.08] p-6 backdrop-blur-md transition duration-300 hover:border-[#C89B3C]/60 hover:bg-white/[0.12] md:p-7">
+              <div class="flex items-center justify-between gap-4">
+                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-white">
+                  <GoogleIcon class="h-5 w-5" />
+                </span>
+                <span class="flex gap-0.5" aria-label="5 out of 5 stars">
+                  {Array.from({ length: 5 }).map(() => (
+                    <Icon name="star" class="h-4 w-4 text-[#FABB05]" />
+                  ))}
+                </span>
+              </div>
+              <blockquote class="mt-5 flex-1 text-[16px] leading-[1.6] tracking-[-0.01em] text-white/85 md:text-[17px]">
+                “{review.quote}”
+              </blockquote>
+              <footer class="mt-6 flex items-center gap-3 border-t border-white/10 pt-5">
+                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#C89B3C]/20 text-sm font-semibold text-[#F0C978]">
+                  {initials(review.name)}
+                </span>
+                <span class="min-w-0">
+                  <span class="block truncate font-semibold text-white">{review.name}</span>
+                  <span class="block truncate text-[13px] text-white/55">{review.meta}</span>
+                </span>
+              </footer>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
+        <p class="text-[13px] text-white/50">{dragHint}</p>
+        <div class="flex gap-3">
+          <button
+            type="button"
+            data-carousel-prev
+            aria-label={prevLabel}
+            class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-md transition-colors hover:border-brand hover:bg-brand hover:text-white"
+          >
+            <Icon name="arrow-left" class="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            data-carousel-next
+            aria-label={nextLabel}
+            class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-md transition-colors hover:border-brand hover:bg-brand hover:text-white"
+          >
+            <Icon name="arrow-right" class="h-5 w-5" />
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 flex justify-center">
+      <a
+        href={siteConfig.googleReviewUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-primary px-6 py-3.5 text-sm"
+      >
+        <GoogleIcon class="h-5 w-5" />
+        {t.googleReviewsCta}
+      </a>
     </div>
   </div>
 </section>
+
+<script>
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const section = document.querySelector<HTMLElement>('[data-reviews]');
+  const video = section?.querySelector<HTMLVideoElement>('[data-reviews-video]');
+
+  if (section && video && !reducedMotion) {
+    let started = false;
+
+    const start = () => {
+      if (started) return;
+      started = true;
+
+      video.querySelectorAll<HTMLSourceElement>('source[data-reviews-video-src]').forEach((source) => {
+        const src = source.dataset.reviewsVideoSrc;
+        if (!src) return;
+        source.src = src;
+        source.removeAttribute('data-reviews-video-src');
+      });
+
+      video.preload = 'auto';
+      video.load();
+
+      const play = () => {
+        video.play().catch(() => {});
+      };
+
+      if (video.readyState >= 2) play();
+      else video.addEventListener('loadeddata', play, { once: true });
+    };
+
+    const afterPageLoad = () => {
+      const idleCallback = (
+        window as Window & {
+          requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number;
+        }
+      ).requestIdleCallback;
+
+      if (idleCallback) idleCallback(start, { timeout: 2000 });
+      else window.setTimeout(start, 300);
+    };
+
+    const waitForPageLoad = () => {
+      if (document.readyState === 'complete') afterPageLoad();
+      else window.addEventListener('load', afterPageLoad, { once: true });
+    };
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            observer.disconnect();
+            waitForPageLoad();
+          });
+        },
+        { rootMargin: '600px 0px' },
+      );
+      observer.observe(section);
+    } else {
+      waitForPageLoad();
+    }
+  }
+</script>

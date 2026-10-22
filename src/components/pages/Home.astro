@@ -4,7 +4,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Icon from '../Icon.astro';
 import SectionHeading from '../SectionHeading.astro';
 import IdxPropertySearch from '../IdxPropertySearch.astro';
-import ContactAgents from '../ContactAgents.astro';
 import TeamSection from '../TeamSection.astro';
 import GoogleReviews from '../GoogleReviews.astro';
 import CtaSection from '../CtaSection.astro';
@@ -95,7 +94,10 @@ const jsonLd = [
             <a href="#listings" class="btn btn-outline">
               {t.heroCtaSearch}
             </a>
-            <ContactAgents locale={locale} buttonClass="btn btn-outline" label={t.heroCtaCall} />
+            <a href={siteConfig.phoneHref} class="btn btn-outline">
+              <Icon name="phone" class="h-4 w-4" />
+              {t.heroCtaCall}
+            </a>
           </div>
         </div>
         <div data-reveal class="hidden justify-self-end lg:block">
