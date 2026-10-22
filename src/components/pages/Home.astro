@@ -188,6 +188,24 @@ const jsonLd = [
 
   <TeamSection locale={locale} />
 
+  <section id="areas" class="section-pad">
+    <div class="container-site">
+      <div data-reveal>
+        <SectionHeading
+          eyebrow={locale === 'es' ? 'Nuestras comunidades' : 'Our Communities'}
+          title={locale === 'es' ? 'Áreas que cubrimos' : 'Areas We Cover'}
+        />
+      </div>
+      <div class="idx-communityareas mt-12">
+        <script
+          is:inline
+          id="idxaddons-communityarea-script"
+          src="https://idxaddons.com/addon/communityareas/MnJtNXlEU1NNM3E%3DcDm-qgLoemE/?sort=az&agent=15903955&theme=phoenix&widget=160"
+        ></script>
+      </div>
+    </div>
+  </section>
+
   <GoogleReviews locale={locale} />
 
   <CtaSection locale={locale} />
