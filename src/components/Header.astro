@@ -56,16 +56,16 @@ const contactUrl = localizedPath('/contact', locale);
       </a>
     </div>
     <div class="flex items-center gap-2.5 lg:hidden">
-      <a
-        href={siteConfig.phoneHref}
-        class="inline-flex items-center gap-1.5 text-[13px] font-semibold tracking-[-0.01em] transition-colors hover:text-brand sm:text-[15px]"
-        aria-label={`${t.heroCtaCall} ${siteConfig.phoneDisplay}`}
-      >
-        <Icon name="phone" class="h-4 w-4 text-brand" />
-        <span class="whitespace-nowrap">{siteConfig.phoneDisplay}</span>
-      </a>
-      <div class="hidden sm:block">
+      <div class="flex flex-col items-end gap-0.5">
         <LanguageSwitcher locale={locale} enUrl={enUrl} esUrl={esUrl} compact class="text-current" />
+        <a
+          href={siteConfig.phoneHref}
+          class="inline-flex items-center gap-1 text-[12px] font-semibold tracking-[-0.01em] transition-colors hover:text-brand sm:text-[13px]"
+          aria-label={`${t.heroCtaCall} ${siteConfig.phoneDisplay}`}
+        >
+          <Icon name="phone" class="h-3.5 w-3.5 text-brand" />
+          <span class="whitespace-nowrap">{siteConfig.phoneDisplay}</span>
+        </a>
       </div>
       <button
         data-menu-toggle
