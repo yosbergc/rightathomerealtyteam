@@ -43,9 +43,13 @@ export const en: Translation = {
   categoriesParagraph:
     'From family homes to commercial spaces, browse by category and find exactly what you are looking for.',
   listingsEyebrow: 'Featured homes',
-  listingsTitle: 'Homes across the Carolinas',
+  listingsTitle: 'Find your next home',
+  listingsAgentsTitle: 'Listed by our agents',
+  listingsAgentsParagraph: 'Homes our team is personally representing right now.',
+  listingsAreaTitle: 'More homes across the Carolinas',
+  listingsAreaParagraph: 'Featured listings from across North Carolina and South Carolina, updated directly from the MLS.',
   listingsParagraph:
-    'Explore featured listings across North Carolina and South Carolina, updated directly from the MLS.',
+    'Start with the homes our own agents are representing, then explore featured listings across North Carolina and South Carolina.',
   teamEyebrow: 'Choose your realtor',
   teamTitle: 'Work with the agent you connect with',
   teamIntro:
