@@ -43,9 +43,13 @@ localeName: 'Español',
   categoriesParagraph:
     'Desde casas familiares hasta espacios comerciales, explora por categoría y encuentra exactamente lo que buscas.',
   listingsEyebrow: 'Casas destacadas',
-  listingsTitle: 'Casas en las Carolinas',
+  listingsTitle: 'Encuentra tu próximo hogar',
+  listingsAgentsTitle: 'Listados por nuestros agentes',
+  listingsAgentsParagraph: 'Casas que nuestro equipo representa personalmente en este momento.',
+  listingsAreaTitle: 'Más casas en las Carolinas',
+  listingsAreaParagraph: 'Listados destacados en Carolina del Norte y Carolina del Sur, actualizados directamente desde el MLS.',
   listingsParagraph:
-    'Explora los listados destacados en Carolina del Norte y Carolina del Sur, actualizados directamente desde el MLS.',
+    'Empieza con las casas que representan nuestros propios agentes y luego explora listados destacados en Carolina del Norte y Carolina del Sur.',
   teamEyebrow: 'Elige tu agente',
   teamTitle: 'Trabaja con el agente con quien conectes',
   teamIntro:
