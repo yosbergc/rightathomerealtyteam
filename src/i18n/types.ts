@@ -55,6 +55,10 @@ export type Translation = {
   listingsEyebrow: string;
   listingsTitle: string;
   listingsParagraph: string;
+  listingsAgentsTitle: string;
+  listingsAgentsParagraph: string;
+  listingsAreaTitle: string;
+  listingsAreaParagraph: string;
   teamEyebrow: string;
   teamTitle: string;
   teamIntro: string;
