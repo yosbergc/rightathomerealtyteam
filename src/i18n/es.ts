@@ -124,6 +124,11 @@ photo: 'nancy-brogdon',
         'Desde la precalificación con nuestros prestamistas de confianza hasta la mesa de cierre: siempre sabrás cuál es el siguiente paso.',
     },
   ],
+  propertyManagementEyebrow: 'Nuestros servicios',
+  propertyManagementTitle: 'Administración de propiedades',
+  propertyManagementParagraph:
+    'Comprar y vender es solo una parte de lo que hacemos. Nuestro servicio de administración de propiedades mantiene las viviendas de alquiler rentables y sin preocupaciones para los propietarios en las Carolinas.',
+  propertyManagementCta: 'Hablemos de administración de propiedades',
   testimonialsEyebrow: 'Historias de clientes',
   testimonialsTitle: 'Lo que dicen nuestros clientes',
   testimonialsList: [

@@ -26,6 +26,7 @@ interface Props {
 const { locale } = Astro.props;
 const t = getDictionary(locale);
 const path = locale === 'es' ? '/es' : '/';
+const contactUrl = localizedPath('/contact', locale);
 
 const searchPlaceholder =
   locale === 'es' ? 'Busca por dirección, ciudad, condado o código postal' : 'Search for address, city, county, or zipcode';
@@ -129,6 +130,34 @@ const jsonLd = [
             <p class="text-body mt-3 text-muted">{value.description}</p>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="container-site">
+      <div class="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-16">
+        <div data-reveal>
+          <img
+            src="/apartment.webp"
+            alt="Well-managed rental home interior"
+            class="w-full rounded-[12px] object-cover"
+            width={1920}
+            height={1280}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div data-reveal>
+          <SectionHeading
+            eyebrow={t.propertyManagementEyebrow}
+            title={t.propertyManagementTitle}
+            description={t.propertyManagementParagraph}
+          />
+          <a href={contactUrl} class="btn btn-primary mt-8">
+            {t.propertyManagementCta}
+          </a>
+        </div>
       </div>
     </div>
   </section>

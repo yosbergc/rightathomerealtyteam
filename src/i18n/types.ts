@@ -62,6 +62,10 @@ export type Translation = {
   valuesEyebrow: string;
   valuesTitle: string;
   values: Value[];
+  propertyManagementEyebrow: string;
+  propertyManagementTitle: string;
+  propertyManagementParagraph: string;
+  propertyManagementCta: string;
   testimonialsEyebrow: string;
   testimonialsTitle: string;
   testimonialsList: Testimonial[];

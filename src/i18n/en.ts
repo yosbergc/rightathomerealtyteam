@@ -121,6 +121,11 @@ export const en: Translation = {
         'From pre-qualification with our trusted lenders to the closing table - you always know the next step.',
     },
   ],
+  propertyManagementEyebrow: 'Our Services',
+  propertyManagementTitle: 'Property Management',
+  propertyManagementParagraph:
+    'Buying and selling is only part of what we do. Our property management service keeps rental homes profitable and worry-free for owners across the Carolinas.',
+  propertyManagementCta: 'Talk to us about property management',
   testimonialsEyebrow: 'Client Stories',
   testimonialsTitle: 'What our clients say',
   testimonialsList: [
