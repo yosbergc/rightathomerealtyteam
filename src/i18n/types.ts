@@ -46,6 +46,7 @@ export type Translation = {
   heroCtaWorth: string;
   heroCtaSearch: string;
   heroCtaCall: string;
+  followUs: string;
   aboutEyebrow: string;
   aboutTitle: string;
   aboutParagraph: string;

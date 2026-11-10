@@ -1,6 +1,7 @@
 ---
 import Logo from './Logo.astro';
 import Icon from './Icon.astro';
+import SocialLinks from './SocialLinks.astro';
 import MobileMenu from './MobileMenu.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import { siteConfig } from '../config/site';
@@ -42,6 +43,19 @@ const contactUrl = localizedPath('/contact', locale);
         </span>
         {t.navPhone}
       </a>
+      <SocialLinks
+        ariaLabelPrefix={t.followUs}
+        class="border-l border-white/20 pl-4 xl:hidden"
+        linkClass="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-current transition-colors hover:bg-brand hover:text-white"
+        iconClass="h-4 w-4"
+      />
+      <SocialLinks
+        ariaLabelPrefix={t.followUs}
+        class="hidden border-l border-white/20 pl-4 xl:flex"
+        linkClass="inline-flex h-9 items-center gap-2 rounded-full bg-white/10 px-3 text-[13px] font-semibold text-current transition-colors hover:bg-brand hover:text-white"
+        iconClass="h-4 w-4"
+        showLabels
+      />
       <LanguageSwitcher locale={locale} enUrl={enUrl} esUrl={esUrl} class="text-current" />
       <button
         data-menu-toggle

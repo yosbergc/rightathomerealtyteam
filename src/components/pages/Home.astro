@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Icon from '../Icon.astro';
+import SocialLinks from '../SocialLinks.astro';
 import SectionHeading from '../SectionHeading.astro';
 import IdxPropertySearch from '../IdxPropertySearch.astro';
 import TeamSection from '../TeamSection.astro';
@@ -99,6 +100,18 @@ const jsonLd = [
               <Icon name="phone" class="h-4 w-4" />
               {t.heroCtaCall}
             </a>
+          </div>
+          <div class="mt-7 flex flex-wrap items-center gap-3">
+            <span class="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/70">
+              {t.followUs}
+            </span>
+            <SocialLinks
+              ariaLabelPrefix={t.followUs}
+              class="flex-wrap"
+              linkClass="inline-flex h-10 items-center gap-2 rounded-full border border-white/30 bg-white/5 px-4 text-sm font-semibold text-white transition-colors hover:border-brand hover:bg-brand"
+              iconClass="h-4 w-4"
+              showLabels
+            />
           </div>
         </div>
         <div data-reveal class="hidden justify-self-end lg:block">

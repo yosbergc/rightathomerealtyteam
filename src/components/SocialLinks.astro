@@ -1,0 +1,47 @@
+---
+import Icon from './Icon.astro';
+import { siteConfig } from '../config/site';
+
+type Social = { label: string; href: string };
+
+interface Props {
+  socials?: readonly Social[];
+  class?: string;
+  linkClass?: string;
+  iconClass?: string;
+  labelClass?: string;
+  ariaLabelPrefix?: string;
+  showLabels?: boolean;
+}
+
+const {
+  socials = siteConfig.socials,
+  class: className = '',
+  linkClass = 'inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-current transition-colors hover:bg-brand hover:text-white',
+  iconClass = 'h-5 w-5',
+  labelClass = 'text-sm font-semibold',
+  ariaLabelPrefix = 'Follow us on',
+  showLabels = false,
+} = Astro.props;
+
+const iconName = (label: string) =>
+  label.toLowerCase() as 'facebook' | 'instagram' | 'tiktok' | 'x' | 'linkedin';
+---
+
+<ul class:list={['flex items-center gap-2', className]}>
+  {socials.map((social) => (
+    <li>
+      <a
+        href={social.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${ariaLabelPrefix} ${social.label}`}
+        title={social.label}
+        class={linkClass}
+      >
+        <Icon name={iconName(social.label)} class={iconClass} />
+        {showLabels && <span class={labelClass}>{social.label}</span>}
+      </a>
+    </li>
+  ))}
+</ul>

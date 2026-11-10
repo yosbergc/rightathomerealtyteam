@@ -14,8 +14,9 @@ export const siteConfig = {
   founded: 'By Alvaro & Sally Jaimes',
   heroBadge: 'Hablamos Español',
   socials: [
-    { label: 'Instagram', href: 'https://www.instagram.com/rightathomerealtyteam/' },
-    { label: 'TikTok', href: 'https://www.tiktok.com/@realtoralvarojaimes1' },
+    { label: 'Instagram', href: 'https://www.instagram.com/rightathomerealty_team' },
+    { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61594127049929' },
+    { label: 'TikTok', href: 'https://www.tiktok.com/@rightathomerealty_team' },
   ],
   formEndpoint: 'https://api.web3forms.com/submit',
   web3formsAccessKey: import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '',

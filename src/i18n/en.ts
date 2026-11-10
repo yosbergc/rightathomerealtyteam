@@ -34,6 +34,7 @@ export const en: Translation = {
   heroCtaWorth: "What's My Home Worth",
   heroCtaSearch: 'Search Homes',
   heroCtaCall: 'Call Us',
+  followUs: 'Follow us',
   aboutEyebrow: 'About Us',
   aboutTitle: 'Known in this community long before the "For Sale" sign.',
   aboutParagraph:
@@ -69,7 +70,7 @@ export const en: Translation = {
       email: 'alvaro@rightathomerealtyteam.com',
       photo: 'alvaro-jaimes',
       socials: [
-        { label: 'Facebook', href: 'https://www.facebook.com/jay.photos.31521/' },
+        { label: 'Facebook', href: 'https://www.facebook.com/realtor.alvarojaimes/' },
         { label: 'Instagram', href: 'https://www.instagram.com/realtor_alvaro_jaimes' },
         { label: 'TikTok', href: 'https://www.tiktok.com/@realtoralvarojaimes' },
       ],
@@ -87,7 +88,7 @@ export const en: Translation = {
       email: 'sally@rightathomerealtyteam.com',
       photo: 'sally-jaimes',
       socials: [
-        { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=100075956286314&mibextid=ZbWKwL' },
+        { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=100075956286314' },
         { label: 'Instagram', href: 'https://www.instagram.com/sallyjaimesrealtor' },
       ],
     },
@@ -103,7 +104,10 @@ export const en: Translation = {
       phone: '803-630-3282',
       email: 'nancy@rightathomerealtyteam.com',
       photo: 'nancy-brogdon',
-      socials: [{ label: 'Instagram', href: 'https://www.instagram.com/Realtor_Nancy_Brogdon' }],
+      socials: [
+        { label: 'Facebook', href: 'https://www.facebook.com/ncapistran' },
+        { label: 'Instagram', href: 'https://www.instagram.com/Realtor_Nancy_Brogdon' },
+      ],
     },
   ],
   valuesEyebrow: 'Why Choose Us',
