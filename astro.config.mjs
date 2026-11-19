@@ -7,6 +7,7 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'ignore',
   integrations: [mdx()],
+  build: { assetsPrefix: 'https://www.rightathomerealtyteam.com', inlineStylesheets: 'always' },
   vite: {
     plugins: [tailwindcss()],
   },
